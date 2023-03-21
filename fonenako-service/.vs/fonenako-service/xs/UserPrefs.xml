@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{CFE0E7CA-BC75-4594-BD2F-DAB0322450D1}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="finenako-service-tests/finenako-service-tests.csproj">
+    <Files>
+      <File FileName="finenako-service-tests/finenako-service-tests.csproj" Line="32" Column="15" />
+      <File FileName="finenako-service-tests/LeaseOfferStepDefinitions.cs" Line="21" Column="15" />
+      <File FileName="fonenako-service.csproj" Line="22" Column="15" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Option id="ShowAllFiles" value="True" />
+          <Node name="fonenako-service" expanded="True">
+            <Node name="Dto" expanded="True" />
+            <Node name="finenako-service-tests" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="fonenako-service" expanded="True" selected="True">
+              <Node name="finenako-service-tests" expanded="True">
+                <Node name="LeaseOffer.feature" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="fonenako-service" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.fonenako-service PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

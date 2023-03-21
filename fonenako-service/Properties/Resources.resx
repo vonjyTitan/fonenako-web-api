@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="order_whithout_orderby" xml:space="preserve">
+	  <value>{0} is specified while {1} is empty</value>
+	</data>
+	<data name="unknown_order_value" xml:space="preserve">
+	  <value>Order value : '{0}' is unknown, it should be one of 'Asc and Desc'</value>
+	</data>
+	<data name="unknown_order_field_name" xml:space="preserve">
+	  <value>The order field : '{0}' is unknown or not orderable</value>
+	</data>
+	<data name="requested_page_index_not_valid" xml:space="preserve">
+	  <value>Page value : '{0}' is not valid</value>
+	</data>
+	<data name="requested_page_size_not_valid" xml:space="preserve">
+	  <value>Page size value : '{0}' is not valid</value>
+	</data>
+	<data name="unknown_filter_field" xml:space="preserve">
+	  <value>Filter field : '{0}' is unknown or not filterable</value>
+	</data>
+	<data name="duplicate_filter_field" xml:space="preserve">
+	  <value>Filter field : {0} is declared more than once</value>
+	</data>
+	<data name="invalid_filter_field_value" xml:space="preserve">
+	  <value>Filter field : '{0}' does not have a valid value : '{1}'</value>
+	</data>
+	<data name="invalid_lease_offer_id" xml:space="preserve">
+	  <value>LeaseOfferID : '{0}' is not a valid identifier</value>
+	</data>
+</root>
