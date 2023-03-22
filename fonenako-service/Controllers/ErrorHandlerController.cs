@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 
 namespace fonenako_service.Controllers
 {
-    [ApiController]
     [ApiExplorerSettings(IgnoreApi = true)]
     public class ErrorHandlerController : ControllerBase
     {

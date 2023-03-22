@@ -64,7 +64,7 @@ namespace fonenako_service.Services
 
         public async Task<LeaseOfferDto> FindLeaseOfferByIdAsync(int leaseOfferId)
         {
-            var leaseOffer = await _leaseOfferDao.FindLeaseOfferById(leaseOfferId);
+            var leaseOffer = await _leaseOfferDao.FindLeaseOfferByIdAsync(leaseOfferId);
             return leaseOffer != null ? _mapper.Map<LeaseOfferDto>(leaseOffer) : null;
         }
     }

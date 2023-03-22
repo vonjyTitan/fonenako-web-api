@@ -89,8 +89,13 @@ namespace fonenako_service.Daos
             _fonenakoDbContext.SaveChanges();
         }
 
-        public async Task<LeaseOffer> FindLeaseOfferById(int leaseOfferId)
+        public async Task<LeaseOffer> FindLeaseOfferByIdAsync(int leaseOfferId)
         {
+            if(leaseOfferId < 1)
+            {
+                throw new ArgumentException("Value cannot be less than 1", nameof(leaseOfferId));
+            }
+
             return await _fonenakoDbContext.LeaseOffers.Where(leaseOffer => leaseOffer.LeaseOfferID == leaseOfferId).FirstOrDefaultAsync();
         }
 

@@ -108,6 +108,30 @@ namespace fonenako_service_tests.Daos
             CollectionAssert.AreEqual(expectedResultIds, retrievedOffers.Select(offer => offer.LeaseOfferID).ToArray(), messageOnFail);
         }
 
+        [Test]
+        public async Task FindLeaseOfferByIdAsync_should_return_null()
+        {
+            var leaseOffer = await _leaseOfferDao.FindLeaseOfferByIdAsync(100);
+
+            Assert.IsNull(leaseOffer);
+        }
+
+        [Test]
+        public void FindLeaseOfferByIdAsync_should_throw_argumentexception_when_the_id_is_invalid()
+        {
+            Assert.ThrowsAsync<ArgumentException>(()=> _leaseOfferDao.FindLeaseOfferByIdAsync(0));
+            Assert.ThrowsAsync<ArgumentException>(() => _leaseOfferDao.FindLeaseOfferByIdAsync(-1));
+        }
+
+        [Test]
+        public async Task FindLeaseOfferByIdAsync_should_return_the_right_lease_offer()
+        {
+            var leaseOffer = await _leaseOfferDao.FindLeaseOfferByIdAsync(2);
+
+            Assert.IsNotNull(leaseOffer);
+            Assert.AreEqual(2, leaseOffer.LeaseOfferID);
+        }
+
         private static object[] ValidFilterTestSource = new []
         {
             new object[]{ new Dictionary<string, object>() { { LeaseOfferFilterFields.SurfaceMin, 50d} }, new object[]{ 5, 6, 7, 8, 9, 10 }, "Should return all lease offers with surface greater than 49"},

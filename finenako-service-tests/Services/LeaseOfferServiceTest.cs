@@ -75,5 +75,34 @@ namespace fonenako_service_tests.Services
             Assert.AreEqual(0, pageableResult.TotalPage);
             CollectionAssert.IsEmpty(pageableResult.Content);
         }
+
+        [Test]
+        public async Task FindLeaseOfferByIdAsync_should_return_null_when_dao_returns_null()
+        {
+            var leaseOffer = await _leaseOfferService.FindLeaseOfferByIdAsync(1);
+
+            Assert.IsNull(leaseOffer);
+        }
+
+        [Test]
+        public async Task FindLeaseOfferByIdAsync_should_return_null_when_dao_rand_mapper_return_the_right_object()
+        {
+            const int leaseOfferId = 1;
+            var leaseOffer = new LeaseOffer
+            {
+                LeaseOfferID = leaseOfferId
+            };
+            var expectedLeaseOfferDto = new LeaseOfferDto
+            {
+                LeaseOfferID = leaseOfferId
+            };
+
+            _leaseOfferDaoMock.Setup(dao => dao.FindLeaseOfferByIdAsync(leaseOfferId)).ReturnsAsync(leaseOffer);
+            _mapperMock.Setup(dao => dao.Map<LeaseOfferDto>(leaseOffer)).Returns(expectedLeaseOfferDto);
+
+            var leaseOfferResult = await _leaseOfferService.FindLeaseOfferByIdAsync(1);
+
+            Assert.AreEqual(expectedLeaseOfferDto, leaseOfferResult);
+        }
     }
 }

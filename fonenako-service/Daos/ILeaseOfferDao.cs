@@ -10,7 +10,7 @@ namespace fonenako_service.Daos
 
         Task<int> CountLeaseOffersAsync(IDictionary<string, object> filterMap);
 
-        Task<LeaseOffer> FindLeaseOfferById(int leaseOfferId);
+        Task<LeaseOffer> FindLeaseOfferByIdAsync(int leaseOfferId);
 
         Task InsertManyAsync(IEnumerable<LeaseOffer> leaseOffers);
 

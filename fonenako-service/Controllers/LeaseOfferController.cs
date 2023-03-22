@@ -126,7 +126,7 @@ namespace fonenako.Controllers
             return Ok(pageable);
         }
 
-        [HttpGet("{leaseOfferId}", Name = "Retrieve lease offer by ID")]
+        [HttpGet("{leaseOfferId}", Name = "Retrieve lease offer by Id")]
         [ProducesResponseType(typeof(LeaseOfferDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
