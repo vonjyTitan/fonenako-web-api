@@ -27,15 +27,6 @@
 	<data name="requested_page_size_not_valid" xml:space="preserve">
 	  <value>Page size value : '{0}' is not valid</value>
 	</data>
-	<data name="unknown_filter_field" xml:space="preserve">
-	  <value>Filter field : '{0}' is unknown or not filterable</value>
-	</data>
-	<data name="duplicate_filter_field" xml:space="preserve">
-	  <value>Filter field : {0} is declared more than once</value>
-	</data>
-	<data name="invalid_filter_field_value" xml:space="preserve">
-	  <value>Filter field : '{0}' does not have a valid value : '{1}'</value>
-	</data>
 	<data name="invalid_lease_offer_id" xml:space="preserve">
 	  <value>LeaseOfferID : '{0}' is not a valid identifier</value>
 	</data>

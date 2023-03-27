@@ -124,7 +124,7 @@ Scenario: Retrieve lease offer list with filter on surfaceMin
 		|1            |Offer number 1 |18      |3    |750		 |
 		|2            |Offer number 2 |50      |1    |950		 |
 		|3            |Offer number 2 |65      |2    |1000		 |
-	When I make a GET request on lease-offers endpoint with filter : 'surfaceMin=19'
+	When I make a GET request on lease-offers endpoint with filter : '{"surfaceMin":19}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000'}
 	And The pageable content items should be like :
@@ -132,32 +132,18 @@ Scenario: Retrieve lease offer list with filter on surfaceMin
 		|3            |Offer number 2 |65      |2    |1000		 |
 		|2            |Offer number 2 |50      |1    |950		 |
 
-Scenario: Retrieve lease offer list with filter on roomsMax
+Scenario: Retrieve lease offer list with filter on rooms
 	Given The following list of lease offer is present in the system
 		|LeaseOfferID |Title          |Surface |Rooms|MonthlyRent|
 		|1            |Offer number 1 |18      |1    |750		 |
 		|2            |Offer number 2 |50      |2    |950		 |
-		|3            |Offer number 2 |65      |3    |1000		 |
-	When I make a GET request on lease-offers endpoint with filter : 'roomsMax=2'
+		|3            |Offer number 2 |65      |2    |1000		 |
+	When I make a GET request on lease-offers endpoint with filter : '{"rooms":2}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Title          |Surface |Rooms|MonthlyRent|
-		|2            |Offer number 2 |50      |2    |950		 |
-		|1            |Offer number 1 |18      |1    |750		 |
-
-Scenario: Retrieve lease offer list with filter on roomsMin
-	Given The following list of lease offer is present in the system
-		|LeaseOfferID |Title          |Surface |Rooms|MonthlyRent|
-		|1            |Offer number 1 |18      |1    |750		 |
-		|2            |Offer number 2 |50      |2    |950		 |
-		|3            |Offer number 2 |65      |3    |1000		 |
-	When I make a GET request on lease-offers endpoint with filter : 'roomsMin=2'
-	Then The response Status code should be '200'
-	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000'}
-	And The pageable content items should be like :
-		|LeaseOfferID |Title          |Surface |Rooms|MonthlyRent|
-		|3            |Offer number 2 |65      |3    |1000		 |
+		|3            |Offer number 2 |65      |2    |1000		 |
 		|2            |Offer number 2 |50      |2    |950		 |
 
 Scenario: Retrieve lease offer list with filter on monthlyRentMin
@@ -166,7 +152,7 @@ Scenario: Retrieve lease offer list with filter on monthlyRentMin
 		|1            |Offer number 1 |18      |3    |750		 |
 		|2            |Offer number 2 |50      |1    |950		 |
 		|3            |Offer number 2 |65      |2    |1000		 |
-	When I make a GET request on lease-offers endpoint with filter : 'monthlyRentMin=751'
+	When I make a GET request on lease-offers endpoint with filter : '{"monthlyRentMin":751}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000'}
 	And The pageable content items should be like :
@@ -180,7 +166,7 @@ Scenario: Retrieve lease offer list with filter on monthlyRentMax
 		|1            |Offer number 1 |18      |3    |750		 |
 		|2            |Offer number 2 |50      |1    |950		 |
 		|3            |Offer number 2 |65      |2    |1000		 |
-	When I make a GET request on lease-offers endpoint with filter : 'monthlyRentMax=951'
+	When I make a GET request on lease-offers endpoint with filter : '{"monthlyRentMax":951}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000'}
 	And The pageable content items should be like :
@@ -196,7 +182,7 @@ Scenario: Retrieve lease offer list with combined filters
 		|3            |Offer number 3 |56      |2    |1000		 |
 		|4            |Offer number 4 |65      |3    |1000		 |
 		|5            |Offer number 5 |80      |3    |1500		 |
-	When I make a GET request on lease-offers endpoint with filter : 'monthlyRentMin=900&surfaceMax=64'
+	When I make a GET request on lease-offers endpoint with filter : '{"monthlyRentMin":900,"surfaceMax":64}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000'}
 	And The pageable content items should be like :
@@ -212,7 +198,7 @@ Scenario: Retrieve lease offer list with both filter and pagination
 		|3            |Offer number 3 |56      |2    |950		 |
 		|4            |Offer number 4 |65      |3    |1000		 |
 		|5            |Offer number 5 |80      |3    |1500		 |
-	When I make a GET request on lease-offers endpoint with pagination : 'pageSize=2&page=2&orderBy=monthlyRent&order=Desc' and filter : 'monthlyRentMin=900'
+	When I make a GET request on lease-offers endpoint with pagination : 'pageSize=2&page=2&orderBy=monthlyRent&order=Desc' and filter : '{"monthlyRentMin":900}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '2', TotalPage : '2', PageSize : '2'}
 	And The pageable content items should be like :
@@ -225,35 +211,15 @@ Scenario: Retrieve lease offer list with filter that does not have macthing
 		|LeaseOfferID |Title          |Surface |Rooms|MonthlyRent|
 		|1            |Offer number 1 |18      |3    |800		 |
 		|2            |Offer number 2 |40      |1    |900		 |
-	When I make a GET request on lease-offers endpoint with filter : 'monthlyRentMax=750'
+	When I make a GET request on lease-offers endpoint with filter : '{"monthlyRentMax":750}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '0', PageSize : '10000'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Title          |Surface |Rooms|MonthlyRent|
 
-Scenario: Retrieve lease offer list with wrong filter field name
-	Given Whatever data I have in the system
-	When I make a GET request on lease-offers endpoint with filter : 'uknownFieldName=18'
-	Then The response Status code should be '400'
-
 Scenario: Retrieve lease offer list with wrong numeric filter field value
 	Given Whatever data I have in the system
-	When I make a GET request on lease-offers endpoint with filter : 'surfaceMin=WrongValue'
-	Then The response Status code should be '400'
-
-Scenario: Retrieve lease offer list with empty filter field value
-	Given Whatever data I have in the system
-	When I make a GET request on lease-offers endpoint with filter : 'surfaceMin='
-	Then The response Status code should be '400'
-
-Scenario: Retrieve lease offer list with filter field name only
-	Given Whatever data I have in the system
-	When I make a GET request on lease-offers endpoint with filter : 'surfaceMin'
-	Then The response Status code should be '400'
-
-Scenario: Retrieve lease offer list with duplicate filter field
-	Given Whatever data I have in the system
-	When I make a GET request on lease-offers endpoint with filter : 'surfaceMin=18&surfaceMin=60'
+	When I make a GET request on lease-offers endpoint with filter : '{"surfaceMin":\'WrongValue\'}'
 	Then The response Status code should be '400'
 
 Scenario: Retrieve lease offer list with wrong page size

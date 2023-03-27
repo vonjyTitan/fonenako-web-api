@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using fonenako.Models;
+using fonenako_service;
 using fonenako_service.Daos;
 using fonenako_service.Dtos;
 using fonenako_service.Services;
@@ -35,7 +36,7 @@ namespace fonenako_service_tests.Services
         [TestCase(10, 1, "UnknownField", TestName = "Unknown Field should make the method rise ArgumentException")]
         public void RetrieveLeaseOffersAsync_should_throw_argumentexcption_when_called_with_wrong_arg(int pageSize, int pageIndex, string orderBy)
         {
-             Assert.ThrowsAsync<ArgumentException>(()=> _leaseOfferService.RetrieveLeaseOffersAsync(pageSize, pageIndex, new Dictionary<string, object>(), orderBy, Order.Asc));
+             Assert.ThrowsAsync<ArgumentException>(()=> _leaseOfferService.RetrieveLeaseOffersAsync(pageSize, pageIndex, LeaseOfferFilter.Default, orderBy, Order.Asc));
         }
 
         [TestCase(1, 1, 15, 3, TestName = "The total page should be 15/5 = 3")]
@@ -49,11 +50,11 @@ namespace fonenako_service_tests.Services
 
             var leaseOfferModels = new []{ new LeaseOffer()};
             var leaseOfferDtos = new[] { new LeaseOfferDto() };
-            _leaseOfferDaoMock.Setup(dao => dao.CountLeaseOffersAsync(new Dictionary<string, object>())).ReturnsAsync(totalItems);
-            _leaseOfferDaoMock.Setup(dao => dao.RetrieveLeaseOffersByPageAsync(pageSize, expectedPageIndexResult, new Dictionary<string, object>(), orderBy, order)).ReturnsAsync(leaseOfferModels);
+            _leaseOfferDaoMock.Setup(dao => dao.CountLeaseOffersAsync(LeaseOfferFilter.Default)).ReturnsAsync(totalItems);
+            _leaseOfferDaoMock.Setup(dao => dao.RetrieveLeaseOffersByPageAsync(pageSize, expectedPageIndexResult, LeaseOfferFilter.Default, orderBy, order)).ReturnsAsync(leaseOfferModels);
             _mapperMock.Setup(mapper => mapper.Map<IEnumerable<LeaseOfferDto>>(leaseOfferModels)).Returns(leaseOfferDtos);
 
-            var pageableResult = await _leaseOfferService.RetrieveLeaseOffersAsync(pageSize, pageIndex, new Dictionary<string, object>(), orderBy, order);
+            var pageableResult = await _leaseOfferService.RetrieveLeaseOffersAsync(pageSize, pageIndex, LeaseOfferFilter.Default, orderBy, order);
 
             Assert.IsNotNull(pageableResult);
             Assert.AreEqual(expectedPageIndexResult, pageableResult.CurrentPage);
@@ -65,9 +66,9 @@ namespace fonenako_service_tests.Services
         [Test]
         public async Task RetrieveLeaseOffersAsync_should_return_empty_when_there_is_no_retrieved_item()
         {
-            _leaseOfferDaoMock.Setup(dao => dao.CountLeaseOffersAsync(new Dictionary<string, object>())).ReturnsAsync(0);
+            _leaseOfferDaoMock.Setup(dao => dao.CountLeaseOffersAsync(LeaseOfferFilter.Default)).ReturnsAsync(0);
 
-            var pageableResult = await _leaseOfferService.RetrieveLeaseOffersAsync(2, 2, new Dictionary<string, object>(), nameof(LeaseOffer.LeaseOfferID), Order.Asc);
+            var pageableResult = await _leaseOfferService.RetrieveLeaseOffersAsync(2, 2, LeaseOfferFilter.Default, nameof(LeaseOffer.LeaseOfferID), Order.Asc);
 
             Assert.IsNotNull(pageableResult);
             Assert.AreEqual(1, pageableResult.CurrentPage);

@@ -9,8 +9,7 @@ namespace fonenako_service
         public static IServiceCollection AddFonenakoServices(this IServiceCollection service)
         {
             service.AddScoped<ILeaseOfferService, LeaseOfferService>()
-                .AddScoped<ILeaseOfferDao, LeaseOfferDao>()
-                .AddSingleton<IFilterParser, FilterParser>();
+                .AddScoped<ILeaseOfferDao, LeaseOfferDao>();
             return service;
         }
     }

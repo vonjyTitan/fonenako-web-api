@@ -77,24 +77,6 @@ namespace fonenako_service.Properties {
             }
         }
         
-        internal static string unknown_filter_field {
-            get {
-                return ResourceManager.GetString("unknown_filter_field", resourceCulture);
-            }
-        }
-        
-        internal static string duplicate_filter_field {
-            get {
-                return ResourceManager.GetString("duplicate_filter_field", resourceCulture);
-            }
-        }
-        
-        internal static string invalid_filter_field_value {
-            get {
-                return ResourceManager.GetString("invalid_filter_field_value", resourceCulture);
-            }
-        }
-        
         internal static string invalid_lease_offer_id {
             get {
                 return ResourceManager.GetString("invalid_lease_offer_id", resourceCulture);

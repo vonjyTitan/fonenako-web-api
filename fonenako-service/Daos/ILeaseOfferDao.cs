@@ -6,9 +6,9 @@ namespace fonenako_service.Daos
 {
     public interface ILeaseOfferDao
     {
-        Task<IEnumerable<LeaseOffer>> RetrieveLeaseOffersByPageAsync(int pageSize, int pageIndex, IDictionary<string, object> filterMap, string orderBy, Order order);
+        Task<IEnumerable<LeaseOffer>> RetrieveLeaseOffersByPageAsync(int pageSize, int pageIndex, LeaseOfferFilter filter, string orderBy, Order order);
 
-        Task<int> CountLeaseOffersAsync(IDictionary<string, object> filterMap);
+        Task<int> CountLeaseOffersAsync(LeaseOfferFilter filter);
 
         Task<LeaseOffer> FindLeaseOfferByIdAsync(int leaseOfferId);
 

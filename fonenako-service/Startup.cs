@@ -33,12 +33,13 @@ namespace fonenako_service
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-            }
 
+            app.UseExceptionHandler("/Error");
             app.UseRouting();
+            app.UseCors(builder => builder
+                 .AllowAnyOrigin()
+                 .AllowAnyMethod()
+                 .AllowAnyHeader());
 
             app.UseAuthorization();
 

@@ -6,16 +6,16 @@ namespace fonenako_service.Dtos
 {
     public class Pageable<Model> where Model : class
     {
-        [JsonPropertyName("Content")]
+        [JsonPropertyName("content")]
         public IEnumerable<Model> Content { get; set; } = Array.Empty<Model>();
 
-        [JsonPropertyName("TotalPage")]
+        [JsonPropertyName("totalPage")]
         public int TotalPage { get; set; }
 
-        [JsonPropertyName("CurrentPage")]
+        [JsonPropertyName("currentPage")]
         public int CurrentPage { get; set; }
 
-        [JsonPropertyName("PageSize")]
+        [JsonPropertyName("pageSize")]
         public int PageSize { get; set; }
 
         public Pageable()

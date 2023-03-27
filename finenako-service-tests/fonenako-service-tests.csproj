@@ -45,6 +45,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RetrieveSingleLeaseOffer.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Controllers\RetrieveLeaseOfferList.feature">
+      <Visible>False</Visible>
+    </SpecFlowFeatureFiles>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="LeaseOffer.feature.cs">

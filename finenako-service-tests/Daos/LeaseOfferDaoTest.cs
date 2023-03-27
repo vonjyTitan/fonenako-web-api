@@ -1,6 +1,5 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fonenako.DatabaseContexts;
@@ -62,19 +61,13 @@ namespace fonenako_service_tests.Daos
         [TestCase(10, 1, "UnknownField", TestName = "Unknown order field should make it rise an error")]
         public void RetrieveLeaseOffersByPageAsync_shloud_rise_argumentexception_when_called_with_wrong_arg(int pageSize, int pageIndex, string orderBy)
         {
-            Assert.ThrowsAsync<ArgumentException>(() => _leaseOfferDao.RetrieveLeaseOffersByPageAsync(pageSize, pageIndex, new Dictionary<string, object>(), orderBy, Order.Asc));
+            Assert.ThrowsAsync<ArgumentException>(() => _leaseOfferDao.RetrieveLeaseOffersByPageAsync(pageSize, pageIndex, LeaseOfferFilter.Default, orderBy, Order.Asc));
         }
 
         [Test]
         public void RetrieveLeaseOffersByPageAsync_shloud_rise_argumentnullexception_when_called_with_filter_null()
         {
             Assert.ThrowsAsync<ArgumentNullException>(() => _leaseOfferDao.RetrieveLeaseOffersByPageAsync(1, 1, null, nameof(LeaseOffer.LeaseOfferID), Order.Asc));
-        }
-
-        [TestCase]
-        public void RetrieveLeaseOffersByPageAsync_shloud_rise_argumentexception_when_called_with_wrong_filter_field_name()
-        {
-            Assert.ThrowsAsync<ArgumentException>(() => _leaseOfferDao.RetrieveLeaseOffersByPageAsync(1, 1, new Dictionary<string, object>() { { "UnknownField", 5 } }, nameof(LeaseOffer.LeaseOfferID), Order.Asc));
         }
 
         [TestCase(5, 1, nameof(LeaseOffer.LeaseOfferID), Order.Asc, new[] { 1, 2, 3, 4, 5}, TestName = "Order by LeaseOfferID Asc")]
@@ -87,7 +80,7 @@ namespace fonenako_service_tests.Daos
         [TestCase(11, 2, nameof(LeaseOffer.Surface), Order.Desc, new int[0], TestName = "Request out of range page should return empty")]
         public async Task RetrieveLeaseOffersByPageAsync_should_return_requested_page(int pageSize, int pageIndex, string orderBy, Order order, int[] expectedResultIds)
         {
-            var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(pageSize, pageIndex, new Dictionary<string, object>(), orderBy, order);
+            var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(pageSize, pageIndex, LeaseOfferFilter.Default, orderBy, order);
 
             CollectionAssert.AreEqual(expectedResultIds, retrievedOffers.Select(offer => offer.LeaseOfferID));
         }
@@ -95,15 +88,15 @@ namespace fonenako_service_tests.Daos
         [Test]
         public async Task RetrieveLeaseOffersByPageAsync_should_apply_the_given_filter_return_requested_page_with_correct_order()
         {
-            var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(2, 2, new Dictionary<string, object>() { { LeaseOfferFilterFields.SurfaceMin, 50d} }, nameof(LeaseOffer.Surface), Order.Desc);
+            var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(2, 2, new LeaseOfferFilter{ SurfaceMin = 50d} , nameof(LeaseOffer.Surface), Order.Desc);
 
             CollectionAssert.AreEqual(new[] { 8, 7}, retrievedOffers.Select(offer => offer.LeaseOfferID));
         }
 
         [TestCaseSource(nameof(ValidFilterTestSource))]
-        public async Task RetrieveLeaseOffersByPageAsync_should_apply_the_given_filter(Dictionary<string, object> filterMap, object[] expectedResultIds, string messageOnFail)
+        public async Task RetrieveLeaseOffersByPageAsync_should_apply_the_given_filter(LeaseOfferFilter filter, object[] expectedResultIds, string messageOnFail)
         {
-            var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(1000, 1, filterMap, nameof(LeaseOffer.LeaseOfferID), Order.Asc);
+            var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(1000, 1, filter, nameof(LeaseOffer.LeaseOfferID), Order.Asc);
 
             CollectionAssert.AreEqual(expectedResultIds, retrievedOffers.Select(offer => offer.LeaseOfferID).ToArray(), messageOnFail);
         }
@@ -134,12 +127,11 @@ namespace fonenako_service_tests.Daos
 
         private static object[] ValidFilterTestSource = new []
         {
-            new object[]{ new Dictionary<string, object>() { { LeaseOfferFilterFields.SurfaceMin, 50d} }, new object[]{ 5, 6, 7, 8, 9, 10 }, "Should return all lease offers with surface greater than 49"},
-            new object[]{ new Dictionary<string, object>() { { LeaseOfferFilterFields.SurfaceMax, 50d} }, new object[]{ 1, 2, 3, 4, 5}, "Should return all lease offers with surface smaller than 51" },
-            new object[]{ new Dictionary<string, object>() { { LeaseOfferFilterFields.RoomsMin, 5} }, new object[]{ 5, 6, 7, 8, 9, 10}, "Should return all lease offers with rooms greater than 4" },
-            new object[]{ new Dictionary<string, object>() { { LeaseOfferFilterFields.RoomsMax, 5} }, new object[]{ 1, 2, 3, 4, 5}, "Should return all lease offers with rooms smaller than 6" },
-            new object[]{ new Dictionary<string, object>() { { LeaseOfferFilterFields.MonthlyRentMin, 1500d} }, new object[]{ 5, 6, 7, 8, 9, 10}, "Should return all lease offers with monthly rent greater than 1499.99" },
-            new object[]{ new Dictionary<string, object>() { { LeaseOfferFilterFields.MonthlyRentMax, 1500d} }, new object[]{ 1, 2, 3, 4, 5}, "Should return all lease offers with monthly rent smaller than 1500.01" }
+            new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, new object[]{ 5, 6, 7, 8, 9, 10 }, "Should return all lease offers with surface greater than 49"},
+            new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, new object[]{ 1, 2, 3, 4, 5}, "Should return all lease offers with surface smaller than 51" },
+            new object[]{ new LeaseOfferFilter { Rooms = 5 }, new object[]{ 5 }, "Should return all lease offers with rooms equals to 5" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, new object[]{ 5, 6, 7, 8, 9, 10}, "Should return all lease offers with monthly rent greater than 1499.99" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, new object[]{ 1, 2, 3, 4, 5}, "Should return all lease offers with monthly rent smaller than 1500.01" }
         };
     }
 }

@@ -782,7 +782,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table19, "Given ");
 #line hidden
 #line 127
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'surfaceMin=19\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"surfaceMin\":19}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 128
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -817,12 +817,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on roomsMax")]
-        public void RetrieveLeaseOfferListWithFilterOnRoomsMax()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on rooms")]
+        public void RetrieveLeaseOfferListWithFilterOnRooms()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on roomsMax", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on rooms", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 135
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -855,13 +855,13 @@ this.ScenarioInitialize(scenarioInfo);
                             "3",
                             "Offer number 2",
                             "65",
-                            "3",
+                            "2",
                             "1000"});
 #line 136
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table21, "Given ");
 #line hidden
 #line 141
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'roomsMax=2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"rooms\":2}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 142
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -877,17 +877,17 @@ this.ScenarioInitialize(scenarioInfo);
                             "Rooms",
                             "MonthlyRent"});
                 table22.AddRow(new string[] {
+                            "3",
+                            "Offer number 2",
+                            "65",
+                            "2",
+                            "1000"});
+                table22.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "50",
                             "2",
                             "950"});
-                table22.AddRow(new string[] {
-                            "1",
-                            "Offer number 1",
-                            "18",
-                            "1",
-                            "750"});
 #line 144
  testRunner.And("The pageable content items should be like :", ((string)(null)), table22, "And ");
 #line hidden
@@ -896,12 +896,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on roomsMin")]
-        public void RetrieveLeaseOfferListWithFilterOnRoomsMin()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on monthlyRentMin")]
+        public void RetrieveLeaseOfferListWithFilterOnMonthlyRentMin()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on roomsMin", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on monthlyRentMin", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 149
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -922,25 +922,26 @@ this.ScenarioInitialize(scenarioInfo);
                             "1",
                             "Offer number 1",
                             "18",
-                            "1",
+                            "3",
                             "750"});
                 table23.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "50",
-                            "2",
+                            "1",
                             "950"});
                 table23.AddRow(new string[] {
                             "3",
                             "Offer number 2",
                             "65",
-                            "3",
+                            "2",
                             "1000"});
 #line 150
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table23, "Given ");
 #line hidden
 #line 155
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'roomsMin=2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMin\":75" +
+                        "1}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 156
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -959,13 +960,13 @@ this.ScenarioInitialize(scenarioInfo);
                             "3",
                             "Offer number 2",
                             "65",
-                            "3",
+                            "2",
                             "1000"});
                 table24.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "50",
-                            "2",
+                            "1",
                             "950"});
 #line 158
  testRunner.And("The pageable content items should be like :", ((string)(null)), table24, "And ");
@@ -975,12 +976,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on monthlyRentMin")]
-        public void RetrieveLeaseOfferListWithFilterOnMonthlyRentMin()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on monthlyRentMax")]
+        public void RetrieveLeaseOfferListWithFilterOnMonthlyRentMax()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on monthlyRentMin", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on monthlyRentMax", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 163
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1019,7 +1020,8 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table25, "Given ");
 #line hidden
 #line 169
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'monthlyRentMin=751\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMax\":95" +
+                        "1}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 170
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -1035,17 +1037,17 @@ this.ScenarioInitialize(scenarioInfo);
                             "Rooms",
                             "MonthlyRent"});
                 table26.AddRow(new string[] {
-                            "3",
-                            "Offer number 2",
-                            "65",
-                            "2",
-                            "1000"});
-                table26.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "50",
                             "1",
                             "950"});
+                table26.AddRow(new string[] {
+                            "1",
+                            "Offer number 1",
+                            "18",
+                            "3",
+                            "750"});
 #line 172
  testRunner.And("The pageable content items should be like :", ((string)(null)), table26, "And ");
 #line hidden
@@ -1054,12 +1056,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on monthlyRentMax")]
-        public void RetrieveLeaseOfferListWithFilterOnMonthlyRentMax()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with combined filters")]
+        public void RetrieveLeaseOfferListWithCombinedFilters()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on monthlyRentMax", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with combined filters", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 177
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1081,29 +1083,42 @@ this.ScenarioInitialize(scenarioInfo);
                             "Offer number 1",
                             "18",
                             "3",
-                            "750"});
+                            "800"});
                 table27.AddRow(new string[] {
                             "2",
                             "Offer number 2",
-                            "50",
+                            "40",
                             "1",
-                            "950"});
+                            "900"});
                 table27.AddRow(new string[] {
                             "3",
-                            "Offer number 2",
-                            "65",
+                            "Offer number 3",
+                            "56",
                             "2",
                             "1000"});
+                table27.AddRow(new string[] {
+                            "4",
+                            "Offer number 4",
+                            "65",
+                            "3",
+                            "1000"});
+                table27.AddRow(new string[] {
+                            "5",
+                            "Offer number 5",
+                            "80",
+                            "3",
+                            "1500"});
 #line 178
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table27, "Given ");
 #line hidden
-#line 183
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'monthlyRentMax=951\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 185
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMin\":90" +
+                        "0,\"surfaceMax\":64}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 184
+#line 186
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 185
+#line 187
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
                         " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -1114,18 +1129,18 @@ this.ScenarioInitialize(scenarioInfo);
                             "Rooms",
                             "MonthlyRent"});
                 table28.AddRow(new string[] {
+                            "3",
+                            "Offer number 3",
+                            "56",
+                            "2",
+                            "1000"});
+                table28.AddRow(new string[] {
                             "2",
                             "Offer number 2",
-                            "50",
+                            "40",
                             "1",
-                            "950"});
-                table28.AddRow(new string[] {
-                            "1",
-                            "Offer number 1",
-                            "18",
-                            "3",
-                            "750"});
-#line 186
+                            "900"});
+#line 188
  testRunner.And("The pageable content items should be like :", ((string)(null)), table28, "And ");
 #line hidden
             }
@@ -1133,13 +1148,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with combined filters")]
-        public void RetrieveLeaseOfferListWithCombinedFilters()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with both filter and pagination")]
+        public void RetrieveLeaseOfferListWithBothFilterAndPagination()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with combined filters", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 191
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with both filter and pagination", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 193
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1172,7 +1187,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Offer number 3",
                             "56",
                             "2",
-                            "1000"});
+                            "950"});
                 table29.AddRow(new string[] {
                             "4",
                             "Offer number 4",
@@ -1185,19 +1200,19 @@ this.ScenarioInitialize(scenarioInfo);
                             "80",
                             "3",
                             "1500"});
-#line 192
+#line 194
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table29, "Given ");
 #line hidden
-#line 199
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'monthlyRentMin=900&s" +
-                        "urfaceMax=64\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 201
+ testRunner.When("I make a GET request on lease-offers endpoint with pagination : \'pageSize=2&page=" +
+                        "2&orderBy=monthlyRent&order=Desc\' and filter : \'{\"monthlyRentMin\":900}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 200
+#line 202
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 201
- testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 203
+ testRunner.And("The pageable infos should be like : {CurrentPage : \'2\', TotalPage : \'2\', PageSize" +
+                        " : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
@@ -1210,14 +1225,14 @@ this.ScenarioInitialize(scenarioInfo);
                             "Offer number 3",
                             "56",
                             "2",
-                            "1000"});
+                            "950"});
                 table30.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "40",
                             "1",
                             "900"});
-#line 202
+#line 204
  testRunner.And("The pageable content items should be like :", ((string)(null)), table30, "And ");
 #line hidden
             }
@@ -1225,13 +1240,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with both filter and pagination")]
-        public void RetrieveLeaseOfferListWithBothFilterAndPagination()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter that does not have macthing")]
+        public void RetrieveLeaseOfferListWithFilterThatDoesNotHaveMacthing()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with both filter and pagination", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 207
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter that does not have macthing", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 209
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1259,37 +1274,19 @@ this.ScenarioInitialize(scenarioInfo);
                             "40",
                             "1",
                             "900"});
-                table31.AddRow(new string[] {
-                            "3",
-                            "Offer number 3",
-                            "56",
-                            "2",
-                            "950"});
-                table31.AddRow(new string[] {
-                            "4",
-                            "Offer number 4",
-                            "65",
-                            "3",
-                            "1000"});
-                table31.AddRow(new string[] {
-                            "5",
-                            "Offer number 5",
-                            "80",
-                            "3",
-                            "1500"});
-#line 208
+#line 210
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table31, "Given ");
 #line hidden
-#line 215
- testRunner.When("I make a GET request on lease-offers endpoint with pagination : \'pageSize=2&page=" +
-                        "2&orderBy=monthlyRent&order=Desc\' and filter : \'monthlyRentMin=900\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 214
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMax\":75" +
+                        "0}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 216
+#line 215
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 217
- testRunner.And("The pageable infos should be like : {CurrentPage : \'2\', TotalPage : \'2\', PageSize" +
-                        " : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 216
+ testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'0\', PageSize" +
+                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
@@ -1297,111 +1294,8 @@ this.ScenarioInitialize(scenarioInfo);
                             "Surface",
                             "Rooms",
                             "MonthlyRent"});
-                table32.AddRow(new string[] {
-                            "3",
-                            "Offer number 3",
-                            "56",
-                            "2",
-                            "950"});
-                table32.AddRow(new string[] {
-                            "2",
-                            "Offer number 2",
-                            "40",
-                            "1",
-                            "900"});
-#line 218
+#line 217
  testRunner.And("The pageable content items should be like :", ((string)(null)), table32, "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter that does not have macthing")]
-        public void RetrieveLeaseOfferListWithFilterThatDoesNotHaveMacthing()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter that does not have macthing", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 223
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-                TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
-                            "LeaseOfferID",
-                            "Title",
-                            "Surface",
-                            "Rooms",
-                            "MonthlyRent"});
-                table33.AddRow(new string[] {
-                            "1",
-                            "Offer number 1",
-                            "18",
-                            "3",
-                            "800"});
-                table33.AddRow(new string[] {
-                            "2",
-                            "Offer number 2",
-                            "40",
-                            "1",
-                            "900"});
-#line 224
- testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table33, "Given ");
-#line hidden
-#line 228
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'monthlyRentMax=750\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 229
- testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 230
- testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'0\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-                TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
-                            "LeaseOfferID",
-                            "Title",
-                            "Surface",
-                            "Rooms",
-                            "MonthlyRent"});
-#line 231
- testRunner.And("The pageable content items should be like :", ((string)(null)), table34, "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with wrong filter field name")]
-        public void RetrieveLeaseOfferListWithWrongFilterFieldName()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with wrong filter field name", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 234
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 235
- testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 236
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'uknownFieldName=18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 237
- testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -1414,7 +1308,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with wrong numeric filter field value", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 239
+#line 220
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1424,105 +1318,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 240
+#line 221
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 241
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'surfaceMin=WrongValu" +
-                        "e\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 222
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"surfaceMin\":\\\'Wron" +
+                        "gValue\\\'}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 242
- testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with empty filter field value")]
-        public void RetrieveLeaseOfferListWithEmptyFilterFieldValue()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with empty filter field value", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 244
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 245
- testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 246
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'surfaceMin=\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 247
- testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter field name only")]
-        public void RetrieveLeaseOfferListWithFilterFieldNameOnly()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter field name only", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 249
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 250
- testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 251
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'surfaceMin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 252
- testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with duplicate filter field")]
-        public void RetrieveLeaseOfferListWithDuplicateFilterField()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with duplicate filter field", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 254
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 255
- testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 256
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'surfaceMin=18&surfac" +
-                        "eMin=60\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 257
+#line 223
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1536,7 +1339,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with wrong page size", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 259
+#line 225
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1546,13 +1349,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 260
+#line 226
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 261
+#line 227
  testRunner.When("I make a GET request on lease-offers endpoint with arguments \'pageSize=-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 262
+#line 228
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1566,7 +1369,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with wrong order field name", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 264
+#line 230
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1576,13 +1379,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 265
+#line 231
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 266
+#line 232
  testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=unknown\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 267
+#line 233
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1596,7 +1399,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with wrong order value", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 269
+#line 235
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1606,14 +1409,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 270
+#line 236
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 271
+#line 237
  testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=leaseOfferI" +
                         "d&order=ascendant\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 272
+#line 238
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1627,7 +1430,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with order but no order field", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 274
+#line 240
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1637,13 +1440,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 275
+#line 241
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 276
+#line 242
  testRunner.When("I make a GET request on lease-offers endpoint with arguments \'order=Asc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 277
+#line 243
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

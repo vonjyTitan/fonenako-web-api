@@ -48,7 +48,7 @@ namespace finenako_service_tests.Controllers
         {
             var httpResponse = _scenarioContext.Get<HttpResponseMessage>();
 
-            Assert.AreEqual((HttpStatusCode)expectedStatusCode, httpResponse.StatusCode, $"Actual bondy : {httpResponse.Content.ReadAsStringAsync().Result}");
+            Assert.AreEqual((HttpStatusCode)expectedStatusCode, httpResponse.StatusCode, $"Actual body : {httpResponse.Content.ReadAsStringAsync().Result}");
         }
     }
 }

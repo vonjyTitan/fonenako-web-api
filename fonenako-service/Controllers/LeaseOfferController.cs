@@ -2,11 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using fonenako_service;
 using fonenako_service.Daos;
 using fonenako_service.Dtos;
-using fonenako_service.Exceptions;
 using fonenako_service.Properties;
 using fonenako_service.Services;
 using Microsoft.AspNetCore.Http;
@@ -28,8 +26,6 @@ namespace fonenako.Controllers
 
         private readonly FunctionalSettings _functionalSettings;
 
-        private readonly IFilterParser _filterParser;
-
 
         private static readonly Dictionary<string, string> OrdereableFieldsMap = new()
         {
@@ -38,21 +34,10 @@ namespace fonenako.Controllers
             { LeaseOfferDtoProperties.MonthlyRent, nameof(LeaseOfferDto.MonthlyRent) }
         };
 
-        private static readonly Dictionary<string, Type> FilterableFieldsMap = new()
-        {
-            { LeaseOfferFilterFields.SurfaceMin, typeof(double) },
-            { LeaseOfferFilterFields.SurfaceMax, typeof(double) },
-            { LeaseOfferFilterFields.MonthlyRentMin, typeof(double) },
-            { LeaseOfferFilterFields.MonthlyRentMax, typeof(double) },
-            { LeaseOfferFilterFields.RoomsMin, typeof(int) },
-            { LeaseOfferFilterFields.RoomsMax, typeof(int) }
-        };
-
-        public LeaseOfferController(ILeaseOfferService leaseOfferService, IOptions<FunctionalSettings> options, IFilterParser filterParser)
+        public LeaseOfferController(ILeaseOfferService leaseOfferService, IOptions<FunctionalSettings> options)
         {
             _leaseOfferService = leaseOfferService ?? throw new ArgumentNullException(nameof(leaseOfferService));
             _functionalSettings = options?.Value ?? throw new ArgumentException("Argument or its 'Value' is null", nameof(options));
-            _filterParser = filterParser ?? throw new ArgumentNullException(nameof(filterParser));
         }
 
         [HttpGet(Name = "Retrieve many lease offers")]
@@ -61,26 +46,16 @@ namespace fonenako.Controllers
         public async Task<ActionResult<Pageable<LeaseOfferDto>>> RetrieveManyAsync([FromQuery(Name = "pageSize")] int? pageSize,
                                                                 [FromQuery(Name = "page")] int? page,
                                                                 [FromQuery(Name = "orderBy")] string orderBy,
-                                                                [FromQuery(Name = "order")] string order,
-                                                                [FromQuery(Name = "filter")] string filter)
+                                                                [FromQuery(Name = "order")] Order? order,
+                                                                [FromQueryAsJson(Name = "filter")] LeaseOfferFilter filter)
         {
-            var orderAsEnum = Order.Desc;
+            var orderAsEnum = order ?? Order.Desc;
             var orderTdoField = nameof(LeaseOfferDto.LeaseOfferID);
-            IDictionary<string, object> filterMap = new Dictionary<string, object>();
-            if (!string.IsNullOrWhiteSpace(order))
+            if (order.HasValue && string.IsNullOrWhiteSpace(orderBy))
             {
                 if(string.IsNullOrWhiteSpace(orderBy))
                 {
                     return Problem(string.Format(Resources.order_whithout_orderby, order, orderBy), null, (int?)HttpStatusCode.BadRequest);
-                }
-
-                try
-                {
-                    orderAsEnum = (Order)Enum.Parse(typeof(Order), order, true);
-                }
-                catch(ArgumentException)
-                {
-                    return Problem(string.Format(Resources.unknown_order_value, order), null, (int?)HttpStatusCode.BadRequest);
                 }
             }
 
@@ -99,29 +74,7 @@ namespace fonenako.Controllers
                 return Problem(string.Format(Resources.requested_page_size_not_valid, pageSize), null, (int?) HttpStatusCode.BadRequest);
             }
 
-            var decodedFilter = HttpUtility.UrlDecode(filter ?? "");
-            if (!string.IsNullOrWhiteSpace(decodedFilter))
-            {
-                try
-                {
-                    filterMap = _filterParser.ParseFilter(decodedFilter, FilterableFieldsMap);
-                }
-                catch(UnknownFilterFieldException ex)
-                {
-                    return Problem(string.Format(Resources.unknown_order_field_name, ex.FieldName), null, (int?)HttpStatusCode.BadRequest);
-                }
-                catch(DuplicateFilterFieldException ex)
-                {
-                    return Problem(string.Format(Resources.duplicate_filter_field, ex.FieldName), null, (int?)HttpStatusCode.BadRequest);
-                }
-                catch(InvalidFilterFieldValueException ex)
-                {
-                    return Problem(string.Format(Resources.invalid_filter_field_value, ex.FieldName, ex.InvalidValue), null, (int?)HttpStatusCode.BadRequest);
-                }
-            }
-
-
-            var pageable = await _leaseOfferService.RetrieveLeaseOffersAsync(pageSize ?? _functionalSettings.DefaultMaxPageSize, page ?? 1, filterMap, orderTdoField, orderAsEnum);
+            var pageable = await _leaseOfferService.RetrieveLeaseOffersAsync(pageSize ?? _functionalSettings.DefaultMaxPageSize, page ?? 1, filter ?? LeaseOfferFilter.Default, orderTdoField, orderAsEnum);
             
             return Ok(pageable);
         }

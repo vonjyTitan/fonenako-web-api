@@ -121,20 +121,20 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
                             "MonthlyRent"});
-                table35.AddRow(new string[] {
+                table33.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "18",
                             "3",
                             "800"});
 #line 11
- testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table35, "Given ");
+ testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table33, "Given ");
 #line hidden
 #line 14
  testRunner.When("I make a GET request on lease-offers endpoint with offer id : \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -163,21 +163,21 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
                             "MonthlyRent",
                             "Description"});
-                table36.AddRow(new string[] {
+                table34.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "18",
                             "3",
                             "800",
                             "Description 1"});
-                table36.AddRow(new string[] {
+                table34.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "40",
@@ -185,7 +185,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "900",
                             "Description 2"});
 #line 18
- testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table36, "Given ");
+ testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table34, "Given ");
 #line hidden
 #line 22
  testRunner.When("I make a GET request on lease-offers endpoint with offer id : \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -193,14 +193,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 23
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
                             "MonthlyRent",
                             "Description"});
-                table37.AddRow(new string[] {
+                table35.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "40",
@@ -208,7 +208,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "900",
                             "Description 2"});
 #line 24
- testRunner.And("The body content should be like :", ((string)(null)), table37, "And ");
+ testRunner.And("The body content should be like :", ((string)(null)), table35, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

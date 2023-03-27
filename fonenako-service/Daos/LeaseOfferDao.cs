@@ -20,29 +20,19 @@ namespace fonenako_service.Daos
             { nameof(LeaseOffer.MonthlyRent), offer => offer.MonthlyRent }
         };
 
-        private static readonly Dictionary<string, Func<IQueryable<LeaseOffer>, object, IQueryable<LeaseOffer>>> FilterableFieldsQueryMap = new()
-        {
-            { LeaseOfferFilterFields.SurfaceMin, ApplySurfaceMinFilterQuery },
-            { LeaseOfferFilterFields.SurfaceMax, ApplySurfaceMaxFilterQuery },
-            { LeaseOfferFilterFields.MonthlyRentMin, ApplyMonthlyRentMinFilterQuery },
-            { LeaseOfferFilterFields.MonthlyRentMax, ApplyMonthlyRentMaxFilterQuery },
-            { LeaseOfferFilterFields.RoomsMin, ApplyRoomsMinFilterQuery },
-            { LeaseOfferFilterFields.RoomsMax, ApplyRoomsMaxFilterQuery }
-        };
-
         public LeaseOfferDao(FonenakoDbContext fonenakoDbContext)
         {
             _fonenakoDbContext = fonenakoDbContext ?? throw new ArgumentNullException(nameof(fonenakoDbContext));
         }
 
-        public async Task<int> CountLeaseOffersAsync(IDictionary<string, object> filterMap)
+        public async Task<int> CountLeaseOffersAsync(LeaseOfferFilter filter)
         {
-            if(filterMap == null)
+            if(filter == null)
             {
-                throw new ArgumentNullException(nameof(filterMap));
+                throw new ArgumentNullException(nameof(filter));
             }
 
-            return await ComputeFilterQueryable(filterMap).CountAsync();
+            return await ComputeFilterQueryable(_fonenakoDbContext.LeaseOffers, filter).CountAsync();
         }
 
         public async Task InitAsync()
@@ -51,11 +41,11 @@ namespace fonenako_service.Daos
             _fonenakoDbContext.SaveChanges();
         }
 
-        public async Task<IEnumerable<LeaseOffer>> RetrieveLeaseOffersByPageAsync(int pageSize, int pageIndex, IDictionary<string, object> filterMap, string orderBy, Order order)
+        public async Task<IEnumerable<LeaseOffer>> RetrieveLeaseOffersByPageAsync(int pageSize, int pageIndex, LeaseOfferFilter filter, string orderBy, Order order)
         {
-            if (filterMap == null)
+            if (filter == null)
             {
-                throw new ArgumentNullException(nameof(filterMap));
+                throw new ArgumentNullException(nameof(filter));
             }
 
             if (pageSize < 1)
@@ -72,7 +62,7 @@ namespace fonenako_service.Daos
             }
 
             var toSkiped = (pageIndex - 1) * pageSize;
-            var leaseOfferQueryable = ComputeFilterQueryable(filterMap);
+            var leaseOfferQueryable = ComputeFilterQueryable(_fonenakoDbContext.LeaseOffers.AsNoTracking(), filter);
             leaseOfferQueryable = order == Order.Asc ? leaseOfferQueryable.OrderBy(orderExpression) : leaseOfferQueryable.OrderByDescending(orderExpression);
             return await leaseOfferQueryable.Skip(toSkiped).Take(pageSize).ToArrayAsync();
         }
@@ -99,86 +89,15 @@ namespace fonenako_service.Daos
             return await _fonenakoDbContext.LeaseOffers.Where(leaseOffer => leaseOffer.LeaseOfferID == leaseOfferId).FirstOrDefaultAsync();
         }
 
-        private IQueryable<LeaseOffer> ComputeFilterQueryable(IDictionary<string, object> filterMap)
+        private IQueryable<LeaseOffer> ComputeFilterQueryable(IQueryable<LeaseOffer> currentQuery, LeaseOfferFilter filter)
         {
-            var currentQuery = _fonenakoDbContext.LeaseOffers.AsQueryable();
-            foreach (var fieldMap in filterMap)
-            {
-                if (!FilterableFieldsQueryMap.TryGetValue(fieldMap.Key, out var query))
-                {
-                    throw new ArgumentException($"Field with name : '{fieldMap.Key}' not found as filterable");
-                }
+            if (filter == LeaseOfferFilter.Default) return currentQuery;
 
-                currentQuery = query(currentQuery, fieldMap.Value);
-            }
-
-            return currentQuery;
-        }
-
-        private static IQueryable<LeaseOffer> ApplySurfaceMinFilterQuery(IQueryable<LeaseOffer> queryable, object filterValue)
-        {
-            if(!(filterValue is double))
-            {
-                throw new InvalidOperationException($"SurfaceMin should be a type of {typeof(double).Name}");
-            }
-
-            var castedValue = (double)filterValue;
-            return queryable.Where(offer => offer.Surface >= castedValue);
-        }
-
-        private static IQueryable<LeaseOffer> ApplySurfaceMaxFilterQuery(IQueryable<LeaseOffer> queryable, object filterValue)
-        {
-            if (!(filterValue is double))
-            {
-                throw new InvalidOperationException($"SurfaceMax should be a type of {typeof(double).Name}");
-            }
-
-            var castedValue = (double)filterValue;
-            return queryable.Where(offer => offer.Surface <= castedValue);
-        }
-
-        private static IQueryable<LeaseOffer> ApplyMonthlyRentMinFilterQuery(IQueryable<LeaseOffer> queryable, object filterValue)
-        {
-            if (!(filterValue is double))
-            {
-                throw new InvalidOperationException($"MonthlyRentMin should be a type of {typeof(double).Name}");
-            }
-
-            var castedValue = (double)filterValue;
-            return queryable.Where(offer => offer.MonthlyRent >= castedValue);
-        }
-
-        private static IQueryable<LeaseOffer> ApplyMonthlyRentMaxFilterQuery(IQueryable<LeaseOffer> queryable, object filterValue)
-        {
-            if (!(filterValue is double))
-            {
-                throw new InvalidOperationException($"MonthlyRentMax should be a type of {typeof(double).Name}");
-            }
-
-            var castedValue = (double)filterValue;
-            return queryable.Where(offer => offer.MonthlyRent <= castedValue);
-        }
-
-        private static IQueryable<LeaseOffer> ApplyRoomsMinFilterQuery(IQueryable<LeaseOffer> queryable, object filterValue)
-        {
-            if (!(filterValue is int))
-            {
-                throw new InvalidOperationException($"RoomsMin should be a type of {typeof(int).Name}");
-            }
-
-            var castedValue = (int)filterValue;
-            return queryable.Where(offer => offer.Rooms >= castedValue);
-        }
-
-        private static IQueryable<LeaseOffer> ApplyRoomsMaxFilterQuery(IQueryable<LeaseOffer> queryable, object filterValue)
-        {
-            if (!(filterValue is int))
-            {
-                throw new InvalidOperationException($"RoomsMax should be a type of {typeof(int).Name}");
-            }
-
-            var castedValue = (int)filterValue;
-            return queryable.Where(offer => offer.Rooms <= castedValue);
+            return currentQuery.Where(leaseOffer => (!filter.Rooms.HasValue || leaseOffer.Rooms == filter.Rooms) &&
+            (!filter.MonthlyRentMin.HasValue || leaseOffer.MonthlyRent >= filter.MonthlyRentMin) &&
+            (!filter.MonthlyRentMax.HasValue || leaseOffer.MonthlyRent <= filter.MonthlyRentMax) &&
+            (!filter.SurfaceMin.HasValue || leaseOffer.Surface >= filter.SurfaceMin) &&
+            (!filter.SurfaceMax.HasValue || leaseOffer.Surface <= filter.SurfaceMax));
         }
     }
 }

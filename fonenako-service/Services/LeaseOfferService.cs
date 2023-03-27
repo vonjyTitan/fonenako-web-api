@@ -27,7 +27,7 @@ namespace fonenako_service.Services
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<Pageable<LeaseOfferDto>> RetrieveLeaseOffersAsync(int pageSize, int pageIndex, IDictionary<string, object> filterMap, string orderBy, Order order)
+        public async Task<Pageable<LeaseOfferDto>> RetrieveLeaseOffersAsync(int pageSize, int pageIndex, LeaseOfferFilter filter, string orderBy, Order order)
         {
             if (pageIndex < 1)
             {
@@ -41,10 +41,10 @@ namespace fonenako_service.Services
 
             if(!OrdereableFieldsMap.TryGetValue(orderBy, out var orderModelFieldName))
             {
-                throw new ArgumentException($"The dto field : {orderBy} is unknown or not orderable", nameof(orderBy));
+                throw new ArgumentException($"The dto field : {orderBy} is unknown or not sortable", nameof(orderBy));
             }
 
-            var total = await _leaseOfferDao.CountLeaseOffersAsync(filterMap);
+            var total = await _leaseOfferDao.CountLeaseOffersAsync(filter);
             var totalPage = (int) Math.Round(total / (double)pageSize, MidpointRounding.ToPositiveInfinity);
             if(totalPage == 0)
             {
@@ -53,7 +53,7 @@ namespace fonenako_service.Services
 
             pageIndex = totalPage < pageIndex ? totalPage : pageIndex;
 
-            var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(pageSize, pageIndex, filterMap, orderModelFieldName, order);
+            var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(pageSize, pageIndex, filter, orderModelFieldName, order);
             return new Pageable<LeaseOfferDto>(pageIndex, pageSize, totalPage, _mapper.Map<IEnumerable<LeaseOfferDto>>(retrievedOffers));
         }
 
