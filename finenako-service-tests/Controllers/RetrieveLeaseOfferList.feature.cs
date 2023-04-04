@@ -95,19 +95,25 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table1.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "750"});
+                            "750",
+                            "2023-10-25",
+                            "image1.jpg;image2.jpg"});
                 table1.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "950"});
+                            "950",
+                            "2023-09-25",
+                            "image3.jpg;"});
 #line 5
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table1, "Given ");
 #line hidden
@@ -119,26 +125,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 11
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table2.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "950"});
+                            "950",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
                 table2.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "750"});
+                            "750",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
 #line 12
  testRunner.And("The pageable content items should be like :", ((string)(null)), table2, "And ");
 #line hidden
@@ -168,19 +180,25 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table3.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "950"});
+                            "950",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table3.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "750"});
+                            "750",
+                            "2023-10-25",
+                            "image3.jpg;"});
 #line 18
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table3, "Given ");
 #line hidden
@@ -193,26 +211,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 24
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table4.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "950"});
+                            "950",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
                 table4.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "750"});
+                            "750",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
 #line 25
  testRunner.And("The pageable content items should be like :", ((string)(null)), table4, "And ");
 #line hidden
@@ -242,19 +266,25 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table5.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "750"});
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table5.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "950"});
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
 #line 31
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table5, "Given ");
 #line hidden
@@ -267,26 +297,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 37
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table6.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "950"});
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
                 table6.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "750"});
+                            "750",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
 #line 38
  testRunner.And("The pageable content items should be like :", ((string)(null)), table6, "And ");
 #line hidden
@@ -316,19 +352,25 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table7.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "950"});
+                            "950",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table7.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "750"});
+                            "750",
+                            "2023-10-25",
+                            "image3.jpg;"});
 #line 44
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table7, "Given ");
 #line hidden
@@ -341,26 +383,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 50
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table8.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "750"});
+                            "750",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
                 table8.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "950"});
+                            "950",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
 #line 51
  testRunner.And("The pageable content items should be like :", ((string)(null)), table8, "And ");
 #line hidden
@@ -390,19 +438,25 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table9.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "750"});
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table9.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "950"});
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
 #line 57
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table9, "Given ");
 #line hidden
@@ -415,26 +469,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 63
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table10.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "950"});
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
                 table10.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "750"});
+                            "750",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
 #line 64
  testRunner.And("The pageable content items should be like :", ((string)(null)), table10, "And ");
 #line hidden
@@ -443,13 +503,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list order by surface asc")]
-        public void RetrieveLeaseOfferListOrderBySurfaceAsc()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list order by creationDate asc")]
+        public void RetrieveLeaseOfferListOrderByCreationDateAsc()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list order by surface asc", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 69
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list order by creationDate asc", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 70
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -464,52 +524,64 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table11.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "750"});
+                            "950",
+                            "2023-10-25",
+                            "image1.jpg;image2.jpg"});
                 table11.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "950"});
-#line 70
+                            "750",
+                            "2023-09-25",
+                            "image3.jpg;"});
+#line 71
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table11, "Given ");
 #line hidden
-#line 74
- testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=surface&ord" +
-                        "er=Asc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 75
- testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=creationDat" +
+                        "e&order=Asc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 76
+ testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 77
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table12.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "950"});
+                            "750",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
                 table12.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "750"});
-#line 77
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+#line 78
  testRunner.And("The pageable content items should be like :", ((string)(null)), table12, "And ");
 #line hidden
             }
@@ -517,13 +589,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list order by surface desc")]
-        public void RetrieveLeaseOfferListOrderBySurfaceDesc()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list order by creationDate desc")]
+        public void RetrieveLeaseOfferListOrderByCreationDateDesc()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list order by surface desc", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 82
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list order by creationDate desc", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 83
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -538,52 +610,64 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table13.AddRow(new string[] {
                             "1",
                             "Offer number 1",
-                            "18",
+                            "65",
                             "3",
-                            "750"});
+                            "950",
+                            "2023-10-25",
+                            "image1.jpg;image2.jpg"});
                 table13.AddRow(new string[] {
                             "2",
                             "Offer number 2",
-                            "65",
+                            "18",
                             "1",
-                            "950"});
-#line 83
+                            "750",
+                            "2023-09-25",
+                            "image3.jpg;"});
+#line 84
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table13, "Given ");
 #line hidden
-#line 87
- testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=surface&ord" +
-                        "er=Desc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 88
- testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=creationDat" +
+                        "e&order=Desc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 89
+ testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 90
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
-                table14.AddRow(new string[] {
-                            "2",
-                            "Offer number 2",
-                            "65",
-                            "1",
-                            "950"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table14.AddRow(new string[] {
                             "1",
                             "Offer number 1",
-                            "18",
+                            "65",
                             "3",
-                            "750"});
-#line 90
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                table14.AddRow(new string[] {
+                            "2",
+                            "Offer number 2",
+                            "18",
+                            "1",
+                            "750",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
+#line 91
  testRunner.And("The pageable content items should be like :", ((string)(null)), table14, "And ");
 #line hidden
             }
@@ -591,13 +675,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with both pagination and order")]
-        public void RetrieveLeaseOfferListWithBothPaginationAndOrder()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list order by surface asc")]
+        public void RetrieveLeaseOfferListOrderBySurfaceAsc()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with both pagination and order", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 95
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list order by surface asc", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 96
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -612,51 +696,63 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table15.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "65",
                             "3",
-                            "750"});
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table15.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "18",
                             "1",
-                            "950"});
-                table15.AddRow(new string[] {
-                            "3",
-                            "Offer number 3",
-                            "18",
-                            "1",
-                            "1000"});
-#line 96
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
+#line 97
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table15, "Given ");
 #line hidden
 #line 101
- testRunner.When("I make a GET request on lease-offers endpoint with arguments \'pageSize=2&page=2&o" +
-                        "rderBy=leaseOfferId&order=Asc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=surface&ord" +
+                        "er=Asc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 102
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 103
- testRunner.And("The pageable infos should be like : {CurrentPage : \'2\', TotalPage : \'2\', PageSize" +
-                        " : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table16.AddRow(new string[] {
-                            "3",
-                            "Offer number 3",
+                            "2",
+                            "Offer number 2",
                             "18",
                             "1",
-                            "1000"});
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
+                table16.AddRow(new string[] {
+                            "1",
+                            "Offer number 1",
+                            "65",
+                            "3",
+                            "750",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
 #line 104
  testRunner.And("The pageable content items should be like :", ((string)(null)), table16, "And ");
 #line hidden
@@ -665,13 +761,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with page index higher than max")]
-        public void RetrieveLeaseOfferListWithPageIndexHigherThanMax()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list order by surface desc")]
+        public void RetrieveLeaseOfferListOrderBySurfaceDesc()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with page index higher than max", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 108
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list order by surface desc", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 109
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -686,51 +782,64 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table17.AddRow(new string[] {
                             "1",
                             "Offer number 1",
-                            "65",
+                            "18",
                             "3",
-                            "750"});
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table17.AddRow(new string[] {
                             "2",
                             "Offer number 2",
-                            "18",
+                            "65",
                             "1",
-                            "950"});
-#line 109
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
+#line 110
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table17, "Given ");
 #line hidden
-#line 113
- testRunner.When("I make a GET request on lease-offers endpoint with arguments \'pageSize=2&page=2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 114
- testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=surface&ord" +
+                        "er=Desc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 115
+ testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 116
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table18.AddRow(new string[] {
                             "2",
                             "Offer number 2",
-                            "18",
+                            "65",
                             "1",
-                            "950"});
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
                 table18.AddRow(new string[] {
                             "1",
                             "Offer number 1",
-                            "65",
+                            "18",
                             "3",
-                            "750"});
-#line 116
+                            "750",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+#line 117
  testRunner.And("The pageable content items should be like :", ((string)(null)), table18, "And ");
 #line hidden
             }
@@ -738,13 +847,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on surfaceMin")]
-        public void RetrieveLeaseOfferListWithFilterOnSurfaceMin()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with both pagination and order")]
+        public void RetrieveLeaseOfferListWithBothPaginationAndOrder()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on surfaceMin", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 121
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with both pagination and order", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 122
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -759,57 +868,64 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table19.AddRow(new string[] {
                             "1",
                             "Offer number 1",
-                            "18",
-                            "3",
-                            "750"});
-                table19.AddRow(new string[] {
-                            "2",
-                            "Offer number 2",
-                            "50",
-                            "1",
-                            "950"});
-                table19.AddRow(new string[] {
-                            "3",
-                            "Offer number 2",
                             "65",
+                            "3",
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
+                table19.AddRow(new string[] {
                             "2",
-                            "1000"});
-#line 122
+                            "Offer number 2",
+                            "18",
+                            "1",
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
+                table19.AddRow(new string[] {
+                            "3",
+                            "Offer number 3",
+                            "18",
+                            "1",
+                            "1000",
+                            "2023-10-25",
+                            "image4.jpg;"});
+#line 123
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table19, "Given ");
 #line hidden
-#line 127
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"surfaceMin\":19}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 128
- testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I make a GET request on lease-offers endpoint with arguments \'pageSize=2&page=2&o" +
+                        "rderBy=leaseOfferId&order=Asc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 129
- testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 130
+ testRunner.And("The pageable infos should be like : {CurrentPage : \'2\', TotalPage : \'2\', PageSize" +
+                        " : \'2\', totalFound : \'3\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table20.AddRow(new string[] {
                             "3",
-                            "Offer number 2",
-                            "65",
-                            "2",
-                            "1000"});
-                table20.AddRow(new string[] {
-                            "2",
-                            "Offer number 2",
-                            "50",
+                            "Offer number 3",
+                            "18",
                             "1",
-                            "950"});
-#line 130
+                            "1000",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image4.jpg"});
+#line 131
  testRunner.And("The pageable content items should be like :", ((string)(null)), table20, "And ");
 #line hidden
             }
@@ -817,12 +933,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on rooms")]
-        public void RetrieveLeaseOfferListWithFilterOnRooms()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with page index higher than max")]
+        public void RetrieveLeaseOfferListWithPageIndexHigherThanMax()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on rooms", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with page index higher than max", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 135
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -838,57 +954,63 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table21.AddRow(new string[] {
                             "1",
                             "Offer number 1",
+                            "65",
+                            "3",
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
+                table21.AddRow(new string[] {
+                            "2",
+                            "Offer number 2",
                             "18",
                             "1",
-                            "750"});
-                table21.AddRow(new string[] {
-                            "2",
-                            "Offer number 2",
-                            "50",
-                            "2",
-                            "950"});
-                table21.AddRow(new string[] {
-                            "3",
-                            "Offer number 2",
-                            "65",
-                            "2",
-                            "1000"});
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
 #line 136
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table21, "Given ");
 #line hidden
-#line 141
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"rooms\":2}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 140
+ testRunner.When("I make a GET request on lease-offers endpoint with arguments \'pageSize=2&page=2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 142
+#line 141
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 143
+#line 142
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'2\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table22.AddRow(new string[] {
-                            "3",
+                            "2",
                             "Offer number 2",
+                            "18",
+                            "1",
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
+                table22.AddRow(new string[] {
+                            "1",
+                            "Offer number 1",
                             "65",
-                            "2",
-                            "1000"});
-                table22.AddRow(new string[] {
-                            "2",
-                            "Offer number 2",
-                            "50",
-                            "2",
-                            "950"});
-#line 144
+                            "3",
+                            "750",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+#line 143
  testRunner.And("The pageable content items should be like :", ((string)(null)), table22, "And ");
 #line hidden
             }
@@ -896,13 +1018,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on monthlyRentMin")]
-        public void RetrieveLeaseOfferListWithFilterOnMonthlyRentMin()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on surfaceMin")]
+        public void RetrieveLeaseOfferListWithFilterOnSurfaceMin()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on monthlyRentMin", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 149
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on surfaceMin", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 148
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -917,58 +1039,71 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table23.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "18",
                             "3",
-                            "750"});
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table23.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "50",
                             "1",
-                            "950"});
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
                 table23.AddRow(new string[] {
                             "3",
                             "Offer number 2",
                             "65",
                             "2",
-                            "1000"});
-#line 150
+                            "1000",
+                            "2023-10-25",
+                            "image4.jpg;"});
+#line 149
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table23, "Given ");
 #line hidden
-#line 155
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMin\":75" +
-                        "1}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 154
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"surfaceMin\":19}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 156
+#line 155
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 157
+#line 156
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table24.AddRow(new string[] {
                             "3",
                             "Offer number 2",
                             "65",
                             "2",
-                            "1000"});
+                            "1000",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image4.jpg"});
                 table24.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "50",
                             "1",
-                            "950"});
-#line 158
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
+#line 157
  testRunner.And("The pageable content items should be like :", ((string)(null)), table24, "And ");
 #line hidden
             }
@@ -976,13 +1111,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on monthlyRentMax")]
-        public void RetrieveLeaseOfferListWithFilterOnMonthlyRentMax()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on rooms")]
+        public void RetrieveLeaseOfferListWithFilterOnRooms()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on monthlyRentMax", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 163
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on rooms", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 162
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -997,58 +1132,71 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table25.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "18",
-                            "3",
-                            "750"});
+                            "1",
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table25.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "50",
-                            "1",
-                            "950"});
+                            "2",
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
                 table25.AddRow(new string[] {
                             "3",
                             "Offer number 2",
                             "65",
                             "2",
-                            "1000"});
-#line 164
+                            "1000",
+                            "2023-10-25",
+                            "image4.jpg;"});
+#line 163
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table25, "Given ");
 #line hidden
-#line 169
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMax\":95" +
-                        "1}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 168
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"rooms\":2}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 170
+#line 169
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 171
+#line 170
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
+                table26.AddRow(new string[] {
+                            "3",
+                            "Offer number 2",
+                            "65",
+                            "2",
+                            "1000",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image4.jpg"});
                 table26.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "50",
-                            "1",
-                            "950"});
-                table26.AddRow(new string[] {
-                            "1",
-                            "Offer number 1",
-                            "18",
-                            "3",
-                            "750"});
-#line 172
+                            "2",
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
+#line 171
  testRunner.And("The pageable content items should be like :", ((string)(null)), table26, "And ");
 #line hidden
             }
@@ -1056,13 +1204,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with combined filters")]
-        public void RetrieveLeaseOfferListWithCombinedFilters()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on monthlyRentMin")]
+        public void RetrieveLeaseOfferListWithFilterOnMonthlyRentMin()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with combined filters", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 177
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on monthlyRentMin", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 176
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1077,70 +1225,72 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table27.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "18",
                             "3",
-                            "800"});
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table27.AddRow(new string[] {
                             "2",
                             "Offer number 2",
-                            "40",
+                            "50",
                             "1",
-                            "900"});
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
                 table27.AddRow(new string[] {
                             "3",
-                            "Offer number 3",
-                            "56",
-                            "2",
-                            "1000"});
-                table27.AddRow(new string[] {
-                            "4",
-                            "Offer number 4",
+                            "Offer number 2",
                             "65",
-                            "3",
-                            "1000"});
-                table27.AddRow(new string[] {
-                            "5",
-                            "Offer number 5",
-                            "80",
-                            "3",
-                            "1500"});
-#line 178
+                            "2",
+                            "1000",
+                            "2023-10-25",
+                            "image4.jpg;"});
+#line 177
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table27, "Given ");
 #line hidden
-#line 185
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMin\":90" +
-                        "0,\"surfaceMax\":64}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 182
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMin\":75" +
+                        "1}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 186
+#line 183
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 187
+#line 184
  testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table28.AddRow(new string[] {
                             "3",
-                            "Offer number 3",
-                            "56",
+                            "Offer number 2",
+                            "65",
                             "2",
-                            "1000"});
+                            "1000",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image4.jpg"});
                 table28.AddRow(new string[] {
                             "2",
                             "Offer number 2",
-                            "40",
+                            "50",
                             "1",
-                            "900"});
-#line 188
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
+#line 185
  testRunner.And("The pageable content items should be like :", ((string)(null)), table28, "And ");
 #line hidden
             }
@@ -1148,13 +1298,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with both filter and pagination")]
-        public void RetrieveLeaseOfferListWithBothFilterAndPagination()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on monthlyRentMax")]
+        public void RetrieveLeaseOfferListWithFilterOnMonthlyRentMax()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with both filter and pagination", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 193
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on monthlyRentMax", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 190
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1169,70 +1319,72 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table29.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "18",
                             "3",
-                            "800"});
+                            "750",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table29.AddRow(new string[] {
                             "2",
                             "Offer number 2",
-                            "40",
+                            "50",
                             "1",
-                            "900"});
+                            "950",
+                            "2023-10-25",
+                            "image3.jpg;"});
                 table29.AddRow(new string[] {
                             "3",
-                            "Offer number 3",
-                            "56",
-                            "2",
-                            "950"});
-                table29.AddRow(new string[] {
-                            "4",
-                            "Offer number 4",
+                            "Offer number 2",
                             "65",
-                            "3",
-                            "1000"});
-                table29.AddRow(new string[] {
-                            "5",
-                            "Offer number 5",
-                            "80",
-                            "3",
-                            "1500"});
-#line 194
+                            "2",
+                            "1000",
+                            "2023-10-25",
+                            "image4.jpg;"});
+#line 191
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table29, "Given ");
 #line hidden
-#line 201
- testRunner.When("I make a GET request on lease-offers endpoint with pagination : \'pageSize=2&page=" +
-                        "2&orderBy=monthlyRent&order=Desc\' and filter : \'{\"monthlyRentMin\":900}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 196
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMax\":95" +
+                        "1}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 202
+#line 197
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 203
- testRunner.And("The pageable infos should be like : {CurrentPage : \'2\', TotalPage : \'2\', PageSize" +
-                        " : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 198
+ testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
-                table30.AddRow(new string[] {
-                            "3",
-                            "Offer number 3",
-                            "56",
-                            "2",
-                            "950"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
                 table30.AddRow(new string[] {
                             "2",
                             "Offer number 2",
-                            "40",
+                            "50",
                             "1",
-                            "900"});
-#line 204
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
+                table30.AddRow(new string[] {
+                            "1",
+                            "Offer number 1",
+                            "18",
+                            "3",
+                            "750",
+                            "2023-09-25",
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+#line 199
  testRunner.And("The pageable content items should be like :", ((string)(null)), table30, "And ");
 #line hidden
             }
@@ -1240,13 +1392,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter that does not have macthing")]
-        public void RetrieveLeaseOfferListWithFilterThatDoesNotHaveMacthing()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with combined filters")]
+        public void RetrieveLeaseOfferListWithCombinedFilters()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter that does not have macthing", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 209
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with combined filters", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 204
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1261,41 +1413,269 @@ this.ScenarioInitialize(scenarioInfo);
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
                 table31.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "18",
                             "3",
-                            "800"});
+                            "800",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
                 table31.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "40",
                             "1",
-                            "900"});
-#line 210
+                            "900",
+                            "2023-10-25",
+                            "image3.jpg;"});
+                table31.AddRow(new string[] {
+                            "3",
+                            "Offer number 3",
+                            "56",
+                            "2",
+                            "1000",
+                            "2023-10-25",
+                            "image4.jpg;"});
+                table31.AddRow(new string[] {
+                            "4",
+                            "Offer number 4",
+                            "65",
+                            "3",
+                            "1000",
+                            "2023-11-25",
+                            "image5.jpg;"});
+                table31.AddRow(new string[] {
+                            "5",
+                            "Offer number 5",
+                            "80",
+                            "3",
+                            "1500",
+                            "2023-11-25",
+                            "image6.jpg;"});
+#line 205
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table31, "Given ");
 #line hidden
-#line 214
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMax\":75" +
-                        "0}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 212
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMin\":90" +
+                        "0,\"surfaceMax\":64}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 215
+#line 213
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 216
- testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'0\', PageSize" +
-                        " : \'10000\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 214
+ testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'1\', PageSize" +
+                        " : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
-#line 217
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
+                table32.AddRow(new string[] {
+                            "3",
+                            "Offer number 3",
+                            "56",
+                            "2",
+                            "1000",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image4.jpg"});
+                table32.AddRow(new string[] {
+                            "2",
+                            "Offer number 2",
+                            "40",
+                            "1",
+                            "900",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
+#line 215
  testRunner.And("The pageable content items should be like :", ((string)(null)), table32, "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with both filter and pagination")]
+        public void RetrieveLeaseOfferListWithBothFilterAndPagination()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with both filter and pagination", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 220
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
+                            "LeaseOfferID",
+                            "Title",
+                            "Surface",
+                            "Rooms",
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
+                table33.AddRow(new string[] {
+                            "1",
+                            "Offer number 1",
+                            "18",
+                            "3",
+                            "800",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
+                table33.AddRow(new string[] {
+                            "2",
+                            "Offer number 2",
+                            "40",
+                            "1",
+                            "900",
+                            "2023-10-25",
+                            "image3.jpg;"});
+                table33.AddRow(new string[] {
+                            "3",
+                            "Offer number 3",
+                            "56",
+                            "2",
+                            "950",
+                            "2023-10-25",
+                            "image4.jpg;"});
+                table33.AddRow(new string[] {
+                            "4",
+                            "Offer number 4",
+                            "65",
+                            "3",
+                            "1000",
+                            "2023-11-25",
+                            "image5.jpg;"});
+                table33.AddRow(new string[] {
+                            "5",
+                            "Offer number 5",
+                            "80",
+                            "3",
+                            "1500",
+                            "2023-11-25",
+                            "image6.jpg;"});
+#line 221
+ testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table33, "Given ");
+#line hidden
+#line 228
+ testRunner.When("I make a GET request on lease-offers endpoint with pagination : \'pageSize=2&page=" +
+                        "2&orderBy=monthlyRent&order=Desc\' and filter : \'{\"monthlyRentMin\":900}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 229
+ testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 230
+ testRunner.And("The pageable infos should be like : {CurrentPage : \'2\', TotalPage : \'2\', PageSize" +
+                        " : \'2\', totalFound : \'4\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                            "LeaseOfferID",
+                            "Title",
+                            "Surface",
+                            "Rooms",
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
+                table34.AddRow(new string[] {
+                            "3",
+                            "Offer number 3",
+                            "56",
+                            "2",
+                            "950",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image4.jpg"});
+                table34.AddRow(new string[] {
+                            "2",
+                            "Offer number 2",
+                            "40",
+                            "1",
+                            "900",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
+#line 231
+ testRunner.And("The pageable content items should be like :", ((string)(null)), table34, "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter that does not have macthing")]
+        public void RetrieveLeaseOfferListWithFilterThatDoesNotHaveMacthing()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter that does not have macthing", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 236
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+                            "LeaseOfferID",
+                            "Title",
+                            "Surface",
+                            "Rooms",
+                            "MonthlyRent",
+                            "CreationDate",
+                            "ConcatenedPhotos"});
+                table35.AddRow(new string[] {
+                            "1",
+                            "Offer number 1",
+                            "18",
+                            "3",
+                            "800",
+                            "2023-10-25",
+                            "image1.jpg;image2.jpg"});
+                table35.AddRow(new string[] {
+                            "2",
+                            "Offer number 2",
+                            "40",
+                            "1",
+                            "900",
+                            "2023-09-25",
+                            "image3.jpg;"});
+#line 237
+ testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table35, "Given ");
+#line hidden
+#line 241
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"monthlyRentMax\":75" +
+                        "0}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 242
+ testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 243
+ testRunner.And("The pageable infos should be like : {CurrentPage : \'1\', TotalPage : \'0\', PageSize" +
+                        " : \'10000\', totalFound : \'0\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+                            "LeaseOfferID",
+                            "Title",
+                            "Surface",
+                            "Rooms",
+                            "MonthlyRent",
+                            "CreationDate",
+                            "PhotoUris"});
+#line 244
+ testRunner.And("The pageable content items should be like :", ((string)(null)), table36, "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -1308,7 +1688,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with wrong numeric filter field value", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 220
+#line 247
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1318,14 +1698,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 221
+#line 248
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 222
+#line 249
  testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"surfaceMin\":\\\'Wron" +
                         "gValue\\\'}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 223
+#line 250
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1339,7 +1719,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with wrong page size", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 225
+#line 252
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1349,13 +1729,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 226
+#line 253
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 227
+#line 254
  testRunner.When("I make a GET request on lease-offers endpoint with arguments \'pageSize=-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 228
+#line 255
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1369,7 +1749,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with wrong order field name", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 230
+#line 257
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1379,13 +1759,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 231
+#line 258
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 232
+#line 259
  testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=unknown\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 233
+#line 260
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1399,7 +1779,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with wrong order value", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 235
+#line 262
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1409,14 +1789,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 236
+#line 263
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 237
+#line 264
  testRunner.When("I make a GET request on lease-offers endpoint with arguments \'orderBy=leaseOfferI" +
                         "d&order=ascendant\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 238
+#line 265
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1430,7 +1810,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with order but no order field", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 240
+#line 267
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1440,13 +1820,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 241
+#line 268
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 242
+#line 269
  testRunner.When("I make a GET request on lease-offers endpoint with arguments \'order=Asc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 243
+#line 270
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

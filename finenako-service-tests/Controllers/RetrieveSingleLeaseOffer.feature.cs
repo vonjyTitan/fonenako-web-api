@@ -121,20 +121,24 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
-                            "MonthlyRent"});
-                table33.AddRow(new string[] {
+                            "MonthlyRent",
+                            "Creationdate",
+                            "ConcatenedPhotos"});
+                table37.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "18",
                             "3",
-                            "800"});
+                            "800",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
 #line 11
- testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table33, "Given ");
+ testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table37, "Given ");
 #line hidden
 #line 14
  testRunner.When("I make a GET request on lease-offers endpoint with offer id : \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -163,29 +167,35 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
                             "MonthlyRent",
-                            "Description"});
-                table34.AddRow(new string[] {
+                            "Description",
+                            "Creationdate",
+                            "ConcatenedPhotos"});
+                table38.AddRow(new string[] {
                             "1",
                             "Offer number 1",
                             "18",
                             "3",
                             "800",
-                            "Description 1"});
-                table34.AddRow(new string[] {
+                            "Description 1",
+                            "2023-09-25",
+                            "image1.jpg;image2.jpg"});
+                table38.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "40",
                             "1",
                             "900",
-                            "Description 2"});
+                            "Description 2",
+                            "2023-10-25",
+                            "image3.jpg;"});
 #line 18
- testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table34, "Given ");
+ testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table38, "Given ");
 #line hidden
 #line 22
  testRunner.When("I make a GET request on lease-offers endpoint with offer id : \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -193,22 +203,26 @@ this.ScenarioInitialize(scenarioInfo);
 #line 23
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Title",
                             "Surface",
                             "Rooms",
                             "MonthlyRent",
-                            "Description"});
-                table35.AddRow(new string[] {
+                            "Description",
+                            "Creationdate",
+                            "PhotoUris"});
+                table39.AddRow(new string[] {
                             "2",
                             "Offer number 2",
                             "40",
                             "1",
                             "900",
-                            "Description 2"});
+                            "Description 2",
+                            "2023-10-25",
+                            "http://localhost:7182/Photos/image3.jpg"});
 #line 24
- testRunner.And("The body content should be like :", ((string)(null)), table35, "And ");
+ testRunner.And("The body content should be like :", ((string)(null)), table39, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

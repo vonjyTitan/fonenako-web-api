@@ -27,16 +27,18 @@ namespace fonenako_service_tests.Daos
                 .UseInMemoryDatabase(databaseName: $"{nameof(LeaseOfferDaoTest)}DB")
                 .Options;
 
+            var now = DateTime.Now;
             using var context = new FonenakoDbContext(_options);
             for(var i = 1; i<= 10; i++)
             {
                 context.Add(new LeaseOffer
                 {
-                   LeaseOfferID = i,
-                   Title = $"Offer number {i}",
-                   Rooms = i,
-                   MonthlyRent = 1000 + 100 * i,
-                   Surface = 10 * i
+                    LeaseOfferID = i,
+                    Title = $"Offer number {i}",
+                    Rooms = i,
+                    MonthlyRent = 1000 + 100 * i,
+                    Surface = 10 * i,
+                    CreationDate = now.AddDays(i)
                 });
             }
             context.SaveChanges();
@@ -77,6 +79,8 @@ namespace fonenako_service_tests.Daos
         [TestCase(5, 1, nameof(LeaseOffer.MonthlyRent), Order.Asc, new[] { 1, 2, 3, 4, 5 }, TestName = "Order by MonthlyRent Asc")]
         [TestCase(5, 1, nameof(LeaseOffer.Surface), Order.Asc, new[] { 1, 2, 3, 4, 5 }, TestName = "Order by Surface Asc")]
         [TestCase(5, 1, nameof(LeaseOffer.Surface), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "Order by Surface Desc")]
+        [TestCase(5, 1, nameof(LeaseOffer.CreationDate), Order.Asc, new[] { 1, 2, 3, 4, 5 }, TestName = "Order by CreationDate Asc")]
+        [TestCase(5, 1, nameof(LeaseOffer.CreationDate), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "Order by CreationDate Desc")]
         [TestCase(11, 2, nameof(LeaseOffer.Surface), Order.Desc, new int[0], TestName = "Request out of range page should return empty")]
         public async Task RetrieveLeaseOffersByPageAsync_should_return_requested_page(int pageSize, int pageIndex, string orderBy, Order order, int[] expectedResultIds)
         {

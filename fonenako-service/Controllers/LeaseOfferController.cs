@@ -18,6 +18,7 @@ namespace fonenako.Controllers
     [Produces("application/json")]
     [Route("api/V1/Lease-offers")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
 
     public class LeaseOfferController : ControllerBase
     {
@@ -31,7 +32,8 @@ namespace fonenako.Controllers
         {
             { LeaseOfferDtoProperties.LeaseOfferID, nameof(LeaseOfferDto.LeaseOfferID) },
             { LeaseOfferDtoProperties.Surface, nameof(LeaseOfferDto.Surface) },
-            { LeaseOfferDtoProperties.MonthlyRent, nameof(LeaseOfferDto.MonthlyRent) }
+            { LeaseOfferDtoProperties.MonthlyRent, nameof(LeaseOfferDto.MonthlyRent) },
+            { LeaseOfferDtoProperties.CreationDate, nameof(LeaseOfferDto.CreationDate) }
         };
 
         public LeaseOfferController(ILeaseOfferService leaseOfferService, IOptions<FunctionalSettings> options)
@@ -42,7 +44,6 @@ namespace fonenako.Controllers
 
         [HttpGet(Name = "Retrieve many lease offers")]
         [ProducesResponseType(typeof(Pageable<LeaseOfferDto>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ProblemDetails),StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Pageable<LeaseOfferDto>>> RetrieveManyAsync([FromQuery(Name = "pageSize")] int? pageSize,
                                                                 [FromQuery(Name = "page")] int? page,
                                                                 [FromQuery(Name = "orderBy")] string orderBy,
@@ -81,7 +82,6 @@ namespace fonenako.Controllers
 
         [HttpGet("{leaseOfferId}", Name = "Retrieve lease offer by Id")]
         [ProducesResponseType(typeof(LeaseOfferDto), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public async  Task<ActionResult<LeaseOfferDto>> RetrieveSingle([FromRoute(Name = "leaseOfferId")] int leaseOfferId)
         {

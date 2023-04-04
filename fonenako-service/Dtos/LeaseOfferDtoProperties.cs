@@ -9,5 +9,7 @@
         public const string Surface = "surface";
 
         public const string MonthlyRent = "monthlyRent";
+
+        public const string CreationDate = "creationDate";
     }
 }

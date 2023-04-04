@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Text.Json;
 using System.Web;
+using finenako_service_tests.Controllers;
 using fonenako_service;
 using fonenako_service.Dtos;
 using NUnit.Framework;
@@ -64,22 +65,26 @@ namespace fonenako_service_tests.Controllers
             SendRequest(Uri);
         }
 
-        [Then(@"The pageable infos should be like : \{CurrentPage : '(.*)', TotalPage : '(.*)', PageSize : '(.*)'}")]
-        public void ThenThePageableInfosShouldBeLikeCurrentPageTotalPagePageSize(int expectedCurrentpage, int expectedTotalPage, int expectedPageSize)
+        [Then(@"The pageable infos should be like : \{CurrentPage : '(.*)', TotalPage : '(.*)', PageSize : '(.*)', totalFound : '(.*)'}")]
+        public void ThenThePageableInfosShouldBeLikeCurrentPageTotalPagePageSizeTotal(int expectedCurrentpage, int expectedTotalPage, int expectedPageSize, int expectedTotalFound)
         {
             ParseBodyIfNeed();
 
             Assert.AreEqual(expectedCurrentpage, _responseBody.CurrentPage);
             Assert.AreEqual(expectedPageSize, _responseBody.PageSize);
             Assert.AreEqual(expectedTotalPage, _responseBody.TotalPage);
+            Assert.AreEqual(expectedTotalFound, _responseBody.TotalFound);
         }
 
         [Then(@"The pageable content items should be like :")]
         public void ThenTheResultBodyShouldBeLikeThis(Table table)
         {
             ParseBodyIfNeed();
+            var expectedContent = table.CreateSet(LeaseOfferControllerStepDefinitionsCommon.LeaseOfferDtoParser);
 
-            Assert.AreEqual(JsonSerializer.Serialize(table.CreateSet<LeaseOfferDto>()), JsonSerializer.Serialize(_responseBody.Content), "The lease offer list in the response body as Json is not equal to the expectation");
+            Assert.AreEqual(JsonSerializer.Serialize(expectedContent), JsonSerializer.Serialize(_responseBody.Content), "The lease offer list in the response body as Json is not equal to the expectation");
         }
+
+
     }
 }

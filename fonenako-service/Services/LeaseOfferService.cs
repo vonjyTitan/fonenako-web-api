@@ -18,7 +18,8 @@ namespace fonenako_service.Services
         {
             { nameof(LeaseOfferDto.LeaseOfferID), nameof(LeaseOffer.LeaseOfferID)},
             { nameof(LeaseOfferDto.Surface), nameof(LeaseOffer.Surface)},
-            { nameof(LeaseOfferDto.MonthlyRent), nameof(LeaseOffer.MonthlyRent) }
+            { nameof(LeaseOfferDto.MonthlyRent), nameof(LeaseOffer.MonthlyRent) },
+            { nameof(LeaseOfferDto.CreationDate), nameof(LeaseOffer.CreationDate) }
         };
 
         public LeaseOfferService(ILeaseOfferDao leaseOfferDao, IMapper mapper)
@@ -48,13 +49,13 @@ namespace fonenako_service.Services
             var totalPage = (int) Math.Round(total / (double)pageSize, MidpointRounding.ToPositiveInfinity);
             if(totalPage == 0)
             {
-                return new Pageable<LeaseOfferDto>(1, pageSize, totalPage, Array.Empty<LeaseOfferDto>());
+                return new Pageable<LeaseOfferDto>(1, pageSize, totalPage, 0, Array.Empty<LeaseOfferDto>());
             }
 
             pageIndex = totalPage < pageIndex ? totalPage : pageIndex;
 
             var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(pageSize, pageIndex, filter, orderModelFieldName, order);
-            return new Pageable<LeaseOfferDto>(pageIndex, pageSize, totalPage, _mapper.Map<IEnumerable<LeaseOfferDto>>(retrievedOffers));
+            return new Pageable<LeaseOfferDto>(pageIndex, pageSize, totalPage, total, _mapper.Map<IEnumerable<LeaseOfferDto>>(retrievedOffers));
         }
 
         public async Task InitAsync()

@@ -17,7 +17,8 @@ namespace fonenako_service.Daos
         {
             { nameof(LeaseOffer.LeaseOfferID), offer => offer.LeaseOfferID},
             { nameof(LeaseOffer.Surface), offer => offer.Surface },
-            { nameof(LeaseOffer.MonthlyRent), offer => offer.MonthlyRent }
+            { nameof(LeaseOffer.MonthlyRent), offer => offer.MonthlyRent },
+            { nameof(LeaseOffer.CreationDate), offer => offer.CreationDate }
         };
 
         public LeaseOfferDao(FonenakoDbContext fonenakoDbContext)
@@ -43,7 +44,7 @@ namespace fonenako_service.Daos
 
         public async Task<IEnumerable<LeaseOffer>> RetrieveLeaseOffersByPageAsync(int pageSize, int pageIndex, LeaseOfferFilter filter, string orderBy, Order order)
         {
-            if (filter == null)
+            if (filter is null)
             {
                 throw new ArgumentNullException(nameof(filter));
             }
@@ -89,7 +90,7 @@ namespace fonenako_service.Daos
             return await _fonenakoDbContext.LeaseOffers.Where(leaseOffer => leaseOffer.LeaseOfferID == leaseOfferId).FirstOrDefaultAsync();
         }
 
-        private IQueryable<LeaseOffer> ComputeFilterQueryable(IQueryable<LeaseOffer> currentQuery, LeaseOfferFilter filter)
+        private static IQueryable<LeaseOffer> ComputeFilterQueryable(IQueryable<LeaseOffer> currentQuery, LeaseOfferFilter filter)
         {
             if (filter == LeaseOfferFilter.Default) return currentQuery;
 

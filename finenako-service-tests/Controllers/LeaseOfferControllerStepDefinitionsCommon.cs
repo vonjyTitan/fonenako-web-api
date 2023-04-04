@@ -5,6 +5,7 @@ using System.Net.Http;
 using fonenako.DatabaseContexts;
 using fonenako.Models;
 using fonenako_service;
+using fonenako_service.Dtos;
 using fonenako_service_tests;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
@@ -49,6 +50,13 @@ namespace finenako_service_tests.Controllers
             var httpResponse = _scenarioContext.Get<HttpResponseMessage>();
 
             Assert.AreEqual((HttpStatusCode)expectedStatusCode, httpResponse.StatusCode, $"Actual body : {httpResponse.Content.ReadAsStringAsync().Result}");
+        }
+
+        public static LeaseOfferDto LeaseOfferDtoParser(TableRow row)
+        {
+            var dto = row.CreateInstance<LeaseOfferDto>();
+            dto.PhotoUris = row.GetString("PhotoUris").Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+            return dto;
         }
     }
 }

@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace fonenako_service.Dtos
 {
-    [Serializable]
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class LeaseOfferDto
     {
         [JsonPropertyName(LeaseOfferDtoProperties.LeaseOfferID)]
@@ -21,6 +22,9 @@ namespace fonenako_service.Dtos
 
         [JsonPropertyName(LeaseOfferDtoProperties.MonthlyRent)]
         public double MonthlyRent { get; set; }
+
+        [JsonPropertyName(LeaseOfferDtoProperties.CreationDate)]
+        public DateTime CreationDate { get; set; }
 
         [JsonPropertyName("description")]
         public string Description { get; set; }

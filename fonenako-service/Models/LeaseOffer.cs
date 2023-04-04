@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -33,5 +34,8 @@ namespace fonenako.Models
 
         [Column("Photos")]
         public string ConcatenedPhotos { get; set; } = string.Empty;
+
+        [Column("CreationDate")]
+        public DateTime CreationDate { get; set; }
     }
 }

@@ -37,8 +37,9 @@ namespace finenako_service_tests.Controllers
         {
             var body = _scenarioContext.Get<HttpResponseMessage>().Content.ReadAsStringAsync().Result;
             var leaseOffer = JsonSerializer.Deserialize<LeaseOfferDto>(body);
+            var expectedContent = table.CreateSet(LeaseOfferControllerStepDefinitionsCommon.LeaseOfferDtoParser);
 
-            Assert.AreEqual(JsonSerializer.Serialize(table.CreateSet<LeaseOfferDto>().FirstOrDefault()), JsonSerializer.Serialize(leaseOffer), "The response body as Json is not equal to the expectation");
+            Assert.AreEqual(JsonSerializer.Serialize(expectedContent.FirstOrDefault()), JsonSerializer.Serialize(leaseOffer), "The response body as Json is not equal to the expectation");
         }
     }
 }

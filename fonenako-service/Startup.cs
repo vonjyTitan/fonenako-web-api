@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +23,11 @@ namespace fonenako_service
             services.AddFonenakoDbContext(Configuration)
                 .AddFonenakoServices()
                 .Configure<FunctionalSettings>(Configuration.GetSection(FunctionalSettings.Key))
-                .AddAutoMapper(typeof(Startup));
+                .AddSingleton(provider => new MapperConfiguration(cfg =>
+                        {
+                            cfg.AddProfile(new LeaseOfferProfile(Configuration.GetSection(FunctionalSettings.Key).GetValue<string>("PhotoUrlBase")));
+                        }
+                    ).CreateMapper());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
