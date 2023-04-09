@@ -58,14 +58,9 @@ namespace fonenako_service.Services
             return new Pageable<LeaseOfferDto>(pageIndex, pageSize, totalPage, total, _mapper.Map<IEnumerable<LeaseOfferDto>>(retrievedOffers));
         }
 
-        public async Task InitAsync()
-        {
-            await _leaseOfferDao.InsertManyAsync(FakeData.FakeDatas());
-        }
-
         public async Task<LeaseOfferDto> FindLeaseOfferByIdAsync(int leaseOfferId)
         {
-            var leaseOffer = await _leaseOfferDao.FindLeaseOfferByIdAsync(leaseOfferId);
+            var leaseOffer = await _leaseOfferDao.FindLeaseOfferDetailsByIdAsync(leaseOfferId);
             return leaseOffer != null ? _mapper.Map<LeaseOfferDto>(leaseOffer) : null;
         }
     }

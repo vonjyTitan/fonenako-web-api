@@ -84,7 +84,5 @@ namespace fonenako_service_tests.Controllers
 
             Assert.AreEqual(JsonSerializer.Serialize(expectedContent), JsonSerializer.Serialize(_responseBody.Content), "The lease offer list in the response body as Json is not equal to the expectation");
         }
-
-
     }
 }

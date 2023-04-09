@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using fonenako_service.Models;
 
 namespace fonenako.Models
 {
@@ -37,5 +38,10 @@ namespace fonenako.Models
 
         [Column("CreationDate")]
         public DateTime CreationDate { get; set; }
+
+        [Column("AreaId")]
+        public int AreaId { get; set; }
+
+        public Area Area { get; set; }
     }
 }

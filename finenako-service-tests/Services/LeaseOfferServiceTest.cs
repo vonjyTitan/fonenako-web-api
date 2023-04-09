@@ -98,7 +98,7 @@ namespace fonenako_service_tests.Services
                 LeaseOfferID = leaseOfferId
             };
 
-            _leaseOfferDaoMock.Setup(dao => dao.FindLeaseOfferByIdAsync(leaseOfferId)).ReturnsAsync(leaseOffer);
+            _leaseOfferDaoMock.Setup(dao => dao.FindLeaseOfferDetailsByIdAsync(leaseOfferId)).ReturnsAsync(leaseOffer);
             _mapperMock.Setup(dao => dao.Map<LeaseOfferDto>(leaseOffer)).Returns(expectedLeaseOfferDto);
 
             var leaseOfferResult = await _leaseOfferService.FindLeaseOfferByIdAsync(1);

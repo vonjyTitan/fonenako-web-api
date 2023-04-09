@@ -36,12 +36,6 @@ namespace fonenako_service.Daos
             return await ComputeFilterQueryable(_fonenakoDbContext.LeaseOffers, filter).CountAsync();
         }
 
-        public async Task InitAsync()
-        {
-            await _fonenakoDbContext.LeaseOffers.AddRangeAsync(FakeData.FakeDatas());
-            _fonenakoDbContext.SaveChanges();
-        }
-
         public async Task<IEnumerable<LeaseOffer>> RetrieveLeaseOffersByPageAsync(int pageSize, int pageIndex, LeaseOfferFilter filter, string orderBy, Order order)
         {
             if (filter is null)
@@ -63,31 +57,21 @@ namespace fonenako_service.Daos
             }
 
             var toSkiped = (pageIndex - 1) * pageSize;
-            var leaseOfferQueryable = ComputeFilterQueryable(_fonenakoDbContext.LeaseOffers.AsNoTracking(), filter);
+            var leaseOfferQueryable = ComputeFilterQueryable(_fonenakoDbContext.LeaseOffers.AsNoTracking().Include(leaseOffer => leaseOffer.Area).ThenInclude(area => area.City), filter);
             leaseOfferQueryable = order == Order.Asc ? leaseOfferQueryable.OrderBy(orderExpression) : leaseOfferQueryable.OrderByDescending(orderExpression);
             return await leaseOfferQueryable.Skip(toSkiped).Take(pageSize).ToArrayAsync();
         }
 
-        public async Task InsertManyAsync(IEnumerable<LeaseOffer> leaseOffers)
-        {
-            await _fonenakoDbContext.LeaseOffers.AddRangeAsync(leaseOffers);
-            _fonenakoDbContext.SaveChanges();
-        }
-
-        public async Task InsertAsync(LeaseOffer leaseOffer)
-        {
-            await _fonenakoDbContext.LeaseOffers.AddAsync(leaseOffer);
-            _fonenakoDbContext.SaveChanges();
-        }
-
-        public async Task<LeaseOffer> FindLeaseOfferByIdAsync(int leaseOfferId)
+        public async Task<LeaseOffer> FindLeaseOfferDetailsByIdAsync(int leaseOfferId)
         {
             if(leaseOfferId < 1)
             {
                 throw new ArgumentException("Value cannot be less than 1", nameof(leaseOfferId));
             }
 
-            return await _fonenakoDbContext.LeaseOffers.Where(leaseOffer => leaseOffer.LeaseOfferID == leaseOfferId).FirstOrDefaultAsync();
+            return await _fonenakoDbContext.LeaseOffers.AsNoTracking().Include(leaseOffer => leaseOffer.Area)
+                .ThenInclude(area => area.City).Where(leaseOffer => leaseOffer.LeaseOfferID == leaseOfferId)
+                .FirstOrDefaultAsync();
         }
 
         private static IQueryable<LeaseOffer> ComputeFilterQueryable(IQueryable<LeaseOffer> currentQuery, LeaseOfferFilter filter)
@@ -98,7 +82,8 @@ namespace fonenako_service.Daos
             (!filter.MonthlyRentMin.HasValue || leaseOffer.MonthlyRent >= filter.MonthlyRentMin) &&
             (!filter.MonthlyRentMax.HasValue || leaseOffer.MonthlyRent <= filter.MonthlyRentMax) &&
             (!filter.SurfaceMin.HasValue || leaseOffer.Surface >= filter.SurfaceMin) &&
-            (!filter.SurfaceMax.HasValue || leaseOffer.Surface <= filter.SurfaceMax));
+            (!filter.SurfaceMax.HasValue || leaseOffer.Surface <= filter.SurfaceMax) &&
+            (filter.Areas.Length == 0 || filter.Areas.Contains(leaseOffer.Area.AreaId)));
         }
     }
 }

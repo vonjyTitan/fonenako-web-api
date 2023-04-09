@@ -1,32 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
+using fonenako.DatabaseContexts;
 using fonenako.Models;
+using fonenako_service.Models;
 
 namespace fonenako_service.Daos
 {
     public static class FakeData
     {
-        public static LeaseOffer[] FakeDatas()
+        public static void InitFakeData(FonenakoDbContext dbContext)
         {
-            const int size = 100;
-            var response = new LeaseOffer[size];
-            var rand = new Random();
             var now = DateTime.Now;
-            for (int i = 1; i <= size; i++)
+
+            for (var i = 1; i <= 100; i++)
             {
-                var surface = rand.Next(18, 68);
-                response[i - 1] = new LeaseOffer()
+                var city = new City
                 {
-                    LeaseOfferID = i,
-                    Title = $"Offre numéro : {i}",
-                    Rooms = rand.Next(1, 3),
-                    Surface = rand.Next(18, 68),
-                    MonthlyRent = 500 + surface * 10,
-                    CreationDate = now.AddDays(i),
-                    Description = $"Description de l'offre numéro : {i}"
+                    CityId = i,
+                    Name = $"City{i}",
+                    Areas = new List<Area>
+                    {
+                        new()
+                        {
+                            AreaId = i,
+                            Name = $"Area{i}",
+                            LeaseOffers = new List<LeaseOffer>()
+                            {
+                                new LeaseOffer
+                                {
+                                    LeaseOfferID = i,
+                                    Title = $"Offer number {i}",
+                                    Rooms = i,
+                                    MonthlyRent = 1000 + 100 * i,
+                                    Surface = 10 * i,
+                                    CreationDate = now.AddDays(i)
+                                }
+                            }
+                        }
+                    }
                 };
+
+                dbContext.Add(city);
             }
 
-            return response;
+            dbContext.SaveChanges();
         }
     }
 }

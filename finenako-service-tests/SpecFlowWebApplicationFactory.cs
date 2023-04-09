@@ -9,6 +9,8 @@ namespace fonenako_service_tests
 {
     public class SpecFlowWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
     {
+        private const string InMemoryDbName = "InMemoryTestDB";
+
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             base.ConfigureWebHost(builder);
@@ -18,7 +20,7 @@ namespace fonenako_service_tests
                 services.RemoveAll<DbContext>();
                 services.AddFonenakoDbContext(options =>
                 {
-                    options.UseInMemoryDatabase("InMemoryTestDB");
+                    options.UseInMemoryDatabase(InMemoryDbName);
                 });
             });
         }

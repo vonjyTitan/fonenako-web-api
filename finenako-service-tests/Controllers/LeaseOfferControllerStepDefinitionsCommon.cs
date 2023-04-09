@@ -1,12 +1,15 @@
 ﻿
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using fonenako.DatabaseContexts;
 using fonenako.Models;
 using fonenako_service;
 using fonenako_service.Dtos;
+using fonenako_service.Models;
 using fonenako_service_tests;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
@@ -27,16 +30,77 @@ namespace finenako_service_tests.Controllers
             _scenarioContext = scenarioContext ?? throw new ArgumentNullException(nameof(scenarioContext));
         }
 
+        [BeforeScenario]
+        public void BeforeAnyScenario()
+        {
+            var scope = _applicationFactory.Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetService<FonenakoDbContext>();
+
+            //Cleanup DB
+            dbContext.RemoveRange(dbContext.LeaseOffers);
+            dbContext.RemoveRange(dbContext.Cities);
+            dbContext.RemoveRange(dbContext.Areas);
+            dbContext.SaveChanges();
+
+            _scenarioContext.Set(scope);
+            _scenarioContext.Set(dbContext);
+        }
+
+        [AfterScenario]
+        public void AfterAnyScenario()
+        {
+            _scenarioContext.Get<FonenakoDbContext>()?.Dispose();
+            _scenarioContext.Get<IServiceScope>()?.Dispose();
+        }
+
         [Given(@"The following list of lease offer is present in the system")]
         public void GivenTheFollowingListOfLeaseOfferIsPresentInTheSystem(Table table)
         {
-            var leasOffers = table.CreateSet<LeaseOffer>();
-            using var scope = _applicationFactory.Services.CreateScope();
-            using var dbContext = scope.ServiceProvider.GetService<FonenakoDbContext>();
+            var leasOffers = table.CreateSet(LeaseOfferParser);
+            var dbContext = _scenarioContext.Get<FonenakoDbContext>();
 
-            dbContext.RemoveRange(dbContext.LeaseOffers);
-            dbContext.AddRange(leasOffers);
+            foreach(var leaseOffer in leasOffers)
+            {
+                dbContext.Add(leaseOffer);
+                dbContext.Areas.Include(area => area.LeaseOffers).First(a => a.AreaId == leaseOffer.AreaId).LeaseOffers.Add(leaseOffer);
+            }
+
             dbContext.SaveChanges();
+            var leaseOffers = dbContext.LeaseOffers.AsNoTracking().Include(leaseOffer => leaseOffer.Area).ToArray();
+        }
+
+        private LeaseOffer LeaseOfferParser(TableRow row)
+        {
+            var leaseOffer = row.CreateInstance<LeaseOffer>();
+            leaseOffer.AreaId = int.Parse(row["AreaId"]);
+
+            return leaseOffer;
+        }
+
+        [Given(@"The following list of city is present in the system")]
+        public void GivenTheFollowingListOfCityIsPresentInTheSystem(Table table)
+        {
+            var cities = table.CreateSet<City>();
+            var dbContext = _scenarioContext.Get<FonenakoDbContext>();
+
+            dbContext.AddRange(cities);
+            dbContext.SaveChanges();
+        }
+
+        [Given(@"The following list of area is present in the system")]
+        public void GivenTheFollowingListOfAreaIsPresentInTheSystem(Table table)
+        {
+            var areas = table.CreateSet<Area>();
+            var dbContext = _scenarioContext.Get<FonenakoDbContext>();
+
+            foreach(var area in areas)
+            {
+                dbContext.Add(area);
+                dbContext.Cities.Include(City => City.Areas).FirstOrDefault(city => city.CityId == area.CityId).Areas.Add(area);
+            }
+
+            dbContext.SaveChanges();
+
         }
 
         [Given(@"Whatever data I have in the system")]
@@ -56,6 +120,21 @@ namespace finenako_service_tests.Controllers
         {
             var dto = row.CreateInstance<LeaseOfferDto>();
             dto.PhotoUris = row.GetString("PhotoUris").Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+
+            if (row.ContainsKey("Area.Id"))
+            {
+                dto.Area = new AreaDto
+                {
+                    AreaId = row.GetInt32("Area.Id"),
+                    Name = row.GetString("Area.Name"),
+                    City = new CityDto
+                    {
+                        CityId = row.GetInt32("Area.City.Id"),
+                        Name = row.GetString("Area.City.Name")
+                    }
+                };
+            }
+
             return dto;
         }
     }

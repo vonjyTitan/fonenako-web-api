@@ -34,5 +34,8 @@ namespace fonenako_service.Dtos
 
         [JsonPropertyName("photoUris")]
         public IEnumerable<string> PhotoUris { get; set; } = Array.Empty<string>();
+
+        [JsonPropertyName("area")]
+        public AreaDto Area { get; set; }
     }
 }

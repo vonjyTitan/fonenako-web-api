@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using fonenako.DatabaseContexts;
+using fonenako_service.Daos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +32,7 @@ namespace fonenako_service
                     ).CreateMapper());
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, FonenakoDbContext fonenakoDbContext)
         {
             if (env.IsDevelopment())
             {
@@ -52,6 +54,12 @@ namespace fonenako_service
             {
                 endpoints.MapControllers();
             });
+
+            #region init fake data
+
+            FakeData.InitFakeData(fonenakoDbContext);
+
+            #endregion
         }
     }
 }

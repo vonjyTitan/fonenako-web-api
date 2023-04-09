@@ -1,11 +1,14 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using fonenako.DatabaseContexts;
 using fonenako.Models;
 using fonenako_service;
 using fonenako_service.Daos;
+using fonenako_service.Models;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 
@@ -29,18 +32,36 @@ namespace fonenako_service_tests.Daos
 
             var now = DateTime.Now;
             using var context = new FonenakoDbContext(_options);
-            for(var i = 1; i<= 10; i++)
+
+            for(var i = 1;  i<=10; i++)
             {
-                context.Add(new LeaseOffer
+                var city = new City
                 {
-                    LeaseOfferID = i,
-                    Title = $"Offer number {i}",
-                    Rooms = i,
-                    MonthlyRent = 1000 + 100 * i,
-                    Surface = 10 * i,
-                    CreationDate = now.AddDays(i)
+                    CityId = i,
+                    Name = $"City{i}",
+                    Areas = new Collection<Area>()
+                };
+                city.Areas.Add(new ()
+                {
+                    AreaId = i,
+                    Name = $"Area{i}",
+                    LeaseOffers = new List<LeaseOffer>()
+                    {
+                        new LeaseOffer
+                        {
+                            LeaseOfferID = i,
+                            Title = $"Offer number {i}",
+                            Rooms = i,
+                            MonthlyRent = 1000 + 100 * i,
+                            Surface = 10 * i,
+                            CreationDate = now.AddDays(i)
+                        }
+                    }
                 });
+
+                context.Add(city);
             }
+
             context.SaveChanges();
         }
 
@@ -98,44 +119,69 @@ namespace fonenako_service_tests.Daos
         }
 
         [TestCaseSource(nameof(ValidFilterTestSource))]
-        public async Task RetrieveLeaseOffersByPageAsync_should_apply_the_given_filter(LeaseOfferFilter filter, object[] expectedResultIds, string messageOnFail)
+        public async Task RetrieveLeaseOffersByPageAsync_should_apply_the_given_filter(LeaseOfferFilter filter, int[] expectedResultIds, string messageOnFail)
         {
             var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(1000, 1, filter, nameof(LeaseOffer.LeaseOfferID), Order.Asc);
 
             CollectionAssert.AreEqual(expectedResultIds, retrievedOffers.Select(offer => offer.LeaseOfferID).ToArray(), messageOnFail);
         }
 
-        [Test]
-        public async Task FindLeaseOfferByIdAsync_should_return_null()
+        private static object[] ValidFilterTestSource = new[]
         {
-            var leaseOffer = await _leaseOfferDao.FindLeaseOfferByIdAsync(100);
+            new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, new []{ 5, 6, 7, 8, 9, 10 }, "Should return all lease offers with surface greater than 49"},
+            new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, new []{ 1, 2, 3, 4, 5}, "Should return all lease offers with surface smaller than 51" },
+            new object[]{ new LeaseOfferFilter { Rooms = 5 }, new []{ 5 }, "Should return all lease offers with rooms equals to 5" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, new []{ 5, 6, 7, 8, 9, 10}, "Should return all lease offers with monthly rent greater than 1499.99" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, new []{ 1, 2, 3, 4, 5}, "Should return all lease offers with monthly rent smaller than 1500.01" },
+            new object[]{ new LeaseOfferFilter { Areas = new[] { 1, 2 } }, new []{ 1, 2}, "Should return all lease offers present in areas : [1 and 2]" }
+        };
+
+        [Test]
+        public async Task FindLeaseOfferDetailsByIdAsync_should_return_null()
+        {
+            var leaseOffer = await _leaseOfferDao.FindLeaseOfferDetailsByIdAsync(100);
 
             Assert.IsNull(leaseOffer);
         }
 
         [Test]
-        public void FindLeaseOfferByIdAsync_should_throw_argumentexception_when_the_id_is_invalid()
+        public void FindLeaseOfferDetailsByIdAsync_should_throw_argumentexception_when_the_id_is_invalid()
         {
-            Assert.ThrowsAsync<ArgumentException>(()=> _leaseOfferDao.FindLeaseOfferByIdAsync(0));
-            Assert.ThrowsAsync<ArgumentException>(() => _leaseOfferDao.FindLeaseOfferByIdAsync(-1));
+            Assert.ThrowsAsync<ArgumentException>(()=> _leaseOfferDao.FindLeaseOfferDetailsByIdAsync(0));
+            Assert.ThrowsAsync<ArgumentException>(() => _leaseOfferDao.FindLeaseOfferDetailsByIdAsync(-1));
         }
 
         [Test]
-        public async Task FindLeaseOfferByIdAsync_should_return_the_right_lease_offer()
+        public async Task FindLeaseOfferDetailsByIdAsync_should_return_the_right_lease_offer()
         {
-            var leaseOffer = await _leaseOfferDao.FindLeaseOfferByIdAsync(2);
+            var leaseOffer = await _leaseOfferDao.FindLeaseOfferDetailsByIdAsync(2);
 
             Assert.IsNotNull(leaseOffer);
             Assert.AreEqual(2, leaseOffer.LeaseOfferID);
         }
 
-        private static object[] ValidFilterTestSource = new []
+        [Test]
+        public void CountLeaseOffersAsync_shloud_rise_argumentnullexception_when_called_with_filter_null()
         {
-            new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, new object[]{ 5, 6, 7, 8, 9, 10 }, "Should return all lease offers with surface greater than 49"},
-            new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, new object[]{ 1, 2, 3, 4, 5}, "Should return all lease offers with surface smaller than 51" },
-            new object[]{ new LeaseOfferFilter { Rooms = 5 }, new object[]{ 5 }, "Should return all lease offers with rooms equals to 5" },
-            new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, new object[]{ 5, 6, 7, 8, 9, 10}, "Should return all lease offers with monthly rent greater than 1499.99" },
-            new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, new object[]{ 1, 2, 3, 4, 5}, "Should return all lease offers with monthly rent smaller than 1500.01" }
+            Assert.ThrowsAsync<ArgumentNullException>(() => _leaseOfferDao.CountLeaseOffersAsync(null));
+        }
+
+        [TestCaseSource(nameof(ValidFilterCountTestSource))]
+        public async Task CountLeaseOffersAsync_should_apply_the_given_filter(LeaseOfferFilter filter, int expectedCount, string messageOnFail)
+        {
+            var retrievedOfferCount = await _leaseOfferDao.CountLeaseOffersAsync(filter);
+
+            Assert.AreEqual(expectedCount, retrievedOfferCount, messageOnFail);
+        }
+
+        private static object[] ValidFilterCountTestSource = new[]
+        {
+            new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, 6, "Should return size of lease offers with surface greater than 49"},
+            new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, 5, "Should return size of lease offers with surface smaller than 51" },
+            new object[]{ new LeaseOfferFilter { Rooms = 5 }, 1, "Should return size of lease offers with rooms equals to 5" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, 6, "Should return size of lease offers with monthly rent greater than 1499.99" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, 5, "Should return size of lease offers with monthly rent smaller than 1500.01" },
+            new object[]{ new LeaseOfferFilter { Areas = new[] { 1, 2 } }, 2, "Should return size of lease offers present in areas : [1 and 2]" }
         };
     }
 }

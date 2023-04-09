@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using fonenako.Models;
 using fonenako_service.Dtos;
+using fonenako_service.Models;
 
 namespace fonenako_service
 {
@@ -18,6 +19,9 @@ namespace fonenako_service
             CreateMap<LeaseOffer, LeaseOfferDto>()
                 .ForMember(dto => dto.PhotoUris, act => act.MapFrom(leaseOffer =>
                 leaseOffer.ConcatenedPhotos.Split(";", StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Select(s => $"{photoUrlBase}/{s}").ToArray()));
+
+            CreateMap<Area, AreaDto>();
+            CreateMap<City, CityDto>();
         }
     }
 }

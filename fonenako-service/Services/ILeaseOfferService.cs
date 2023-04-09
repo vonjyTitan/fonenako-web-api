@@ -10,7 +10,5 @@ namespace fonenako_service.Services
         Task<Pageable<LeaseOfferDto>> RetrieveLeaseOffersAsync(int pageSize, int pageIndex, LeaseOfferFilter filter, string orderBy, Order order);
 
         Task<LeaseOfferDto> FindLeaseOfferByIdAsync(int leaseOfferId);
-
-        Task InitAsync();
     }
 }
