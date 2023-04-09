@@ -86,7 +86,7 @@ namespace fonenako_service_tests.Services
         }
 
         [Test]
-        public async Task FindLeaseOfferByIdAsync_should_return_null_when_dao_rand_mapper_return_the_right_object()
+        public async Task FindLeaseOfferByIdAsync_should_return_the_right_dto_when_dao_and_mapper_return_the_right_object()
         {
             const int leaseOfferId = 1;
             var leaseOffer = new LeaseOffer
@@ -99,7 +99,7 @@ namespace fonenako_service_tests.Services
             };
 
             _leaseOfferDaoMock.Setup(dao => dao.FindLeaseOfferDetailsByIdAsync(leaseOfferId)).ReturnsAsync(leaseOffer);
-            _mapperMock.Setup(dao => dao.Map<LeaseOfferDto>(leaseOffer)).Returns(expectedLeaseOfferDto);
+            _mapperMock.Setup(mapper => mapper.Map<LeaseOfferDto>(leaseOffer)).Returns(expectedLeaseOfferDto);
 
             var leaseOfferResult = await _leaseOfferService.FindLeaseOfferByIdAsync(1);
 

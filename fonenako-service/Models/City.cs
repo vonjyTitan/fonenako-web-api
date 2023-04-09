@@ -13,6 +13,6 @@ namespace fonenako_service.Models
         [Column("Name")]
         public string Name { get; set; }
 
-        public ICollection<Area> Areas { get; set; }
+        public ICollection<Area> Areas { get; set; } = new HashSet<Area>();
     }
 }

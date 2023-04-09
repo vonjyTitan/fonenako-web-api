@@ -48,6 +48,11 @@
     <SpecFlowFeatureFiles Update="Controllers\RetrieveLeaseOfferList.feature">
       <Visible>False</Visible>
     </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Controllers\RetrieveCityList.feature">
+      <Visible>False</Visible>
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RetrieveCityList.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="LeaseOffer.feature.cs">
@@ -55,6 +60,9 @@
     </Compile>
     <Compile Update="Controllers\RetrieveSingleLeaseOffer.feature.cs">
       <DependentUpon>RetrieveSingleLeaseOffer.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Controllers\RetrieveCityList.feature.cs">
+      <DependentUpon>RetrieveCityList.feature</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

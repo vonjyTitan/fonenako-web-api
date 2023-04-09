@@ -28,12 +28,12 @@ namespace fonenako_service_tests.Controllers
             _scenarioContext = scenarioContext ?? throw new ArgumentNullException(nameof(scenarioContext));
         }
 
-        protected void SendRequest(string uri)
+        private void SendRequest(string uri)
         {
             _scenarioContext.Set(_applicationFactory.CreateDefaultClient().GetAsync(uri).Result);
         }
 
-        protected void ParseBodyIfNeed()
+        private void ParseBodyIfNeed()
         {
             if (_responseBody != null) return;
 

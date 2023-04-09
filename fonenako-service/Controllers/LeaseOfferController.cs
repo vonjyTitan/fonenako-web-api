@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using fonenako_service;
 using fonenako_service.Daos;
@@ -44,7 +43,8 @@ namespace fonenako.Controllers
 
         [HttpGet(Name = "Retrieve many lease offers")]
         [ProducesResponseType(typeof(Pageable<LeaseOfferDto>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<Pageable<LeaseOfferDto>>> RetrieveManyAsync([FromQuery(Name = "pageSize")] int? pageSize,
+        public async Task<ActionResult<Pageable<LeaseOfferDto>>> RetrieveManyAsync(
+                                                                [FromQuery(Name = "pageSize")] int? pageSize,
                                                                 [FromQuery(Name = "page")] int? page,
                                                                 [FromQuery(Name = "orderBy")] string orderBy,
                                                                 [FromQuery(Name = "order")] Order? order,
@@ -56,23 +56,23 @@ namespace fonenako.Controllers
             {
                 if(string.IsNullOrWhiteSpace(orderBy))
                 {
-                    return Problem(string.Format(Resources.order_whithout_orderby, order, orderBy), null, (int?)HttpStatusCode.BadRequest);
+                    return Problem(string.Format(Resources.order_whithout_orderby, order, orderBy), null, StatusCodes.Status400BadRequest);
                 }
             }
 
             if (!string.IsNullOrWhiteSpace(orderBy) && !OrdereableFieldsMap.TryGetValue(orderBy, out orderTdoField))
             {
-                return Problem(string.Format(Resources.unknown_order_field_name, orderBy), null, (int?)HttpStatusCode.BadRequest);
+                return Problem(string.Format(Resources.unknown_order_field_name, orderBy), null, StatusCodes.Status400BadRequest);
             }
 
             if (page.HasValue && page < 1)
             {
-                return Problem(string.Format(Resources.requested_page_index_not_valid, page), null, (int?)HttpStatusCode.BadRequest);
+                return Problem(string.Format(Resources.requested_page_index_not_valid, page), null, StatusCodes.Status400BadRequest);
             }
 
             if (pageSize.HasValue && pageSize < 1)
             {
-                return Problem(string.Format(Resources.requested_page_size_not_valid, pageSize), null, (int?) HttpStatusCode.BadRequest);
+                return Problem(string.Format(Resources.requested_page_size_not_valid, pageSize), null, StatusCodes.Status400BadRequest);
             }
 
             var pageable = await _leaseOfferService.RetrieveLeaseOffersAsync(pageSize ?? _functionalSettings.DefaultMaxPageSize, page ?? 1, filter ?? LeaseOfferFilter.Default, orderTdoField, orderAsEnum);
@@ -87,7 +87,7 @@ namespace fonenako.Controllers
         {
             if (leaseOfferId < 1)
             {
-                return Problem(string.Format(Resources.invalid_lease_offer_id, leaseOfferId), null, (int?)HttpStatusCode.BadRequest);
+                return Problem(string.Format(Resources.invalid_lease_offer_id, leaseOfferId), null, StatusCodes.Status400BadRequest);
             }
 
             var leaseOfferDto = await _leaseOfferService.FindLeaseOfferByIdAsync(leaseOfferId);

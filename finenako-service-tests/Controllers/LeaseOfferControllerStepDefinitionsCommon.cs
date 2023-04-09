@@ -9,7 +9,6 @@ using fonenako_service;
 using fonenako_service.Dtos;
 using fonenako_service.Models;
 using fonenako_service_tests;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
@@ -62,11 +61,10 @@ namespace finenako_service_tests.Controllers
             foreach(var leaseOffer in leasOffers)
             {
                 dbContext.Add(leaseOffer);
-                dbContext.Areas.Include(area => area.LeaseOffers).First(a => a.AreaId == leaseOffer.AreaId).LeaseOffers.Add(leaseOffer);
+                dbContext.Areas.First(a => a.AreaId == leaseOffer.AreaId).LeaseOffers.Add(leaseOffer);
             }
 
             dbContext.SaveChanges();
-            var leaseOffers = dbContext.LeaseOffers.AsNoTracking().Include(leaseOffer => leaseOffer.Area).ToArray();
         }
 
         private LeaseOffer LeaseOfferParser(TableRow row)
@@ -96,7 +94,7 @@ namespace finenako_service_tests.Controllers
             foreach(var area in areas)
             {
                 dbContext.Add(area);
-                dbContext.Cities.Include(City => City.Areas).FirstOrDefault(city => city.CityId == area.CityId).Areas.Add(area);
+                dbContext.Cities.FirstOrDefault(city => city.CityId == area.CityId).Areas.Add(area);
             }
 
             dbContext.SaveChanges();

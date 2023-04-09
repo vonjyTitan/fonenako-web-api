@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 
@@ -12,5 +13,7 @@ namespace fonenako_service.Dtos
 
         [JsonPropertyName("name")]
         public string Name { get; set; }
+
+        public ICollection<AreaDto> Areas { get; set; } = new HashSet<AreaDto>(0);
     }
 }

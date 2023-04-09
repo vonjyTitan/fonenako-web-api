@@ -19,6 +19,6 @@ namespace fonenako_service.Models
         [Column("CityId")]
         public int CityId { get; set; }
 
-        public ICollection<LeaseOffer> LeaseOffers { get; set; }
+        public ICollection<LeaseOffer> LeaseOffers { get; set; } = new HashSet<LeaseOffer>();
     }
 }
