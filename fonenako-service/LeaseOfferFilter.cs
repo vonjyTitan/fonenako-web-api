@@ -11,7 +11,7 @@ namespace fonenako_service
         public static readonly LeaseOfferFilter Default = new();
 
         [JsonPropertyName("rooms")]
-        public int? Rooms { get; set; }
+        public int[] Rooms { get; set; } = Array.Empty<int>();
 
         [JsonPropertyName("monthlyRentMin")]
         public double? MonthlyRentMin { get; set; }

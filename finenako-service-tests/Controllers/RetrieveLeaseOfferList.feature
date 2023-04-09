@@ -174,13 +174,13 @@ Scenario: Retrieve lease offer list with filter on rooms
 		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
 		|1            |1		|Offer number 1 |18      |1    |750		 |2023-09-25  |image1.jpg;image2.jpg|
 		|2            |1		|Offer number 2 |50      |2    |950		 |2023-10-25  |image3.jpg;|
-		|3            |1		|Offer number 2 |65      |2    |1000		 |2023-10-25  |image4.jpg;|
-	When I make a GET request on lease-offers endpoint with filter : '{"rooms":2}'
+		|3            |1		|Offer number 2 |65      |3    |1000		 |2023-10-25  |image4.jpg;|
+	When I make a GET request on lease-offers endpoint with filter : '{"rooms":[2,3]}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|3            |1		   |City1		  |1	  |Area1	|Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
+		|3            |1		   |City1		  |1	  |Area1	|Offer number 2 |65      |3    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
 		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |50      |2    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
 
 Scenario: Retrieve lease offer list with filter on monthlyRentMin

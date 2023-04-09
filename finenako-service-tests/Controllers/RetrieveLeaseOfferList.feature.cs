@@ -1410,7 +1410,7 @@ this.FeatureBackground();
                             "1",
                             "Offer number 2",
                             "65",
-                            "2",
+                            "3",
                             "1000",
                             "2023-10-25",
                             "image4.jpg;"});
@@ -1418,7 +1418,7 @@ this.FeatureBackground();
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table27, "Given ");
 #line hidden
 #line 178
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"rooms\":2}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"rooms\":[2,3]}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 179
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -1447,7 +1447,7 @@ this.FeatureBackground();
                             "Area1",
                             "Offer number 2",
                             "65",
-                            "2",
+                            "3",
                             "1000",
                             "2023-10-25",
                             "http://localhost:7182/Photos/image4.jpg"});

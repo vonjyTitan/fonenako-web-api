@@ -78,7 +78,7 @@ namespace fonenako_service.Daos
         {
             if (filter == LeaseOfferFilter.Default) return currentQuery;
 
-            return currentQuery.Where(leaseOffer => (!filter.Rooms.HasValue || leaseOffer.Rooms == filter.Rooms) &&
+            return currentQuery.Where(leaseOffer => (filter.Rooms.Length == 0 || filter.Rooms.Contains(leaseOffer.Rooms)) &&
             (!filter.MonthlyRentMin.HasValue || leaseOffer.MonthlyRent >= filter.MonthlyRentMin) &&
             (!filter.MonthlyRentMax.HasValue || leaseOffer.MonthlyRent <= filter.MonthlyRentMax) &&
             (!filter.SurfaceMin.HasValue || leaseOffer.Surface >= filter.SurfaceMin) &&

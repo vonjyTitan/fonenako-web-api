@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using fonenako.DatabaseContexts;
 using fonenako.Models;
 using fonenako_service.Models;
@@ -10,6 +11,9 @@ namespace fonenako_service.Daos
     {
         public static void InitFakeData(FonenakoDbContext dbContext)
         {
+
+            if (dbContext.Cities.Any()) return;
+
             var now = DateTime.Now;
 
             for (var i = 1; i <= 100; i++)

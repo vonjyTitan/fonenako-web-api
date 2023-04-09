@@ -130,7 +130,7 @@ namespace fonenako_service_tests.Daos
         {
             new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, new []{ 5, 6, 7, 8, 9, 10 }, "Should return all lease offers with surface greater than 49"},
             new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, new []{ 1, 2, 3, 4, 5}, "Should return all lease offers with surface smaller than 51" },
-            new object[]{ new LeaseOfferFilter { Rooms = 5 }, new []{ 5 }, "Should return all lease offers with rooms equals to 5" },
+            new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, new []{ 4, 5 }, "Should return all lease offers with rooms in [4 and 5]" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, new []{ 5, 6, 7, 8, 9, 10}, "Should return all lease offers with monthly rent greater than 1499.99" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, new []{ 1, 2, 3, 4, 5}, "Should return all lease offers with monthly rent smaller than 1500.01" },
             new object[]{ new LeaseOfferFilter { Areas = new[] { 1, 2 } }, new []{ 1, 2}, "Should return all lease offers present in areas : [1 and 2]" }
@@ -178,7 +178,7 @@ namespace fonenako_service_tests.Daos
         {
             new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, 6, "Should return size of lease offers with surface greater than 49"},
             new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, 5, "Should return size of lease offers with surface smaller than 51" },
-            new object[]{ new LeaseOfferFilter { Rooms = 5 }, 1, "Should return size of lease offers with rooms equals to 5" },
+            new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, 2, "Should return size of lease offers with rooms in [4 and 5]" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, 6, "Should return size of lease offers with monthly rent greater than 1499.99" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, 5, "Should return size of lease offers with monthly rent smaller than 1500.01" },
             new object[]{ new LeaseOfferFilter { Areas = new[] { 1, 2 } }, 2, "Should return size of lease offers present in areas : [1 and 2]" }
