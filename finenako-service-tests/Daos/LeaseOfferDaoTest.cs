@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using fonenako.DatabaseContexts;
@@ -35,16 +34,17 @@ namespace fonenako_service_tests.Daos
 
             for(var i = 1;  i<=10; i++)
             {
-                var city = new City
+                var city = new Localisation
                 {
-                    CityId = i,
+                    LocalisationId = i,
                     Name = $"City{i}",
-                    Areas = new Collection<Area>()
+                    Type = LocalisationType.CIT
                 };
-                city.Areas.Add(new ()
+                city.SubLocalisations.Add(new ()
                 {
-                    AreaId = i,
+                    LocalisationId = i + 10,
                     Name = $"Area{i}",
+                    Type = LocalisationType.ARE,
                     LeaseOffers = new List<LeaseOffer>()
                     {
                         new LeaseOffer
@@ -93,16 +93,16 @@ namespace fonenako_service_tests.Daos
             Assert.ThrowsAsync<ArgumentNullException>(() => _leaseOfferDao.RetrieveLeaseOffersByPageAsync(1, 1, null, nameof(LeaseOffer.LeaseOfferID), Order.Asc));
         }
 
-        [TestCase(5, 1, nameof(LeaseOffer.LeaseOfferID), Order.Asc, new[] { 1, 2, 3, 4, 5}, TestName = "Order by LeaseOfferID Asc")]
-        [TestCase(5, 2, nameof(LeaseOffer.LeaseOfferID), Order.Asc, new[] { 6, 7, 8, 9, 10 }, TestName = "Second page Order by LeaseOfferID Asc")]
-        [TestCase(5, 1, nameof(LeaseOffer.LeaseOfferID), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "Order by LeaseOfferID Desc")]
-        [TestCase(5, 1, nameof(LeaseOffer.MonthlyRent), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "Order by MonthlyRent Desc")]
-        [TestCase(5, 1, nameof(LeaseOffer.MonthlyRent), Order.Asc, new[] { 1, 2, 3, 4, 5 }, TestName = "Order by MonthlyRent Asc")]
-        [TestCase(5, 1, nameof(LeaseOffer.Surface), Order.Asc, new[] { 1, 2, 3, 4, 5 }, TestName = "Order by Surface Asc")]
-        [TestCase(5, 1, nameof(LeaseOffer.Surface), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "Order by Surface Desc")]
-        [TestCase(5, 1, nameof(LeaseOffer.CreationDate), Order.Asc, new[] { 1, 2, 3, 4, 5 }, TestName = "Order by CreationDate Asc")]
-        [TestCase(5, 1, nameof(LeaseOffer.CreationDate), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "Order by CreationDate Desc")]
-        [TestCase(11, 2, nameof(LeaseOffer.Surface), Order.Desc, new int[0], TestName = "Request out of range page should return empty")]
+        [TestCase(5, 1, nameof(LeaseOffer.LeaseOfferID), Order.Asc, new[] { 1, 2, 3, 4, 5}, TestName = "RetrieveLeaseOffersByPageAsync should return lease offers order by LeaseOfferID Asc")]
+        [TestCase(5, 2, nameof(LeaseOffer.LeaseOfferID), Order.Asc, new[] { 6, 7, 8, 9, 10 }, TestName = "RetrieveLeaseOffersByPageAsync should return Second of lease offers page Order by LeaseOfferID Asc")]
+        [TestCase(5, 1, nameof(LeaseOffer.LeaseOfferID), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "RetrieveLeaseOffersByPageAsync should return lease offers Order by LeaseOfferID Desc")]
+        [TestCase(5, 1, nameof(LeaseOffer.MonthlyRent), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "RetrieveLeaseOffersByPageAsync should return lease offers Order by MonthlyRent Desc")]
+        [TestCase(5, 1, nameof(LeaseOffer.MonthlyRent), Order.Asc, new[] { 1, 2, 3, 4, 5 }, TestName = "RetrieveLeaseOffersByPageAsync should return lease offers Order by MonthlyRent Asc")]
+        [TestCase(5, 1, nameof(LeaseOffer.Surface), Order.Asc, new[] { 1, 2, 3, 4, 5 }, TestName = "RetrieveLeaseOffersByPageAsync should return lease offers Order by Surface Asc")]
+        [TestCase(5, 1, nameof(LeaseOffer.Surface), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "RetrieveLeaseOffersByPageAsync should return lease offers Order by Surface Desc")]
+        [TestCase(5, 1, nameof(LeaseOffer.CreationDate), Order.Asc, new[] { 1, 2, 3, 4, 5 }, TestName = "RetrieveLeaseOffersByPageAsync should return lease offers Order by CreationDate Asc")]
+        [TestCase(5, 1, nameof(LeaseOffer.CreationDate), Order.Desc, new[] { 10, 9, 8, 7, 6 }, TestName = "RetrieveLeaseOffersByPageAsync should return lease offers Order by CreationDate Desc")]
+        [TestCase(11, 2, nameof(LeaseOffer.Surface), Order.Desc, new int[0], TestName = "RetrieveLeaseOffersByPageAsync should return empty when the requested page is out of range")]
         public async Task RetrieveLeaseOffersByPageAsync_should_return_requested_page(int pageSize, int pageIndex, string orderBy, Order order, int[] expectedResultIds)
         {
             var retrievedOffers = await _leaseOfferDao.RetrieveLeaseOffersByPageAsync(pageSize, pageIndex, LeaseOfferFilter.Default, orderBy, order);
@@ -128,12 +128,12 @@ namespace fonenako_service_tests.Daos
 
         private static object[] ValidFilterTestSource = new[]
         {
-            new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, new []{ 5, 6, 7, 8, 9, 10 }, "Should return all lease offers with surface greater than 49"},
-            new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, new []{ 1, 2, 3, 4, 5}, "Should return all lease offers with surface smaller than 51" },
-            new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, new []{ 4, 5 }, "Should return all lease offers with rooms in [4 and 5]" },
-            new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, new []{ 5, 6, 7, 8, 9, 10}, "Should return all lease offers with monthly rent greater than 1499.99" },
-            new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, new []{ 1, 2, 3, 4, 5}, "Should return all lease offers with monthly rent smaller than 1500.01" },
-            new object[]{ new LeaseOfferFilter { Areas = new[] { 1, 2 } }, new []{ 1, 2}, "Should return all lease offers present in areas : [1 and 2]" }
+            new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, new []{ 5, 6, 7, 8, 9, 10 }, "RetrieveLeaseOffersByPageAsync Should return all lease offers with surface greater than 49"},
+            new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, new []{ 1, 2, 3, 4, 5}, "RetrieveLeaseOffersByPageAsync Should return all lease offers with surface smaller than 51" },
+            new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, new []{ 4, 5 }, "RetrieveLeaseOffersByPageAsync Should return all lease offers with rooms in [4 and 5]" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, new []{ 5, 6, 7, 8, 9, 10}, "RetrieveLeaseOffersByPageAsync Should return all lease offers with monthly rent greater than 1499.99" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, new []{ 1, 2, 3, 4, 5}, "RetrieveLeaseOffersByPageAsync Should return all lease offers with monthly rent smaller than 1500.01" },
+            new object[]{ new LeaseOfferFilter { Areas = new[] { 11, 12 } }, new []{ 1, 2}, "RetrieveLeaseOffersByPageAsync Should return all lease offers present in areas : [1 and 2]" }
         };
 
         [Test]
@@ -176,12 +176,12 @@ namespace fonenako_service_tests.Daos
 
         private static object[] ValidFilterCountTestSource = new[]
         {
-            new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, 6, "Should return size of lease offers with surface greater than 49"},
-            new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, 5, "Should return size of lease offers with surface smaller than 51" },
-            new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, 2, "Should return size of lease offers with rooms in [4 and 5]" },
-            new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, 6, "Should return size of lease offers with monthly rent greater than 1499.99" },
-            new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, 5, "Should return size of lease offers with monthly rent smaller than 1500.01" },
-            new object[]{ new LeaseOfferFilter { Areas = new[] { 1, 2 } }, 2, "Should return size of lease offers present in areas : [1 and 2]" }
+            new object[]{ new LeaseOfferFilter { SurfaceMin = 50d }, 6, "CountLeaseOffersAsync Should return size of lease offers with surface greater than 49"},
+            new object[]{ new LeaseOfferFilter { SurfaceMax = 50d }, 5, "CountLeaseOffersAsync Should return size of lease offers with surface smaller than 51" },
+            new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, 2, "CountLeaseOffersAsync Should return size of lease offers with rooms in [4 and 5]" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, 6, "CountLeaseOffersAsync Should return size of lease offers with monthly rent greater than 1499.99" },
+            new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, 5, "CountLeaseOffersAsync Should return size of lease offers with monthly rent smaller than 1500.01" },
+            new object[]{ new LeaseOfferFilter { Areas = new[] { 11, 12 } }, 2, "CountLeaseOffersAsync Should return size of lease offers present in areas : [1 and 2]" }
         };
     }
 }

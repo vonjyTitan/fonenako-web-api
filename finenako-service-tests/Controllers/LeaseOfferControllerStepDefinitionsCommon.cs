@@ -36,9 +36,8 @@ namespace finenako_service_tests.Controllers
             var dbContext = scope.ServiceProvider.GetService<FonenakoDbContext>();
 
             //Cleanup DB
+            dbContext.RemoveRange(dbContext.Localisations);
             dbContext.RemoveRange(dbContext.LeaseOffers);
-            dbContext.RemoveRange(dbContext.Cities);
-            dbContext.RemoveRange(dbContext.Areas);
             dbContext.SaveChanges();
 
             _scenarioContext.Set(scope);
@@ -61,7 +60,7 @@ namespace finenako_service_tests.Controllers
             foreach(var leaseOffer in leasOffers)
             {
                 dbContext.Add(leaseOffer);
-                dbContext.Areas.First(a => a.AreaId == leaseOffer.AreaId).LeaseOffers.Add(leaseOffer);
+                dbContext.Localisations.First(a => a.LocalisationId == leaseOffer.LocalisationId).LeaseOffers.Add(leaseOffer);
             }
 
             dbContext.SaveChanges();
@@ -70,35 +69,28 @@ namespace finenako_service_tests.Controllers
         private LeaseOffer LeaseOfferParser(TableRow row)
         {
             var leaseOffer = row.CreateInstance<LeaseOffer>();
-            leaseOffer.AreaId = int.Parse(row["AreaId"]);
+            leaseOffer.LocalisationId = int.Parse(row["LocalisationId"]);
 
             return leaseOffer;
         }
 
-        [Given(@"The following list of city is present in the system")]
-        public void GivenTheFollowingListOfCityIsPresentInTheSystem(Table table)
+        [Given(@"The following list of localisations is present in the system")]
+        public void GivenTheFollowingListOfLocalisationsIsPresentInTheSystem(Table table)
         {
-            var cities = table.CreateSet<City>();
+            var localisations = table.CreateSet<Localisation>();
             var dbContext = _scenarioContext.Get<FonenakoDbContext>();
 
-            dbContext.AddRange(cities);
-            dbContext.SaveChanges();
-        }
-
-        [Given(@"The following list of area is present in the system")]
-        public void GivenTheFollowingListOfAreaIsPresentInTheSystem(Table table)
-        {
-            var areas = table.CreateSet<Area>();
-            var dbContext = _scenarioContext.Get<FonenakoDbContext>();
-
-            foreach(var area in areas)
+            foreach (var localisation in localisations)
             {
-                dbContext.Add(area);
-                dbContext.Cities.FirstOrDefault(city => city.CityId == area.CityId).Areas.Add(area);
+                dbContext.Add(localisation);
+                if(localisation.HierarchyId.HasValue)
+                {
+                    localisations.FirstOrDefault(hier => hier.LocalisationId == localisation.HierarchyId).SubLocalisations
+                                           .Add(localisation);
+                }
             }
 
             dbContext.SaveChanges();
-
         }
 
         [Given(@"Whatever data I have in the system")]
@@ -119,17 +111,19 @@ namespace finenako_service_tests.Controllers
             var dto = row.CreateInstance<LeaseOfferDto>();
             dto.PhotoUris = row.GetString("PhotoUris").Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
-            if (row.ContainsKey("Area.Id"))
+            if (row.ContainsKey("Loc.Id"))
             {
-                dto.Area = new AreaDto
+                dto.Localisation = new LocalisationDto
                 {
-                    AreaId = row.GetInt32("Area.Id"),
-                    Name = row.GetString("Area.Name"),
-                    City = new CityDto
+                    LocalisationId = row.GetInt32("Loc.Id"),
+                    Name = row.GetString("Loc.Name"),
+                    Type = Enum.Parse<LocalisationType>(row.GetString("Loc.Type")),
+                    Hierarchy = row.TryGetValue("Loc.Hier.Id", out var hierId) ? new LocalisationDto
                     {
-                        CityId = row.GetInt32("Area.City.Id"),
-                        Name = row.GetString("Area.City.Name")
-                    }
+                        LocalisationId = int.Parse(hierId),
+                        Name = row.GetString("Loc.Hier.Name"),
+                        Type = Enum.Parse<LocalisationType>(row.GetString("Loc.Hier.Type"))
+                    } : null
                 };
             }
 

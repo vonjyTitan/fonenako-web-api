@@ -12,22 +12,24 @@ namespace fonenako_service.Daos
         public static void InitFakeData(FonenakoDbContext dbContext)
         {
 
-            if (dbContext.Cities.Any()) return;
+            if (dbContext.Localisations.Any()) return;
 
             var now = DateTime.Now;
 
             for (var i = 1; i <= 100; i++)
             {
-                var city = new City
+                var city = new Localisation
                 {
-                    CityId = i,
+                    LocalisationId = i,
                     Name = $"City{i}",
-                    Areas = new List<Area>
+                    Type = LocalisationType.CIT,
+                    SubLocalisations = new List<Localisation>
                     {
                         new()
                         {
-                            AreaId = i,
+                            LocalisationId = i + 100,
                             Name = $"Area{i}",
+                            Type = LocalisationType.ARE,
                             LeaseOffers = new List<LeaseOffer>()
                             {
                                 new LeaseOffer

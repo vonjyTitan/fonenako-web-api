@@ -9,9 +9,7 @@ namespace fonenako.DatabaseContexts
     {
         public DbSet<LeaseOffer> LeaseOffers { get; set; }
 
-        public DbSet<City> Cities { get; set; }
-
-        public DbSet<Area> Areas { get; set; }
+        public DbSet<Localisation> Localisations { get; set; }
 
         public FonenakoDbContext(DbContextOptions<FonenakoDbContext> options)
         : base(options)
@@ -22,20 +20,21 @@ namespace fonenako.DatabaseContexts
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<City>().HasKey(city => city.CityId);
-            modelBuilder.Entity<Area>().HasKey(area => area.AreaId);
-            modelBuilder.Entity<City>()
-                .HasMany<Area>()
-                .WithOne()
-                .HasForeignKey(area => area.CityId)
-                .IsRequired(true)
+            modelBuilder.Entity<Localisation>().HasKey(localisation => localisation.LocalisationId);
+            modelBuilder.Entity<Localisation>()
+                .HasOne(localisation => localisation.Hierarchy)
+                .WithMany()
+                .HasForeignKey(localisation => localisation.HierarchyId)
+                .HasPrincipalKey(hierarchy => hierarchy.LocalisationId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<LeaseOffer>().HasKey(table => table.LeaseOfferID);
             modelBuilder.Entity<LeaseOffer>()
-                .HasOne<Area>()
+                .HasOne<Localisation>()
                 .WithMany()
-                .HasForeignKey(LeaseOffer => LeaseOffer.AreaId)
+                .HasForeignKey(leaseOffer => leaseOffer.LocalisationId)
+                .HasPrincipalKey(a => a.LocalisationId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Cascade);
         }

@@ -2,266 +2,263 @@
 	In order to obtain a leas offer list
 
 Background:
-	Given The following list of city is present in the system
-		|CityId|Name  |
-		|1	   | City1|
-	Given The following list of area is present in the system
-		|AreaId|CityId|Name  |
-		|1	   |1     | Area1|
-		|2	   |1     | Area2|
-		|3	   |1     | Area3|
+	Given The following list of localisations is present in the system
+		|LocalisationId|Type  |HierarchyId|Name  |
+		|1			   |CIT   |			  |City1 |
+		|2			   |ARE   | 1		  |Area1 |
+		|3			   |ARE   | 1		  |Area2 |
 
 Scenario: Retrieve lease offer list without any parameter
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |750		 |2023-10-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |950		 |2023-09-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2		|Offer number 1 |65      |3    |750		 |2023-10-25  |image1.jpg;image2.jpg|
+		|2            |2		|Offer number 2 |18      |1    |950		 |2023-09-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint without any argument
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris																	  |
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |18      |1    |950		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |65      |3    |750		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris																	  |
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
 Scenario: Retrieve lease offer list order by leaseOfferId asc
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |950		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |750		 |2023-10-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |65      |3    |950		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |18      |1    |750		 |2023-10-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'orderBy=leaseOfferId&order=Asc'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |65      |3    |950		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |18      |1    |750		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
+		|1            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
 
 Scenario: Retrieve lease offer list order by leaseOfferId desc
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'orderBy=leaseOfferId&order=Desc'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
 Scenario: Retrieve lease offer list order by monthlyRent asc
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |950		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |750		 |2023-10-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |65      |3    |950		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |18      |1    |750		 |2023-10-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'orderBy=monthlyRent&order=Asc'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |18      |1    |750		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |65      |3    |950		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
 Scenario: Retrieve lease offer list order by monthlyRent desc
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'orderBy=monthlyRent&order=Desc'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
 
 Scenario: Retrieve lease offer list order by creationDate asc
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |950		 |2023-10-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |750		 |2023-09-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |65      |3    |950		 |2023-10-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |18      |1    |750		 |2023-09-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'orderBy=creationDate&order=Asc'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |18      |1    |750		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |65      |3    |950		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
 Scenario: Retrieve lease offer list order by creationDate desc
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |950		 |2023-10-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |750		 |2023-09-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |65      |3    |950		 |2023-10-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |18      |1    |750		 |2023-09-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'orderBy=creationDate&order=Desc'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |65      |3    |950		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |18      |1    |750		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
+		|1            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg|
 
 Scenario: Retrieve lease offer list order by surface asc
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'orderBy=surface&order=Asc'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
 Scenario: Retrieve lease offer list order by surface desc
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |65      |1    |950		 |2023-10-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |65      |1    |950		 |2023-10-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'orderBy=surface&order=Desc'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |65      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
 Scenario: Retrieve lease offer list with both pagination and order
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
-		|3            |1		|Offer number 3 |18      |1    |1000		 |2023-10-25  |image4.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
+		|3            |2				|Offer number 3 |18      |1    |1000		 |2023-10-25  |image4.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'pageSize=2&page=2&orderBy=leaseOfferId&order=Asc'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '2', TotalPage : '2', PageSize : '2', totalFound : '3'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
-		|3            |1		   |City1		  |1	  |Area1	|Offer number 3 |18      |1    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
-
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 3 |18      |1    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
+	   
 Scenario: Retrieve lease offer list with page index higher than max
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |65      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |18      |1    |950		 |2023-10-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with arguments 'pageSize=2&page=2'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '2', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 													 						   
 Scenario: Retrieve lease offer list with filter on surfaceMin
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |50      |1    |950		 |2023-10-25  |image3.jpg;|
-		|3            |1		|Offer number 2 |65      |2    |1000		 |2023-10-25  |image4.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |50      |1    |950		 |2023-10-25  |image3.jpg;|
+		|3            |2				|Offer number 2 |65      |2    |1000		 |2023-10-25  |image4.jpg;|
 	When I make a GET request on lease-offers endpoint with filter : '{"surfaceMin":19}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|3            |1		   |City1		  |1	  |Area1	|Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
 																			   
 Scenario: Retrieve lease offer list with filter on rooms
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |18      |1    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |50      |2    |950		 |2023-10-25  |image3.jpg;|
-		|3            |1		|Offer number 2 |65      |3    |1000		 |2023-10-25  |image4.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |18      |1    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |50      |2    |950		 |2023-10-25  |image3.jpg;|
+		|3            |2				|Offer number 2 |65      |3    |1000		 |2023-10-25  |image4.jpg;|
 	When I make a GET request on lease-offers endpoint with filter : '{"rooms":[2,3]}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|3            |1		   |City1		  |1	  |Area1	|Offer number 2 |65      |3    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |50      |2    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |3    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |50      |2    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
 
 Scenario: Retrieve lease offer list with filter on monthlyRentMin
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |50      |1    |950		 |2023-10-25  |image3.jpg;|
-		|3            |1		|Offer number 2 |65      |2    |1000		 |2023-10-25  |image4.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |50      |1    |950		 |2023-10-25  |image3.jpg;|
+		|3            |2				|Offer number 2 |65      |2    |1000		 |2023-10-25  |image4.jpg;|
 	When I make a GET request on lease-offers endpoint with filter : '{"monthlyRentMin":751}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|3            |1		   |City1		  |1	  |Area1	|Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
 
 Scenario: Retrieve lease offer list with filter on monthlyRentMax
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |50      |1    |950		 |2023-10-25  |image3.jpg;|
-		|3            |1		|Offer number 2 |65      |2    |1000		 |2023-10-25  |image4.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |50      |1    |950		 |2023-10-25  |image3.jpg;|
+		|3            |2				|Offer number 2 |65      |2    |1000		 |2023-10-25  |image4.jpg;|
 	When I make a GET request on lease-offers endpoint with filter : '{"monthlyRentMax":951}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |1	  |Area1	|Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
 Scenario: Retrieve lease offer list with filter on areas
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos	|
-		|1            |3		|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |2		|Offer number 2 |50      |1    |950		 |2023-10-25  |image3.jpg;			|
-		|3            |1		|Offer number 2 |65      |2    |1000	 |2023-10-25  |image4.jpg;			|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos	|
+		|1            |3				|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |50      |1    |950		 |2023-10-25  |image3.jpg;			|
+		|3            |1				|Offer number 2 |65      |2    |1000	 |2023-10-25  |image4.jpg;			|
 	When I make a GET request on lease-offers endpoint with filter : '{"areas":[2,3]}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|2            |1		   |City1		  |2	  |Area2	|Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
-		|1            |1		   |City1		  |3	  |Area3	|Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |3	 |ARE     |Area2   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
 Scenario: Retrieve lease offer list with combined filters
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |18      |3    |800		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |40      |1    |900		 |2023-10-25  |image3.jpg;|
-		|3            |1		|Offer number 3 |56      |2    |1000		 |2023-10-25  |image4.jpg;|
-		|4            |1		|Offer number 4 |65      |3    |1000		 |2023-11-25  |image5.jpg;|
-		|5            |1		|Offer number 5 |80      |3    |1500		 |2023-11-25  |image6.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |18      |3    |800		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |40      |1    |900		 |2023-10-25  |image3.jpg;|
+		|3            |2				|Offer number 3 |56      |2    |1000		 |2023-10-25  |image4.jpg;|
+		|4            |2				|Offer number 4 |65      |3    |1000		 |2023-11-25  |image5.jpg;|
+		|5            |2				|Offer number 5 |80      |3    |1500		 |2023-11-25  |image6.jpg;|
 	When I make a GET request on lease-offers endpoint with filter : '{"monthlyRentMin":900,"surfaceMax":64}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|3            |1		   |City1		  |1	  |Area1	|Offer number 3 |56      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |40      |1    |900		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 3 |56      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |40      |1    |900		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
 
 Scenario: Retrieve lease offer list with both filter and pagination
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |18      |3    |800		 |2023-09-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |40      |1    |900		 |2023-10-25  |image3.jpg;|
-		|3            |1		|Offer number 3 |56      |2    |950		 |2023-10-25  |image4.jpg;|
-		|4            |1		|Offer number 4 |65      |3    |1000		|2023-11-25  |image5.jpg;|
-		|5            |1		|Offer number 5 |80      |3    |1500		 |2023-11-25  |image6.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |2				|Offer number 1 |18      |3    |800		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |40      |1    |900		 |2023-10-25  |image3.jpg;|
+		|3            |2				|Offer number 3 |56      |2    |950		 |2023-10-25  |image4.jpg;|
+		|4            |2				|Offer number 4 |65      |3    |1000		|2023-11-25  |image5.jpg;|
+		|5            |2				|Offer number 5 |80      |3    |1500		 |2023-11-25  |image6.jpg;|
 	When I make a GET request on lease-offers endpoint with pagination : 'pageSize=2&page=2&orderBy=monthlyRent&order=Desc' and filter : '{"monthlyRentMin":900}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '2', TotalPage : '2', PageSize : '2', totalFound : '4'}
 	And The pageable content items should be like :
-		|LeaseOfferID |Area.City.Id|Area.City.Name|Area.Id|Area.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
-		|3            |1		   |City1		  |1	  |Area1	|Offer number 3 |56      |2    |950		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
-		|2            |1		   |City1		  |1	  |Area1	|Offer number 2 |40      |1    |900		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 3 |56      |2    |950		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |40      |1    |900		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
 
 Scenario: Retrieve lease offer list with filter that does not have macthing
 	Given The following list of lease offer is present in the system
-		|LeaseOfferID |AreaId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
-		|1            |1		|Offer number 1 |18      |3    |800		 |2023-10-25  |image1.jpg;image2.jpg|
-		|2            |1		|Offer number 2 |40      |1    |900		 |2023-09-25  |image3.jpg;|
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos			    |
+		|1            |1				|Offer number 1 |18      |3    |800		 |2023-10-25  |image1.jpg;image2.jpg|
+		|2            |1				|Offer number 2 |40      |1    |900		 |2023-09-25  |image3.jpg;|
 	When I make a GET request on lease-offers endpoint with filter : '{"monthlyRentMax":750}'
 	Then The response Status code should be '200'
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '0', PageSize : '10000', totalFound : '0'}

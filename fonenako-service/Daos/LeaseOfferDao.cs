@@ -57,7 +57,9 @@ namespace fonenako_service.Daos
             }
 
             var toSkiped = (pageIndex - 1) * pageSize;
-            var leaseOfferQueryable = ComputeFilterQueryable(_fonenakoDbContext.LeaseOffers.AsNoTracking().Include(leaseOffer => leaseOffer.Area).ThenInclude(area => area.City), filter);
+            var leaseOfferQueryable = ComputeFilterQueryable(_fonenakoDbContext.LeaseOffers.AsNoTracking()
+                                                                                           .Include(leaseOffer => leaseOffer.Localisation)
+                                                                                           .ThenInclude(localisation => localisation.Hierarchy), filter);
             leaseOfferQueryable = order == Order.Asc ? leaseOfferQueryable.OrderBy(orderExpression) : leaseOfferQueryable.OrderByDescending(orderExpression);
             return await leaseOfferQueryable.Skip(toSkiped).Take(pageSize).ToArrayAsync();
         }
@@ -69,9 +71,11 @@ namespace fonenako_service.Daos
                 throw new ArgumentException("Value cannot be less than 1", nameof(leaseOfferId));
             }
 
-            return await _fonenakoDbContext.LeaseOffers.AsNoTracking().Include(leaseOffer => leaseOffer.Area)
-                .ThenInclude(area => area.City).Where(leaseOffer => leaseOffer.LeaseOfferID == leaseOfferId)
-                .FirstOrDefaultAsync();
+            return await _fonenakoDbContext.LeaseOffers.AsNoTracking()
+                                                       .Include(leaseOffer => leaseOffer.Localisation)
+                                                       .ThenInclude(localisation => localisation.Hierarchy)
+                                                       .Where(leaseOffer => leaseOffer.LeaseOfferID == leaseOfferId)
+                                                       .FirstOrDefaultAsync();
         }
 
         private static IQueryable<LeaseOffer> ComputeFilterQueryable(IQueryable<LeaseOffer> currentQuery, LeaseOfferFilter filter)
@@ -83,7 +87,7 @@ namespace fonenako_service.Daos
             (!filter.MonthlyRentMax.HasValue || leaseOffer.MonthlyRent <= filter.MonthlyRentMax) &&
             (!filter.SurfaceMin.HasValue || leaseOffer.Surface >= filter.SurfaceMin) &&
             (!filter.SurfaceMax.HasValue || leaseOffer.Surface <= filter.SurfaceMax) &&
-            (filter.Areas.Length == 0 || filter.Areas.Contains(leaseOffer.Area.AreaId)));
+            (filter.Areas.Length == 0 || filter.Areas.Contains(leaseOffer.Localisation.LocalisationId)));
         }
     }
 }

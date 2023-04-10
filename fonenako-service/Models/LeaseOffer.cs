@@ -39,9 +39,9 @@ namespace fonenako.Models
         [Column("CreationDate")]
         public DateTime CreationDate { get; set; }
 
-        [Column("AreaId")]
-        public int AreaId { get; set; }
+        [Column("LocalisationId")]
+        public int LocalisationId { get; set; }
 
-        public Area Area { get; set; }
+        public Localisation Localisation { get; set; }
     }
 }
