@@ -78,10 +78,10 @@ namespace fonenako_service_tests.Daos
             _dbContext.Dispose();
         }
 
-        [TestCase(0, 1, nameof(LeaseOffer.LeaseOfferID), TestName = "Page size 0 should make it rise an error")]
-        [TestCase(10, 0, nameof(LeaseOffer.LeaseOfferID), TestName = "Page index 0 should make it rise an error")]
-        [TestCase(10, 1, nameof(LeaseOffer.Carousel), TestName = "Field not orderable should make it rise an error")]
-        [TestCase(10, 1, "UnknownField", TestName = "Unknown order field should make it rise an error")]
+        [TestCase(0, 1, nameof(LeaseOffer.LeaseOfferID), TestName = "Page size 0 should make RetrieveLeaseOffersByPageAsync rise an error")]
+        [TestCase(10, 0, nameof(LeaseOffer.LeaseOfferID), TestName = "Page index 0 should make RetrieveLeaseOffersByPageAsync rise an error")]
+        [TestCase(10, 1, nameof(LeaseOffer.Carousel), TestName = "Field not orderable should make RetrieveLeaseOffersByPageAsync rise an error")]
+        [TestCase(10, 1, "UnknownField", TestName = "Unknown order field should make RetrieveLeaseOffersByPageAsync rise an error")]
         public void RetrieveLeaseOffersByPageAsync_shloud_rise_argumentexception_when_called_with_wrong_arg(int pageSize, int pageIndex, string orderBy)
         {
             Assert.ThrowsAsync<ArgumentException>(() => _leaseOfferDao.RetrieveLeaseOffersByPageAsync(pageSize, pageIndex, LeaseOfferFilter.Default, orderBy, Order.Asc));
@@ -133,7 +133,7 @@ namespace fonenako_service_tests.Daos
             new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, new []{ 4, 5 }, "RetrieveLeaseOffersByPageAsync Should return all lease offers with rooms in [4 and 5]" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, new []{ 5, 6, 7, 8, 9, 10}, "RetrieveLeaseOffersByPageAsync Should return all lease offers with monthly rent greater than 1499.99" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, new []{ 1, 2, 3, 4, 5}, "RetrieveLeaseOffersByPageAsync Should return all lease offers with monthly rent smaller than 1500.01" },
-            new object[]{ new LeaseOfferFilter { Areas = new[] { 11, 12 } }, new []{ 1, 2}, "RetrieveLeaseOffersByPageAsync Should return all lease offers present in areas : [1 and 2]" }
+            new object[]{ new LeaseOfferFilter { Localisations = new[] { 11, 12 } }, new []{ 1, 2}, "RetrieveLeaseOffersByPageAsync Should return all lease offers present in areas : [1 and 2]" }
         };
 
         [Test]
@@ -181,7 +181,7 @@ namespace fonenako_service_tests.Daos
             new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, 2, "CountLeaseOffersAsync Should return size of lease offers with rooms in [4 and 5]" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, 6, "CountLeaseOffersAsync Should return size of lease offers with monthly rent greater than 1499.99" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, 5, "CountLeaseOffersAsync Should return size of lease offers with monthly rent smaller than 1500.01" },
-            new object[]{ new LeaseOfferFilter { Areas = new[] { 11, 12 } }, 2, "CountLeaseOffersAsync Should return size of lease offers present in areas : [1 and 2]" }
+            new object[]{ new LeaseOfferFilter { Localisations = new[] { 11, 12 } }, 2, "CountLeaseOffersAsync Should return size of lease offers present in areas : [1 and 2]" }
         };
     }
 }

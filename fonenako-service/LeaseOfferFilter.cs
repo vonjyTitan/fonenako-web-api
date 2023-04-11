@@ -25,8 +25,8 @@ namespace fonenako_service
         [JsonPropertyName("surfaceMax")]
         public double? SurfaceMax { get; set; }
 
-        [JsonPropertyName("areas")]
-        public int[] Areas { get; set; } = Array.Empty<int>();
+        [JsonPropertyName("localisations")]
+        public int[] Localisations { get; set; } = Array.Empty<int>();
 
         public override bool Equals(object obj)
         {
@@ -36,12 +36,12 @@ namespace fonenako_service
                    MonthlyRentMax == filter.MonthlyRentMax &&
                    SurfaceMin == filter.SurfaceMin &&
                    SurfaceMax == filter.SurfaceMax &&
-                   Enumerable.SequenceEqual(Areas, filter.Areas);
+                   Enumerable.SequenceEqual(Localisations, filter.Localisations);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Rooms, MonthlyRentMin, MonthlyRentMax, SurfaceMin, SurfaceMax, Areas);
+            return HashCode.Combine(Rooms, MonthlyRentMin, MonthlyRentMax, SurfaceMin, SurfaceMax, Localisations);
         }
 
         public static bool operator ==(LeaseOfferFilter left, LeaseOfferFilter right)

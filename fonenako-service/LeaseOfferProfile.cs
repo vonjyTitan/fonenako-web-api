@@ -20,7 +20,7 @@ namespace fonenako_service
                 .ForMember(dto => dto.PhotoUris, act => act.MapFrom(leaseOffer =>
                 leaseOffer.ConcatenedPhotos.Split(";", StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Select(s => $"{photoUrlBase}/{s}").ToArray()));
 
-            CreateMap<Localisation, LocalisationDto>().MaxDepth(2);
+            CreateMap<Localisation, LocalisationDto>().MaxDepth(3);
         }
     }
 }

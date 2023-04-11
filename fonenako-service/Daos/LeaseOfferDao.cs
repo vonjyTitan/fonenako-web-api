@@ -87,7 +87,7 @@ namespace fonenako_service.Daos
             (!filter.MonthlyRentMax.HasValue || leaseOffer.MonthlyRent <= filter.MonthlyRentMax) &&
             (!filter.SurfaceMin.HasValue || leaseOffer.Surface >= filter.SurfaceMin) &&
             (!filter.SurfaceMax.HasValue || leaseOffer.Surface <= filter.SurfaceMax) &&
-            (filter.Areas.Length == 0 || filter.Areas.Contains(leaseOffer.Localisation.LocalisationId)));
+            (filter.Localisations.Length == 0 || filter.Localisations.Contains(leaseOffer.Localisation.LocalisationId)));
         }
     }
 }

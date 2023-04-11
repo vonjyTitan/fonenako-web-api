@@ -1780,12 +1780,12 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on areas")]
-        public void RetrieveLeaseOfferListWithFilterOnAreas()
+        [NUnit.Framework.DescriptionAttribute("Retrieve lease offer list with filter on localisations")]
+        public void RetrieveLeaseOfferListWithFilterOnLocalisations()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on areas", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve lease offer list with filter on localisations", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 211
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1839,7 +1839,8 @@ this.FeatureBackground();
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table32, "Given ");
 #line hidden
 #line 217
- testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"areas\":[2,3]}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a GET request on lease-offers endpoint with filter : \'{\"localisations\":[2," +
+                        "3]}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 218
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

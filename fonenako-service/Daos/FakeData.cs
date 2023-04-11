@@ -23,30 +23,30 @@ namespace fonenako_service.Daos
                     LocalisationId = i,
                     Name = $"City{i}",
                     Type = LocalisationType.CIT,
-                    SubLocalisations = new List<Localisation>
-                    {
-                        new()
-                        {
-                            LocalisationId = i + 100,
-                            Name = $"Area{i}",
-                            Type = LocalisationType.ARE,
-                            LeaseOffers = new List<LeaseOffer>()
-                            {
-                                new LeaseOffer
-                                {
-                                    LeaseOfferID = i,
-                                    Title = $"Offer number {i}",
-                                    Rooms = i,
-                                    MonthlyRent = 1000 + 100 * i,
-                                    Surface = 10 * i,
-                                    CreationDate = now.AddDays(i)
-                                }
-                            }
-                        }
-                    }
                 };
 
                 dbContext.Add(city);
+                var area = new Localisation
+                {
+                    LocalisationId = i + 100,
+                    HierarchyId = i,
+                    Name = $"Area{i}",
+                    Type = LocalisationType.ARE,
+                    LeaseOffers = new List<LeaseOffer>()
+                    {
+                        new LeaseOffer
+                        {
+                            LeaseOfferID = i,
+                            Title = $"Offer number {i}",
+                            Rooms = i,
+                            MonthlyRent = 1000 + 100 * i,
+                            Surface = 10 * i,
+                            CreationDate = now.AddDays(i)
+                        }
+                    }
+                };
+                dbContext.Add(area);
+                city.SubLocalisations.Add(area);
             }
 
             dbContext.SaveChanges();
