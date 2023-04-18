@@ -16,13 +16,13 @@ namespace fonenako_service_tests.Controllers
     {
         private const string Uri = "api/V1/Lease-offers";
 
-        private readonly SpecFlowWebApplicationFactory<Program> _applicationFactory;
+        private readonly SpecFlowWebApplicationFactory<Startup> _applicationFactory;
 
         private readonly ScenarioContext _scenarioContext;
 
         private Pageable<LeaseOfferDto> _responseBody;
 
-        public RetrieveLeaseOfferListStepDefinitions(SpecFlowWebApplicationFactory<Program> webApplicationFactory, ScenarioContext scenarioContext)
+        public RetrieveLeaseOfferListStepDefinitions(SpecFlowWebApplicationFactory<Startup> webApplicationFactory, ScenarioContext scenarioContext)
         {
             _applicationFactory = webApplicationFactory ?? throw new ArgumentNullException(nameof(webApplicationFactory));
             _scenarioContext = scenarioContext ?? throw new ArgumentNullException(nameof(scenarioContext));

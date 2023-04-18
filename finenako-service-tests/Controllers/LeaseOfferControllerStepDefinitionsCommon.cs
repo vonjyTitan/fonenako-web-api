@@ -19,11 +19,11 @@ namespace finenako_service_tests.Controllers
     [Binding]
     public class LeaseOfferControllerStepDefinitionsCommon
     {
-        private readonly SpecFlowWebApplicationFactory<Program> _applicationFactory;
+        private readonly SpecFlowWebApplicationFactory<Startup> _applicationFactory;
 
         private readonly ScenarioContext _scenarioContext;
 
-        public LeaseOfferControllerStepDefinitionsCommon(SpecFlowWebApplicationFactory<Program> webApplicationFactory, ScenarioContext scenarioContext)
+        public LeaseOfferControllerStepDefinitionsCommon(SpecFlowWebApplicationFactory<Startup> webApplicationFactory, ScenarioContext scenarioContext)
         {
             _applicationFactory = webApplicationFactory ?? throw new ArgumentNullException(nameof(webApplicationFactory));
             _scenarioContext = scenarioContext ?? throw new ArgumentNullException(nameof(scenarioContext));
@@ -57,10 +57,16 @@ namespace finenako_service_tests.Controllers
             var leasOffers = table.CreateSet(LeaseOfferParser);
             var dbContext = _scenarioContext.Get<FonenakoDbContext>();
 
-            foreach(var leaseOffer in leasOffers)
+            var lcs = dbContext.Localisations.ToArray();
+            foreach (var leaseOffer in leasOffers)
             {
+                var localisation = leaseOffer.Localisation;
+                leaseOffer.Localisation = null;
                 dbContext.Add(leaseOffer);
-                dbContext.Localisations.First(a => a.LocalisationId == leaseOffer.LocalisationId).LeaseOffers.Add(leaseOffer);
+                if(localisation != null)
+                {
+                    dbContext.Localisations.First(loc => loc.LocalisationId == localisation.LocalisationId).LeaseOffers.Add(leaseOffer);
+                }
             }
 
             dbContext.SaveChanges();
@@ -69,7 +75,7 @@ namespace finenako_service_tests.Controllers
         private LeaseOffer LeaseOfferParser(TableRow row)
         {
             var leaseOffer = row.CreateInstance<LeaseOffer>();
-            leaseOffer.LocalisationId = int.Parse(row["LocalisationId"]);
+            leaseOffer.Localisation = new Localisation { LocalisationId = int.Parse(row["LocalisationId"]) };
 
             return leaseOffer;
         }
@@ -77,20 +83,36 @@ namespace finenako_service_tests.Controllers
         [Given(@"The following list of localisations is present in the system")]
         public void GivenTheFollowingListOfLocalisationsIsPresentInTheSystem(Table table)
         {
-            var localisations = table.CreateSet<Localisation>();
+            var localisations = table.CreateSet(LocalisationParser);
             var dbContext = _scenarioContext.Get<FonenakoDbContext>();
 
             foreach (var localisation in localisations)
             {
-                dbContext.Add(localisation);
-                if(localisation.HierarchyId.HasValue)
+                if (localisation.Hierarchy != null)
                 {
-                    localisations.FirstOrDefault(hier => hier.LocalisationId == localisation.HierarchyId).SubLocalisations
-                                           .Add(localisation);
+                    dbContext.Attach(localisation.Hierarchy);
+                }
+                dbContext.Add(localisation);
+                dbContext.SaveChanges();
+                dbContext.Entry(localisation).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+                if(localisation.Hierarchy != null)
+                {
+                    dbContext.Entry(localisation.Hierarchy).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
                 }
             }
 
-            dbContext.SaveChanges();
+
+            var lcs = dbContext.Localisations.ToArray();
+        }
+
+        private Localisation LocalisationParser(TableRow row)
+        {
+            var response = row.CreateInstance<Localisation>();
+            if (int.TryParse(row["HierarchyId"], out var hierarchyId))
+            {
+                response.Hierarchy = new Localisation { LocalisationId = hierarchyId };
+            }
+            return response;
         }
 
         [Given(@"Whatever data I have in the system")]

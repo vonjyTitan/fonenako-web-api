@@ -30,18 +30,18 @@ namespace fonenako_service_tests.Services
             _leaseOfferService = new LeaseOfferService(_leaseOfferDaoMock.Object, _mapperMock.Object);
         }
 
-        [TestCase(0, 1, nameof(LeaseOfferDto.LeaseOfferID), TestName = "Page size 0 should make the method rise ArgumentException")]
-        [TestCase(10, 0, nameof(LeaseOfferDto.LeaseOfferID), TestName = "Page index 0 should make the method rise ArgumentException")]
-        [TestCase(10, 1, nameof(LeaseOfferDto.CarouselUri), TestName = "Field not orderable should make the method rise ArgumentException")]
-        [TestCase(10, 1, "UnknownField", TestName = "Unknown Field should make the method rise ArgumentException")]
+        [TestCase(0, 1, nameof(LeaseOfferDto.LeaseOfferID), TestName = "Page size 0 should make RetrieveLeaseOffersAsync rise ArgumentException")]
+        [TestCase(10, 0, nameof(LeaseOfferDto.LeaseOfferID), TestName = "Page index 0 should make RetrieveLeaseOffersAsync rise ArgumentException")]
+        [TestCase(10, 1, nameof(LeaseOfferDto.CarouselUri), TestName = "Field not orderable should make RetrieveLeaseOffersAsync rise ArgumentException")]
+        [TestCase(10, 1, "UnknownField", TestName = "Unknown Field should make RetrieveLeaseOffersAsync rise ArgumentException")]
         public void RetrieveLeaseOffersAsync_should_throw_argumentexcption_when_called_with_wrong_arg(int pageSize, int pageIndex, string orderBy)
         {
              Assert.ThrowsAsync<ArgumentException>(()=> _leaseOfferService.RetrieveLeaseOffersAsync(pageSize, pageIndex, LeaseOfferFilter.Default, orderBy, Order.Asc));
         }
 
-        [TestCase(1, 1, 15, 3, TestName = "The total page should be 15/5 = 3")]
-        [TestCase(2, 1, 5, 1, TestName = "The current page index should be reduced from 2 to 1 when the requested page index is out of range")]
-        [TestCase(1, 1, 16, 4, TestName = "The total page should take the next int value when there is an element after the multipl of page size")]
+        [TestCase(1, 1, 15, 3, TestName = "The total page returned by RetrieveLeaseOffersAsync should be 15/5 = 3")]
+        [TestCase(2, 1, 5, 1, TestName = "The current page index returned by RetrieveLeaseOffersAsync should be reduced from 2 to 1 when the requested page index is out of range")]
+        [TestCase(1, 1, 16, 4, TestName = "The total page returned by RetrieveLeaseOffersAsync should take the next int value when there is an element after the multipl of page size")]
         public async Task RetrieveLeaseOffersAsync_should_return_a_correct_pageable(int pageIndex, int expectedPageIndexResult, int totalItems, int expectedTotalPage)
         {
             const int pageSize = 5;

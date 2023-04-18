@@ -16,11 +16,11 @@ namespace finenako_service_tests.Controllers
     [Binding]
     public class RetrieveSingleLeaseOfferStepDefinitions
     {
-        private readonly SpecFlowWebApplicationFactory<Program> _applicationFactory;
+        private readonly SpecFlowWebApplicationFactory<Startup> _applicationFactory;
 
         private readonly ScenarioContext _scenarioContext;
 
-        protected RetrieveSingleLeaseOfferStepDefinitions(SpecFlowWebApplicationFactory<Program> webApplicationFactory, ScenarioContext scenarioContext)
+        protected RetrieveSingleLeaseOfferStepDefinitions(SpecFlowWebApplicationFactory<Startup> webApplicationFactory, ScenarioContext scenarioContext)
         {
             _applicationFactory = webApplicationFactory ?? throw new ArgumentNullException(nameof(webApplicationFactory));
             _scenarioContext = scenarioContext ?? throw new ArgumentNullException(nameof(scenarioContext));

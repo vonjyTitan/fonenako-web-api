@@ -26,30 +26,31 @@ namespace fonenako_service.Daos
                 };
 
                 dbContext.Add(city);
+                dbContext.SaveChanges();
                 var area = new Localisation
                 {
                     LocalisationId = i + 100,
-                    HierarchyId = i,
                     Name = $"Area{i}",
                     Type = LocalisationType.ARE,
-                    LeaseOffers = new List<LeaseOffer>()
-                    {
-                        new LeaseOffer
-                        {
-                            LeaseOfferID = i,
-                            Title = $"Offer number {i}",
-                            Rooms = i,
-                            MonthlyRent = 1000 + 100 * i,
-                            Surface = 10 * i,
-                            CreationDate = now.AddDays(i)
-                        }
-                    }
+                    Hierarchy = city
                 };
                 dbContext.Add(area);
-                city.SubLocalisations.Add(area);
-            }
+                dbContext.SaveChanges();
+                var leaseOffer = new LeaseOffer
+                {
+                    LeaseOfferID = i,
+                    Title = $"Offer numero {i}",
+                    Rooms = i,
+                    MonthlyRent = 1000 + 100 * i,
+                    Surface = 10 * i,
+                    CreationDate = now.AddDays(i),
+                    Description = $"Description de l'offre numero {i}",
+                    Localisation = area
+                };
 
-            dbContext.SaveChanges();
+                dbContext.Add(leaseOffer);
+                dbContext.SaveChanges();
+            }
         }
     }
 }

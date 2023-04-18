@@ -24,8 +24,6 @@ namespace fonenako.DatabaseContexts
             modelBuilder.Entity<Localisation>()
                 .HasOne(localisation => localisation.Hierarchy)
                 .WithMany()
-                .HasForeignKey(localisation => localisation.HierarchyId)
-                .HasPrincipalKey(hierarchy => hierarchy.LocalisationId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Cascade);
 
@@ -33,8 +31,6 @@ namespace fonenako.DatabaseContexts
             modelBuilder.Entity<LeaseOffer>()
                 .HasOne<Localisation>()
                 .WithMany()
-                .HasForeignKey(leaseOffer => leaseOffer.LocalisationId)
-                .HasPrincipalKey(a => a.LocalisationId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Cascade);
         }

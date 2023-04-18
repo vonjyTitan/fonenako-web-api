@@ -12,7 +12,7 @@ namespace fonenako_service
         {
             service.AddFonenakoDbContext(options =>
             {
-                options.UseInMemoryDatabase(Configuration.GetConnectionString("InMemoryDbName"));
+                options.UseNpgsql(Configuration.GetConnectionString("PgsqlConnectionString")).LogTo(Console.WriteLine);
             });
 
             return service;

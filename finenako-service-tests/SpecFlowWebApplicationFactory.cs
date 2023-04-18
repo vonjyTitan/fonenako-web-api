@@ -1,9 +1,9 @@
-﻿
+﻿using System.Linq;
+using fonenako.DatabaseContexts;
 using fonenako_service;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace fonenako_service_tests
 {
@@ -13,11 +13,11 @@ namespace fonenako_service_tests
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            base.ConfigureWebHost(builder);
-
             builder.ConfigureServices(services =>
             {
-                services.RemoveAll<DbContext>();
+                var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<FonenakoDbContext>));
+
+                services.Remove(descriptor);
                 services.AddFonenakoDbContext(options =>
                 {
                     options.UseInMemoryDatabase(InMemoryDbName);
