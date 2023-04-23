@@ -15,6 +15,7 @@
     <PackageReference Include="Moq" Version="4.18.4" />
     <PackageReference Include="Moq.EntityFrameworkCore" Version="5.0.0.2" />
     <PackageReference Include="MockQueryable.Moq" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.17" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,9 @@
     <None Remove="MockQueryable.Moq" />
     <None Remove="Dao\" />
     <None Remove="Controllers\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="Microsoft.EntityFrameworkCore.InMemory" />
+    <None Remove="Daos\LeaseOfferDaoTestDb.cs" />
   </ItemGroup>
   <ItemGroup>
     <SpecFlowFeatureFiles Update="LeaseOffer.feature">

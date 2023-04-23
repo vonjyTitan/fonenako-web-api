@@ -8,7 +8,7 @@ using fonenako.Models;
 using fonenako_service;
 using fonenako_service.Dtos;
 using fonenako_service.Models;
-using fonenako_service_tests;
+using fonenako_service_tests.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
@@ -34,6 +34,7 @@ namespace finenako_service_tests.Controllers
         {
             var scope = _applicationFactory.Services.CreateScope();
             var dbContext = scope.ServiceProvider.GetService<FonenakoDbContext>();
+            dbContext.Database.EnsureCreated();
 
             //Cleanup DB
             dbContext.RemoveRange(dbContext.Localisations);

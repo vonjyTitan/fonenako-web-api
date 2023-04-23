@@ -130,7 +130,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table2.AddRow(new string[] {
                             "1",
                             "2",
@@ -139,7 +140,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-10-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table2.AddRow(new string[] {
                             "2",
                             "2",
@@ -148,7 +150,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-09-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 12
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table2, "Given ");
 #line hidden
@@ -175,7 +178,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table3.AddRow(new string[] {
                             "2",
                             "2",
@@ -189,7 +193,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table3.AddRow(new string[] {
                             "1",
                             "2",
@@ -203,7 +208,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 19
  testRunner.And("The pageable content items should be like :", ((string)(null)), table3, "And ");
 #line hidden
@@ -239,7 +245,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table4.AddRow(new string[] {
                             "1",
                             "2",
@@ -248,7 +255,8 @@ this.FeatureBackground();
                             "3",
                             "950",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table4.AddRow(new string[] {
                             "2",
                             "2",
@@ -257,7 +265,8 @@ this.FeatureBackground();
                             "1",
                             "750",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 25
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table4, "Given ");
 #line hidden
@@ -285,7 +294,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table5.AddRow(new string[] {
                             "1",
                             "2",
@@ -299,7 +309,8 @@ this.FeatureBackground();
                             "3",
                             "950",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
                 table5.AddRow(new string[] {
                             "2",
                             "2",
@@ -313,7 +324,8 @@ this.FeatureBackground();
                             "1",
                             "750",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
 #line 32
  testRunner.And("The pageable content items should be like :", ((string)(null)), table5, "And ");
 #line hidden
@@ -349,7 +361,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table6.AddRow(new string[] {
                             "1",
                             "2",
@@ -358,7 +371,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table6.AddRow(new string[] {
                             "2",
                             "2",
@@ -367,7 +381,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 38
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table6, "Given ");
 #line hidden
@@ -395,7 +410,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table7.AddRow(new string[] {
                             "2",
                             "2",
@@ -409,7 +425,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table7.AddRow(new string[] {
                             "1",
                             "2",
@@ -423,7 +440,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 45
  testRunner.And("The pageable content items should be like :", ((string)(null)), table7, "And ");
 #line hidden
@@ -459,7 +477,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table8.AddRow(new string[] {
                             "1",
                             "2",
@@ -468,7 +487,8 @@ this.FeatureBackground();
                             "3",
                             "950",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table8.AddRow(new string[] {
                             "2",
                             "2",
@@ -477,7 +497,8 @@ this.FeatureBackground();
                             "1",
                             "750",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 51
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table8, "Given ");
 #line hidden
@@ -505,7 +526,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table9.AddRow(new string[] {
                             "2",
                             "2",
@@ -519,7 +541,8 @@ this.FeatureBackground();
                             "1",
                             "750",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table9.AddRow(new string[] {
                             "1",
                             "2",
@@ -533,7 +556,8 @@ this.FeatureBackground();
                             "3",
                             "950",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 58
  testRunner.And("The pageable content items should be like :", ((string)(null)), table9, "And ");
 #line hidden
@@ -569,7 +593,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table10.AddRow(new string[] {
                             "1",
                             "2",
@@ -578,7 +603,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table10.AddRow(new string[] {
                             "2",
                             "2",
@@ -587,7 +613,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 64
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table10, "Given ");
 #line hidden
@@ -615,7 +642,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table11.AddRow(new string[] {
                             "2",
                             "2",
@@ -629,7 +657,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table11.AddRow(new string[] {
                             "1",
                             "2",
@@ -643,7 +672,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 71
  testRunner.And("The pageable content items should be like :", ((string)(null)), table11, "And ");
 #line hidden
@@ -679,7 +709,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table12.AddRow(new string[] {
                             "1",
                             "2",
@@ -688,7 +719,8 @@ this.FeatureBackground();
                             "3",
                             "950",
                             "2023-10-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table12.AddRow(new string[] {
                             "2",
                             "2",
@@ -697,7 +729,8 @@ this.FeatureBackground();
                             "1",
                             "750",
                             "2023-09-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 78
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table12, "Given ");
 #line hidden
@@ -725,7 +758,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table13.AddRow(new string[] {
                             "2",
                             "2",
@@ -739,7 +773,8 @@ this.FeatureBackground();
                             "1",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table13.AddRow(new string[] {
                             "1",
                             "2",
@@ -753,7 +788,8 @@ this.FeatureBackground();
                             "3",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 85
  testRunner.And("The pageable content items should be like :", ((string)(null)), table13, "And ");
 #line hidden
@@ -789,7 +825,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table14.AddRow(new string[] {
                             "1",
                             "2",
@@ -798,7 +835,8 @@ this.FeatureBackground();
                             "3",
                             "950",
                             "2023-10-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table14.AddRow(new string[] {
                             "2",
                             "2",
@@ -807,7 +845,8 @@ this.FeatureBackground();
                             "1",
                             "750",
                             "2023-09-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 91
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table14, "Given ");
 #line hidden
@@ -835,7 +874,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table15.AddRow(new string[] {
                             "1",
                             "2",
@@ -849,7 +889,8 @@ this.FeatureBackground();
                             "3",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
                 table15.AddRow(new string[] {
                             "2",
                             "2",
@@ -863,7 +904,8 @@ this.FeatureBackground();
                             "1",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
 #line 98
  testRunner.And("The pageable content items should be like :", ((string)(null)), table15, "And ");
 #line hidden
@@ -899,7 +941,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table16.AddRow(new string[] {
                             "1",
                             "2",
@@ -908,7 +951,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table16.AddRow(new string[] {
                             "2",
                             "2",
@@ -917,7 +961,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 104
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table16, "Given ");
 #line hidden
@@ -945,7 +990,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table17.AddRow(new string[] {
                             "2",
                             "2",
@@ -959,7 +1005,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table17.AddRow(new string[] {
                             "1",
                             "2",
@@ -973,7 +1020,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 111
  testRunner.And("The pageable content items should be like :", ((string)(null)), table17, "And ");
 #line hidden
@@ -1009,7 +1057,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table18.AddRow(new string[] {
                             "1",
                             "2",
@@ -1018,7 +1067,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table18.AddRow(new string[] {
                             "2",
                             "2",
@@ -1027,7 +1077,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 117
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table18, "Given ");
 #line hidden
@@ -1055,7 +1106,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table19.AddRow(new string[] {
                             "2",
                             "2",
@@ -1069,7 +1121,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table19.AddRow(new string[] {
                             "1",
                             "2",
@@ -1083,7 +1136,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 124
  testRunner.And("The pageable content items should be like :", ((string)(null)), table19, "And ");
 #line hidden
@@ -1119,7 +1173,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table20.AddRow(new string[] {
                             "1",
                             "2",
@@ -1128,7 +1183,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table20.AddRow(new string[] {
                             "2",
                             "2",
@@ -1137,7 +1193,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
                 table20.AddRow(new string[] {
                             "3",
                             "2",
@@ -1146,7 +1203,8 @@ this.FeatureBackground();
                             "1",
                             "1000",
                             "2023-10-25",
-                            "image4.jpg;"});
+                            "image4.jpg;",
+                            "desc 3"});
 #line 130
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table20, "Given ");
 #line hidden
@@ -1174,7 +1232,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table21.AddRow(new string[] {
                             "3",
                             "2",
@@ -1188,7 +1247,8 @@ this.FeatureBackground();
                             "1",
                             "1000",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image4.jpg"});
+                            "http://localhost:7182/Photos/image4.jpg",
+                            "desc 3"});
 #line 138
  testRunner.And("The pageable content items should be like :", ((string)(null)), table21, "And ");
 #line hidden
@@ -1224,7 +1284,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table22.AddRow(new string[] {
                             "1",
                             "2",
@@ -1233,7 +1294,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table22.AddRow(new string[] {
                             "2",
                             "2",
@@ -1242,7 +1304,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 143
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table22, "Given ");
 #line hidden
@@ -1269,7 +1332,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table23.AddRow(new string[] {
                             "2",
                             "2",
@@ -1283,7 +1347,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table23.AddRow(new string[] {
                             "1",
                             "2",
@@ -1297,7 +1362,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 150
  testRunner.And("The pageable content items should be like :", ((string)(null)), table23, "And ");
 #line hidden
@@ -1333,7 +1399,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table24.AddRow(new string[] {
                             "1",
                             "2",
@@ -1342,7 +1409,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table24.AddRow(new string[] {
                             "2",
                             "2",
@@ -1351,7 +1419,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
                 table24.AddRow(new string[] {
                             "3",
                             "2",
@@ -1360,7 +1429,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "image4.jpg;"});
+                            "image4.jpg;",
+                            "desc 3"});
 #line 156
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table24, "Given ");
 #line hidden
@@ -1387,7 +1457,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table25.AddRow(new string[] {
                             "3",
                             "2",
@@ -1401,7 +1472,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image4.jpg"});
+                            "http://localhost:7182/Photos/image4.jpg",
+                            "desc 3"});
                 table25.AddRow(new string[] {
                             "2",
                             "2",
@@ -1415,7 +1487,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
 #line 164
  testRunner.And("The pageable content items should be like :", ((string)(null)), table25, "And ");
 #line hidden
@@ -1451,7 +1524,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table26.AddRow(new string[] {
                             "1",
                             "2",
@@ -1460,7 +1534,8 @@ this.FeatureBackground();
                             "1",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table26.AddRow(new string[] {
                             "2",
                             "2",
@@ -1469,7 +1544,8 @@ this.FeatureBackground();
                             "2",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
                 table26.AddRow(new string[] {
                             "3",
                             "2",
@@ -1478,7 +1554,8 @@ this.FeatureBackground();
                             "3",
                             "1000",
                             "2023-10-25",
-                            "image4.jpg;"});
+                            "image4.jpg;",
+                            "desc 3"});
 #line 170
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table26, "Given ");
 #line hidden
@@ -1505,7 +1582,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table27.AddRow(new string[] {
                             "3",
                             "2",
@@ -1519,7 +1597,8 @@ this.FeatureBackground();
                             "3",
                             "1000",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image4.jpg"});
+                            "http://localhost:7182/Photos/image4.jpg",
+                            "desc 3"});
                 table27.AddRow(new string[] {
                             "2",
                             "2",
@@ -1533,7 +1612,8 @@ this.FeatureBackground();
                             "2",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
 #line 178
  testRunner.And("The pageable content items should be like :", ((string)(null)), table27, "And ");
 #line hidden
@@ -1569,7 +1649,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table28.AddRow(new string[] {
                             "1",
                             "2",
@@ -1578,7 +1659,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table28.AddRow(new string[] {
                             "2",
                             "2",
@@ -1587,7 +1669,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
                 table28.AddRow(new string[] {
                             "3",
                             "2",
@@ -1596,7 +1679,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "image4.jpg;"});
+                            "image4.jpg;",
+                            "desc 3"});
 #line 184
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table28, "Given ");
 #line hidden
@@ -1624,7 +1708,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table29.AddRow(new string[] {
                             "3",
                             "2",
@@ -1638,7 +1723,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image4.jpg"});
+                            "http://localhost:7182/Photos/image4.jpg",
+                            "desc 3"});
                 table29.AddRow(new string[] {
                             "2",
                             "2",
@@ -1652,7 +1738,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
 #line 192
  testRunner.And("The pageable content items should be like :", ((string)(null)), table29, "And ");
 #line hidden
@@ -1688,7 +1775,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table30.AddRow(new string[] {
                             "1",
                             "2",
@@ -1697,7 +1785,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table30.AddRow(new string[] {
                             "2",
                             "2",
@@ -1706,7 +1795,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
                 table30.AddRow(new string[] {
                             "3",
                             "2",
@@ -1715,7 +1805,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "image4.jpg;"});
+                            "image4.jpg;",
+                            "desc 3"});
 #line 198
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table30, "Given ");
 #line hidden
@@ -1743,7 +1834,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table31.AddRow(new string[] {
                             "2",
                             "2",
@@ -1757,7 +1849,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table31.AddRow(new string[] {
                             "1",
                             "2",
@@ -1771,7 +1864,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 206
  testRunner.And("The pageable content items should be like :", ((string)(null)), table31, "And ");
 #line hidden
@@ -1807,7 +1901,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table32.AddRow(new string[] {
                             "1",
                             "3",
@@ -1816,7 +1911,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table32.AddRow(new string[] {
                             "2",
                             "2",
@@ -1825,7 +1921,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
                 table32.AddRow(new string[] {
                             "3",
                             "1",
@@ -1834,7 +1931,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "image4.jpg;"});
+                            "image4.jpg;",
+                            "desc 3"});
 #line 212
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table32, "Given ");
 #line hidden
@@ -1862,7 +1960,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table33.AddRow(new string[] {
                             "2",
                             "2",
@@ -1876,7 +1975,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table33.AddRow(new string[] {
                             "1",
                             "3",
@@ -1890,7 +1990,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 220
  testRunner.And("The pageable content items should be like :", ((string)(null)), table33, "And ");
 #line hidden
@@ -1926,7 +2027,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table34.AddRow(new string[] {
                             "1",
                             "3",
@@ -1935,7 +2037,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table34.AddRow(new string[] {
                             "2",
                             "2",
@@ -1944,7 +2047,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
                 table34.AddRow(new string[] {
                             "3",
                             "1",
@@ -1953,7 +2057,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "image4.jpg;"});
+                            "image4.jpg;",
+                            "desc 3"});
 #line 226
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table34, "Given ");
 #line hidden
@@ -1981,7 +2086,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table35.AddRow(new string[] {
                             "3",
                             "1",
@@ -1995,7 +2101,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image4.jpg"});
+                            "http://localhost:7182/Photos/image4.jpg",
+                            "desc 3"});
                 table35.AddRow(new string[] {
                             "2",
                             "2",
@@ -2009,7 +2116,8 @@ this.FeatureBackground();
                             "1",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
                 table35.AddRow(new string[] {
                             "1",
                             "3",
@@ -2023,7 +2131,8 @@ this.FeatureBackground();
                             "3",
                             "750",
                             "2023-09-25",
-                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg"});
+                            "http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg",
+                            "desc 1"});
 #line 234
  testRunner.And("The pageable content items should be like :", ((string)(null)), table35, "And ");
 #line hidden
@@ -2059,7 +2168,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table36.AddRow(new string[] {
                             "1",
                             "2",
@@ -2068,7 +2178,8 @@ this.FeatureBackground();
                             "3",
                             "800",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table36.AddRow(new string[] {
                             "2",
                             "2",
@@ -2077,7 +2188,8 @@ this.FeatureBackground();
                             "1",
                             "900",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
                 table36.AddRow(new string[] {
                             "3",
                             "2",
@@ -2086,7 +2198,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "image4.jpg;"});
+                            "image4.jpg;",
+                            "desc 3"});
                 table36.AddRow(new string[] {
                             "4",
                             "2",
@@ -2095,7 +2208,8 @@ this.FeatureBackground();
                             "3",
                             "1000",
                             "2023-11-25",
-                            "image5.jpg;"});
+                            "image5.jpg;",
+                            "desc 4"});
                 table36.AddRow(new string[] {
                             "5",
                             "2",
@@ -2104,7 +2218,8 @@ this.FeatureBackground();
                             "3",
                             "1500",
                             "2023-11-25",
-                            "image6.jpg;"});
+                            "image6.jpg;",
+                            "desc 5"});
 #line 241
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table36, "Given ");
 #line hidden
@@ -2132,7 +2247,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table37.AddRow(new string[] {
                             "3",
                             "2",
@@ -2146,7 +2262,8 @@ this.FeatureBackground();
                             "2",
                             "1000",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image4.jpg"});
+                            "http://localhost:7182/Photos/image4.jpg",
+                            "desc 3"});
                 table37.AddRow(new string[] {
                             "2",
                             "2",
@@ -2160,7 +2277,8 @@ this.FeatureBackground();
                             "1",
                             "900",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
 #line 251
  testRunner.And("The pageable content items should be like :", ((string)(null)), table37, "And ");
 #line hidden
@@ -2196,7 +2314,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table38.AddRow(new string[] {
                             "1",
                             "2",
@@ -2205,7 +2324,8 @@ this.FeatureBackground();
                             "3",
                             "800",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table38.AddRow(new string[] {
                             "2",
                             "2",
@@ -2214,7 +2334,8 @@ this.FeatureBackground();
                             "1",
                             "900",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
                 table38.AddRow(new string[] {
                             "3",
                             "2",
@@ -2223,7 +2344,8 @@ this.FeatureBackground();
                             "2",
                             "950",
                             "2023-10-25",
-                            "image4.jpg;"});
+                            "image4.jpg;",
+                            "desc 3"});
                 table38.AddRow(new string[] {
                             "4",
                             "2",
@@ -2232,7 +2354,8 @@ this.FeatureBackground();
                             "3",
                             "1000",
                             "2023-11-25",
-                            "image5.jpg;"});
+                            "image5.jpg;",
+                            "desc 4"});
                 table38.AddRow(new string[] {
                             "5",
                             "2",
@@ -2241,7 +2364,8 @@ this.FeatureBackground();
                             "3",
                             "1500",
                             "2023-11-25",
-                            "image6.jpg;"});
+                            "image6.jpg;",
+                            "desc 5"});
 #line 257
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table38, "Given ");
 #line hidden
@@ -2269,7 +2393,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table39.AddRow(new string[] {
                             "3",
                             "2",
@@ -2283,7 +2408,8 @@ this.FeatureBackground();
                             "2",
                             "950",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image4.jpg"});
+                            "http://localhost:7182/Photos/image4.jpg",
+                            "desc 3"});
                 table39.AddRow(new string[] {
                             "2",
                             "2",
@@ -2297,7 +2423,8 @@ this.FeatureBackground();
                             "1",
                             "900",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
 #line 267
  testRunner.And("The pageable content items should be like :", ((string)(null)), table39, "And ");
 #line hidden
@@ -2333,7 +2460,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "CreationDate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table40.AddRow(new string[] {
                             "1",
                             "1",
@@ -2342,7 +2470,8 @@ this.FeatureBackground();
                             "3",
                             "800",
                             "2023-10-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table40.AddRow(new string[] {
                             "2",
                             "1",
@@ -2351,7 +2480,8 @@ this.FeatureBackground();
                             "1",
                             "900",
                             "2023-09-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 273
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table40, "Given ");
 #line hidden

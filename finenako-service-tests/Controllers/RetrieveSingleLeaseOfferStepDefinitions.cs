@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text.Json;
 using fonenako_service;
 using fonenako_service.Dtos;
-using fonenako_service_tests;
+using fonenako_service_tests.Controllers;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;

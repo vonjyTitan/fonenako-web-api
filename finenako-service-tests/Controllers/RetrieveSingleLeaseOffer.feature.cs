@@ -164,7 +164,8 @@ this.FeatureBackground();
                             "Rooms",
                             "MonthlyRent",
                             "Creationdate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table43.AddRow(new string[] {
                             "1",
                             "2",
@@ -173,7 +174,8 @@ this.FeatureBackground();
                             "3",
                             "800",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
 #line 18
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table43, "Given ");
 #line hidden
@@ -216,7 +218,8 @@ this.FeatureBackground();
                             "MonthlyRent",
                             "Description",
                             "Creationdate",
-                            "ConcatenedPhotos"});
+                            "ConcatenedPhotos",
+                            "Description"});
                 table44.AddRow(new string[] {
                             "1",
                             "2",
@@ -226,7 +229,8 @@ this.FeatureBackground();
                             "800",
                             "Description 1",
                             "2023-09-25",
-                            "image1.jpg;image2.jpg"});
+                            "image1.jpg;image2.jpg",
+                            "desc 1"});
                 table44.AddRow(new string[] {
                             "2",
                             "2",
@@ -236,7 +240,8 @@ this.FeatureBackground();
                             "900",
                             "Description 2",
                             "2023-10-25",
-                            "image3.jpg;"});
+                            "image3.jpg;",
+                            "desc 2"});
 #line 25
  testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table44, "Given ");
 #line hidden
@@ -260,7 +265,8 @@ this.FeatureBackground();
                             "MonthlyRent",
                             "Description",
                             "Creationdate",
-                            "PhotoUris"});
+                            "PhotoUris",
+                            "Description"});
                 table45.AddRow(new string[] {
                             "2",
                             "2",
@@ -275,7 +281,8 @@ this.FeatureBackground();
                             "900",
                             "Description 2",
                             "2023-10-25",
-                            "http://localhost:7182/Photos/image3.jpg"});
+                            "http://localhost:7182/Photos/image3.jpg",
+                            "desc 2"});
 #line 31
  testRunner.And("The body content should be like :", ((string)(null)), table45, "And ");
 #line hidden
