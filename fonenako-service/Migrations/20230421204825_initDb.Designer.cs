@@ -10,8 +10,8 @@ using fonenako.DatabaseContexts;
 namespace fonenako_service.Migrations
 {
     [DbContext(typeof(FonenakoDbContext))]
-    [Migration("20230416131631_RemoveUselessExcplicitForeignKey")]
-    partial class RemoveUselessExcplicitForeignKey
+    [Migration("20230421204825_initDb")]
+    partial class initDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,10 +46,7 @@ namespace fonenako_service.Migrations
                         .HasColumnType("text")
                         .HasColumnName("Description");
 
-                    b.Property<int?>("LocalisationId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("LocalisationId1")
+                    b.Property<int>("LocalisationId")
                         .HasColumnType("integer");
 
                     b.Property<double>("MonthlyRent")
@@ -72,8 +69,6 @@ namespace fonenako_service.Migrations
 
                     b.HasIndex("LocalisationId");
 
-                    b.HasIndex("LocalisationId1");
-
                     b.ToTable("LeaseOffer");
                 });
 
@@ -85,10 +80,7 @@ namespace fonenako_service.Migrations
                         .HasColumnName("LocalisationId")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("HierarchyLocalisationId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("LocalisationId1")
+                    b.Property<int?>("HierarchyId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -101,9 +93,7 @@ namespace fonenako_service.Migrations
 
                     b.HasKey("LocalisationId");
 
-                    b.HasIndex("HierarchyLocalisationId");
-
-                    b.HasIndex("LocalisationId1");
+                    b.HasIndex("HierarchyId");
 
                     b.ToTable("Localisation");
                 });
@@ -112,11 +102,7 @@ namespace fonenako_service.Migrations
                 {
                     b.HasOne("fonenako_service.Models.Localisation", "Localisation")
                         .WithMany("LeaseOffers")
-                        .HasForeignKey("LocalisationId");
-
-                    b.HasOne("fonenako_service.Models.Localisation", null)
-                        .WithMany()
-                        .HasForeignKey("LocalisationId1")
+                        .HasForeignKey("LocalisationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -126,13 +112,8 @@ namespace fonenako_service.Migrations
             modelBuilder.Entity("fonenako_service.Models.Localisation", b =>
                 {
                     b.HasOne("fonenako_service.Models.Localisation", "Hierarchy")
-                        .WithMany()
-                        .HasForeignKey("HierarchyLocalisationId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("fonenako_service.Models.Localisation", null)
                         .WithMany("SubLocalisations")
-                        .HasForeignKey("LocalisationId1");
+                        .HasForeignKey("HierarchyId");
 
                     b.Navigation("Hierarchy");
                 });

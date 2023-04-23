@@ -208,7 +208,7 @@ Scenario: Retrieve lease offer list with filter on monthlyRentMax
 		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
 		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 
-Scenario: Retrieve lease offer list with filter on localisations
+Scenario: Retrieve lease offer list with filter on areas
 	Given The following list of lease offer is present in the system
 		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos	|
 		|1            |3				|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
@@ -219,6 +219,21 @@ Scenario: Retrieve lease offer list with filter on localisations
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
+		|1            |3	 |ARE     |Area2   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
+
+Scenario: Retrieve lease offer list with filter on cities
+	Given The following list of lease offer is present in the system
+		|LeaseOfferID |LocalisationId	|Title          |Surface |Rooms|MonthlyRent|CreationDate|ConcatenedPhotos	|
+		|1            |3				|Offer number 1 |18      |3    |750		 |2023-09-25  |image1.jpg;image2.jpg|
+		|2            |2				|Offer number 2 |50      |1    |950		 |2023-10-25  |image3.jpg;			|
+		|3            |1				|Offer number 2 |65      |2    |1000	 |2023-10-25  |image4.jpg;			|
+	When I make a GET request on lease-offers endpoint with filter : '{"localisations":[1]}'
+	Then The response Status code should be '200'
+	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '3'}
+	And The pageable content items should be like :
+		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |
+		|3            |1	 |CIT     |City1   |		   |			 |			   |Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|
 		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|
 		|1            |3	 |ARE     |Area2   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|
 

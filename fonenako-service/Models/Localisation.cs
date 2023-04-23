@@ -17,6 +17,8 @@ namespace fonenako_service.Models
         [Column("Type")]
         public LocalisationType Type { get; set; }
 
+        public int? HierarchyId { get; private set; }
+
         public Localisation Hierarchy { get; set; }
 
         public ICollection<LeaseOffer> LeaseOffers { get; set; } = new HashSet<LeaseOffer>();

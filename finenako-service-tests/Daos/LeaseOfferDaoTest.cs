@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -133,7 +133,8 @@ namespace fonenako_service_tests.Daos
             new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, new []{ 4, 5 }, "RetrieveLeaseOffersByPageAsync Should return all lease offers with rooms in [4 and 5]" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, new []{ 5, 6, 7, 8, 9, 10}, "RetrieveLeaseOffersByPageAsync Should return all lease offers with monthly rent greater than 1499.99" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, new []{ 1, 2, 3, 4, 5}, "RetrieveLeaseOffersByPageAsync Should return all lease offers with monthly rent smaller than 1500.01" },
-            new object[]{ new LeaseOfferFilter { Localisations = new[] { 11, 12 } }, new []{ 1, 2}, "RetrieveLeaseOffersByPageAsync Should return all lease offers present in areas : [1 and 2]" }
+            new object[]{ new LeaseOfferFilter { Localisations = new[] { 11, 12 } }, new []{ 1, 2}, "RetrieveLeaseOffersByPageAsync Should return all lease offers present in areas : [11 and 12]" },
+            new object[]{ new LeaseOfferFilter { Localisations = new[] { 1, 2 } }, new []{ 1, 2}, "RetrieveLeaseOffersByPageAsync Should return all lease offers present in cities : [1 and 2]" }
         };
 
         [Test]
@@ -181,7 +182,8 @@ namespace fonenako_service_tests.Daos
             new object[]{ new LeaseOfferFilter { Rooms = new[] { 4, 5 } }, 2, "CountLeaseOffersAsync Should return size of lease offers with rooms in [4 and 5]" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMin = 1500d }, 6, "CountLeaseOffersAsync Should return size of lease offers with monthly rent greater than 1499.99" },
             new object[]{ new LeaseOfferFilter { MonthlyRentMax = 1500d }, 5, "CountLeaseOffersAsync Should return size of lease offers with monthly rent smaller than 1500.01" },
-            new object[]{ new LeaseOfferFilter { Localisations = new[] { 11, 12 } }, 2, "CountLeaseOffersAsync Should return size of lease offers present in areas : [1 and 2]" }
+            new object[]{ new LeaseOfferFilter { Localisations = new[] { 11, 12 } }, 2, "CountLeaseOffersAsync Should return size of lease offers present in areas : [11 and 12]" },
+            new object[]{ new LeaseOfferFilter { Localisations = new[] { 1, 2 } }, 2, "CountLeaseOffersAsync Should return size of lease offers present in cities : [1 and 2]" }
         };
     }
 }

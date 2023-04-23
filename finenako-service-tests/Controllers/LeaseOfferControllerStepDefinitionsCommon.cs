@@ -140,9 +140,9 @@ namespace finenako_service_tests.Controllers
                     LocalisationId = row.GetInt32("Loc.Id"),
                     Name = row.GetString("Loc.Name"),
                     Type = Enum.Parse<LocalisationType>(row.GetString("Loc.Type")),
-                    Hierarchy = row.TryGetValue("Loc.Hier.Id", out var hierId) ? new LocalisationDto
+                    Hierarchy = row.TryGetValue("Loc.Hier.Id", out var hierIdString) && int.TryParse(hierIdString, out var hierId) ? new LocalisationDto
                     {
-                        LocalisationId = int.Parse(hierId),
+                        LocalisationId = hierId,
                         Name = row.GetString("Loc.Hier.Name"),
                         Type = Enum.Parse<LocalisationType>(row.GetString("Loc.Hier.Type"))
                     } : null

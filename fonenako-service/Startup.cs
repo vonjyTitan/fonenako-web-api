@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using fonenako.DatabaseContexts;
-using fonenako_service.Daos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -57,7 +56,7 @@ namespace fonenako_service
 
             #region init fake data
 
-            FakeData.InitFakeData(fonenakoDbContext);
+            //FakeData.InitFakeData(fonenakoDbContext);
 
             #endregion
         }

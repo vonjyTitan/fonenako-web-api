@@ -23,34 +23,33 @@ namespace fonenako_service.Daos
                     LocalisationId = i,
                     Name = $"City{i}",
                     Type = LocalisationType.CIT,
+                    SubLocalisations = new List<Localisation>
+                    {
+                        new Localisation
+                        {
+                            LocalisationId = i + 100,
+                            Name = $"Area{i}",
+                            Type = LocalisationType.ARE,
+                            LeaseOffers = new List<LeaseOffer>
+                            {
+                                new LeaseOffer
+                                {
+                                    LeaseOfferID = i,
+                                    Title = $"Offer numero {i}",
+                                    Rooms = i,
+                                    MonthlyRent = 1000 + 100 * i,
+                                    Surface = 10 * i,
+                                    CreationDate = now.AddDays(i),
+                                    Description = $"Description de l'offre numero {i}"
+                                }
+                            }
+                        }
+                    }
                 };
 
                 dbContext.Add(city);
-                dbContext.SaveChanges();
-                var area = new Localisation
-                {
-                    LocalisationId = i + 100,
-                    Name = $"Area{i}",
-                    Type = LocalisationType.ARE,
-                    Hierarchy = city
-                };
-                dbContext.Add(area);
-                dbContext.SaveChanges();
-                var leaseOffer = new LeaseOffer
-                {
-                    LeaseOfferID = i,
-                    Title = $"Offer numero {i}",
-                    Rooms = i,
-                    MonthlyRent = 1000 + 100 * i,
-                    Surface = 10 * i,
-                    CreationDate = now.AddDays(i),
-                    Description = $"Description de l'offre numero {i}",
-                    Localisation = area
-                };
-
-                dbContext.Add(leaseOffer);
-                dbContext.SaveChanges();
             }
+            dbContext.SaveChanges();
         }
     }
 }

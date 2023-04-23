@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace fonenako_service.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,8 +16,7 @@ namespace fonenako_service.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Type = table.Column<int>(type: "integer", nullable: false),
-                    HierarchyId = table.Column<int>(type: "integer", nullable: true),
-                    LocalisationId1 = table.Column<int>(type: "integer", nullable: true)
+                    HierarchyId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -25,12 +24,6 @@ namespace fonenako_service.Migrations
                     table.ForeignKey(
                         name: "FK_Localisation_Localisation_HierarchyId",
                         column: x => x.HierarchyId,
-                        principalTable: "Localisation",
-                        principalColumn: "LocalisationId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Localisation_Localisation_LocalisationId1",
-                        column: x => x.LocalisationId1,
                         principalTable: "Localisation",
                         principalColumn: "LocalisationId",
                         onDelete: ReferentialAction.Restrict);
@@ -50,8 +43,7 @@ namespace fonenako_service.Migrations
                     Carousel = table.Column<string>(type: "text", nullable: true),
                     Photos = table.Column<string>(type: "text", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    LocalisationId = table.Column<int>(type: "integer", nullable: false),
-                    LocalisationId1 = table.Column<int>(type: "integer", nullable: true)
+                    LocalisationId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,12 +54,6 @@ namespace fonenako_service.Migrations
                         principalTable: "Localisation",
                         principalColumn: "LocalisationId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_LeaseOffer_Localisation_LocalisationId1",
-                        column: x => x.LocalisationId1,
-                        principalTable: "Localisation",
-                        principalColumn: "LocalisationId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -76,19 +62,9 @@ namespace fonenako_service.Migrations
                 column: "LocalisationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaseOffer_LocalisationId1",
-                table: "LeaseOffer",
-                column: "LocalisationId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Localisation_HierarchyId",
                 table: "Localisation",
                 column: "HierarchyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Localisation_LocalisationId1",
-                table: "Localisation",
-                column: "LocalisationId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

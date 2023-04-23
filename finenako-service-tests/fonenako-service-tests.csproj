@@ -61,9 +61,6 @@
     <Compile Update="Controllers\RetrieveSingleLeaseOffer.feature.cs">
       <DependentUpon>RetrieveSingleLeaseOffer.feature</DependentUpon>
     </Compile>
-    <Compile Update="Controllers\RetrieveCityList.feature.cs">
-      <DependentUpon>RetrieveCityList.feature</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\fonenako-service\fonenako-service.csproj" />

@@ -39,6 +39,8 @@ namespace fonenako.Models
         [Column("CreationDate")]
         public DateTime CreationDate { get; set; }
 
+        public int LocalisationId { get; set; }
+
         public Localisation Localisation { get; set; }
     }
 }
