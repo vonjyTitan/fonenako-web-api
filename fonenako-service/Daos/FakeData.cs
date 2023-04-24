@@ -40,7 +40,10 @@ namespace fonenako_service.Daos
                                     MonthlyRent = 1000 + 100 * i,
                                     Surface = 10 * i,
                                     CreationDate = now.AddDays(i),
-                                    Description = $"Description de l'offre numero {i}"
+                                    LeaseOfferDescription = new LeaseOfferDescription
+                                    {
+                                       Content = $"Description de l'offre numero {i}"
+                                    }
                                 }
                             }
                         }

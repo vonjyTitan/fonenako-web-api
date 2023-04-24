@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Web;
@@ -81,6 +82,7 @@ namespace fonenako_service_tests.Controllers
         {
             ParseBodyIfNeed();
             var expectedContent = table.CreateSet(LeaseOfferControllerStepDefinitionsCommon.LeaseOfferDtoParser);
+            expectedContent = expectedContent.Select(t => { t.Description = string.IsNullOrEmpty(t.Description) ? null : t.Description; return t; }).ToArray();
 
             Assert.AreEqual(JsonSerializer.Serialize(expectedContent), JsonSerializer.Serialize(_responseBody.Content), "The lease offer list in the response body as Json is not equal to the expectation");
         }

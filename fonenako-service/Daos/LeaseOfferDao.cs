@@ -74,6 +74,7 @@ namespace fonenako_service.Daos
             return await _fonenakoDbContext.LeaseOffers.AsNoTracking()
                                                        .Include(leaseOffer => leaseOffer.Localisation)
                                                        .ThenInclude(localisation => localisation.Hierarchy)
+                                                       .Include(leaseOffer => leaseOffer.LeaseOfferDescription)
                                                        .Where(leaseOffer => leaseOffer.LeaseOfferID == leaseOfferId)
                                                        .FirstOrDefaultAsync();
         }

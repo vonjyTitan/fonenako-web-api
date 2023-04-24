@@ -18,8 +18,8 @@ Scenario: Retrieve lease offer list without any parameter
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris																	  |Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 Scenario: Retrieve lease offer list order by leaseOfferId asc
 	Given The following list of lease offer is present in the system
@@ -31,8 +31,8 @@ Scenario: Retrieve lease offer list order by leaseOfferId asc
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|Description|
-		|1            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
-		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
+		|1            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
 
 Scenario: Retrieve lease offer list order by leaseOfferId desc
 	Given The following list of lease offer is present in the system
@@ -44,8 +44,8 @@ Scenario: Retrieve lease offer list order by leaseOfferId desc
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 Scenario: Retrieve lease offer list order by monthlyRent asc
 	Given The following list of lease offer is present in the system
@@ -57,8 +57,8 @@ Scenario: Retrieve lease offer list order by monthlyRent asc
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 Scenario: Retrieve lease offer list order by monthlyRent desc
 	Given The following list of lease offer is present in the system
@@ -70,8 +70,8 @@ Scenario: Retrieve lease offer list order by monthlyRent desc
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 
 Scenario: Retrieve lease offer list order by creationDate asc
@@ -84,8 +84,8 @@ Scenario: Retrieve lease offer list order by creationDate asc
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 Scenario: Retrieve lease offer list order by creationDate desc
 	Given The following list of lease offer is present in the system
@@ -97,8 +97,8 @@ Scenario: Retrieve lease offer list order by creationDate desc
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|Description|
-		|1            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
-		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
+		|1            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 1 |65      |3    |950		 |2023-10-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |18      |1    |750		 |2023-09-25  |http://localhost:7182/Photos/image3.jpg||
 
 Scenario: Retrieve lease offer list order by surface asc
 	Given The following list of lease offer is present in the system
@@ -110,8 +110,8 @@ Scenario: Retrieve lease offer list order by surface asc
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 Scenario: Retrieve lease offer list order by surface desc
 	Given The following list of lease offer is present in the system
@@ -123,8 +123,8 @@ Scenario: Retrieve lease offer list order by surface desc
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 Scenario: Retrieve lease offer list with both pagination and order
 	Given The following list of lease offer is present in the system
@@ -137,7 +137,7 @@ Scenario: Retrieve lease offer list with both pagination and order
 	And The pageable infos should be like : {CurrentPage : '2', TotalPage : '2', PageSize : '2', totalFound : '3'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris|Description|
-		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 3 |18      |1    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|desc 3|
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 3 |18      |1    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg||
 	   
 Scenario: Retrieve lease offer list with page index higher than max
 	Given The following list of lease offer is present in the system
@@ -149,8 +149,8 @@ Scenario: Retrieve lease offer list with page index higher than max
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '2', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |18      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |65      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 													 						   
 Scenario: Retrieve lease offer list with filter on surfaceMin
 	Given The following list of lease offer is present in the system
@@ -163,8 +163,8 @@ Scenario: Retrieve lease offer list with filter on surfaceMin
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|desc 3|
-		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg||
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
 																			   
 Scenario: Retrieve lease offer list with filter on rooms
 	Given The following list of lease offer is present in the system
@@ -177,8 +177,8 @@ Scenario: Retrieve lease offer list with filter on rooms
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |3    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|desc 3|
-		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |50      |2    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |3    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg||
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |50      |2    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
 
 Scenario: Retrieve lease offer list with filter on monthlyRentMin
 	Given The following list of lease offer is present in the system
@@ -191,8 +191,8 @@ Scenario: Retrieve lease offer list with filter on monthlyRentMin
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|desc 3|
-		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg||
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
 
 Scenario: Retrieve lease offer list with filter on monthlyRentMax
 	Given The following list of lease offer is present in the system
@@ -205,8 +205,8 @@ Scenario: Retrieve lease offer list with filter on monthlyRentMax
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 Scenario: Retrieve lease offer list with filter on areas
 	Given The following list of lease offer is present in the system
@@ -219,8 +219,8 @@ Scenario: Retrieve lease offer list with filter on areas
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |3	 |ARE     |Area2   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |3	 |ARE     |Area2   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 Scenario: Retrieve lease offer list with filter on cities
 	Given The following list of lease offer is present in the system
@@ -233,9 +233,9 @@ Scenario: Retrieve lease offer list with filter on cities
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '3'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|3            |1	 |CIT     |City1   |		   |			 |			   |Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|desc 3|
-		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
-		|1            |3	 |ARE     |Area2   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg|desc 1|
+		|3            |1	 |CIT     |City1   |		   |			 |			   |Offer number 2 |65      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg||
+		|2            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 2 |50      |1    |950		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
+		|1            |3	 |ARE     |Area2   |1	       |CIT			 |City1		   |Offer number 1 |18      |3    |750		 |2023-09-25  |http://localhost:7182/Photos/image1.jpg;http://localhost:7182/Photos/image2.jpg||
 
 Scenario: Retrieve lease offer list with combined filters
 	Given The following list of lease offer is present in the system
@@ -250,8 +250,8 @@ Scenario: Retrieve lease offer list with combined filters
 	And The pageable infos should be like : {CurrentPage : '1', TotalPage : '1', PageSize : '10000', totalFound : '2'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 3 |56      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|desc 3|
-		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |40      |1    |900		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 3 |56      |2    |1000		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg||
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |40      |1    |900		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
 
 Scenario: Retrieve lease offer list with both filter and pagination
 	Given The following list of lease offer is present in the system
@@ -266,8 +266,8 @@ Scenario: Retrieve lease offer list with both filter and pagination
 	And The pageable infos should be like : {CurrentPage : '2', TotalPage : '2', PageSize : '2', totalFound : '4'}
 	And The pageable content items should be like :
 		|LeaseOfferID |Loc.Id|Loc.Type|Loc.Name|Loc.Hier.Id|Loc.Hier.Type|Loc.Hier.Name|Title          |Surface |Rooms|MonthlyRent|CreationDate|PhotoUris			    |Description|
-		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 3 |56      |2    |950		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg|desc 3|
-		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |40      |1    |900		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg|desc 2|
+		|3            |2	 |ARE     |Area1   |1		   |CIT			 |City1		   |Offer number 3 |56      |2    |950		 |2023-10-25  |http://localhost:7182/Photos/image4.jpg||
+		|2            |2	 |ARE     |Area1   |1	       |CIT			 |City1		   |Offer number 2 |40      |1    |900		 |2023-10-25  |http://localhost:7182/Photos/image3.jpg||
 
 Scenario: Retrieve lease offer list with filter that does not have macthing
 	Given The following list of lease offer is present in the system

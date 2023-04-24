@@ -62,7 +62,7 @@ namespace fonenako_service_tests.Daos
                             MonthlyRent = 1000 + 100 * i,
                             Surface = 10 * i,
                             CreationDate = now.AddDays(i),
-                            Description = $"Offer {i} description"
+                            LeaseOfferDescription = new (){ Content = $"Offer {i} description" }
                         }
                     }
                 });
@@ -84,7 +84,7 @@ namespace fonenako_service_tests.Daos
                         MonthlyRent = 1000 + 100 * 11,
                         Surface = 10 * 11,
                         CreationDate = now.AddDays(11),
-                        Description = $"Offer 11 description"
+                        LeaseOfferDescription = new (){Content = $"Offer 11 description" }
                     }
                 }
 
@@ -192,12 +192,14 @@ namespace fonenako_service_tests.Daos
         }
 
         [Test]
-        public async Task FindLeaseOfferDetailsByIdAsync_should_return_the_right_lease_offer()
+        public async Task FindLeaseOfferDetailsByIdAsync_should_return_the_right_lease_offer_with_description()
         {
             var leaseOffer = await _leaseOfferDao.FindLeaseOfferDetailsByIdAsync(2);
 
             Assert.IsNotNull(leaseOffer);
             Assert.AreEqual(2, leaseOffer.LeaseOfferID);
+            Assert.IsNotNull(leaseOffer.LeaseOfferDescription);
+            Assert.AreEqual("Offer 2 description", leaseOffer.LeaseOfferDescription.Content);
         }
 
         [Test]

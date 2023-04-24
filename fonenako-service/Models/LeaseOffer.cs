@@ -26,10 +26,6 @@ namespace fonenako.Models
         [Column("MonthlyRent")]
         public double MonthlyRent { get; set; }
 
-        [Required]
-        [Column("Description")]
-        public string Description { get; set; }
-
         [Column("Carousel")]
         public string Carousel { get; set; } = string.Empty;
 
@@ -42,5 +38,7 @@ namespace fonenako.Models
         public int LocalisationId { get; set; }
 
         public Localisation Localisation { get; set; }
+
+        public LeaseOfferDescription LeaseOfferDescription { get; set; }
     }
 }

@@ -77,6 +77,7 @@ namespace finenako_service_tests.Controllers
         {
             var leaseOffer = row.CreateInstance<LeaseOffer>();
             leaseOffer.Localisation = new Localisation { LocalisationId = int.Parse(row["LocalisationId"]) };
+            leaseOffer.LeaseOfferDescription = new() { Content = row["Description"] };
 
             return leaseOffer;
         }
@@ -132,7 +133,6 @@ namespace finenako_service_tests.Controllers
         public static LeaseOfferDto LeaseOfferDtoParser(TableRow row)
         {
             var dto = row.CreateInstance<LeaseOfferDto>();
-            dto.PhotoUris = row.GetString("PhotoUris").Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
             if (row.ContainsKey("Loc.Id"))
             {
@@ -149,6 +149,7 @@ namespace finenako_service_tests.Controllers
                     } : null
                 };
             }
+            dto.Description = string.IsNullOrEmpty(row["Description"]) ? null : row["Description"].Trim();
 
             return dto;
         }
