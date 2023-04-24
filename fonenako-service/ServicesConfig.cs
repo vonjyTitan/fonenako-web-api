@@ -10,7 +10,9 @@ namespace fonenako_service
         {
             service
                 .AddScoped<ILeaseOfferService, LeaseOfferService>()
-                .AddScoped<ILeaseOfferDao, LeaseOfferDao>();
+                .AddScoped<ILeaseOfferDao, LeaseOfferDao>()
+                .AddScoped<ILocalisationService, LocalisationService>()
+                .AddScoped<ILocalisationDao, LocalisationDao>();
             return service;
         }
     }

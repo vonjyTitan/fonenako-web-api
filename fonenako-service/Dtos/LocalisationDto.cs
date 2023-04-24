@@ -12,13 +12,13 @@ namespace fonenako_service.Dtos
         [JsonPropertyName("localisationId")]
         public int LocalisationId { get; set; }
 
-        [JsonPropertyName("name")]
+        [JsonPropertyName(LocalisationDtoProperties.Name)]
         public string Name { get; set; }
 
         [JsonPropertyName("hierarchy")]
         public LocalisationDto Hierarchy { get; set; }
 
-        [JsonPropertyName("type")]
+        [JsonPropertyName(LocalisationDtoProperties.Type)]
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public LocalisationType Type { get; set; }
     }

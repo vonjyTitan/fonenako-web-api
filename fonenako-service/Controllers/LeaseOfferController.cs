@@ -50,6 +50,7 @@ namespace fonenako.Controllers
                                                                 [FromQuery(Name = "order")] Order? order,
                                                                 [FromQueryAsJson(Name = "filter")] LeaseOfferFilter filter)
         {
+            //TODO refactor this part with the one in LocalisationController
             var orderAsEnum = order ?? Order.Desc;
             var orderTdoField = nameof(LeaseOfferDto.LeaseOfferID);
             if (order.HasValue && string.IsNullOrWhiteSpace(orderBy))
@@ -80,7 +81,7 @@ namespace fonenako.Controllers
             return Ok(pageable);
         }
 
-        [HttpGet("{leaseOfferId}", Name = "Retrieve lease offer by Id")]
+        [HttpGet("{leaseOfferId}", Name = "Retrieve lease offer details by Id")]
         [ProducesResponseType(typeof(LeaseOfferDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public async  Task<ActionResult<LeaseOfferDto>> RetrieveSingle([FromRoute(Name = "leaseOfferId")] int leaseOfferId)

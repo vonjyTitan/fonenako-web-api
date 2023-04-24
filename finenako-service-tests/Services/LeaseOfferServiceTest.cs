@@ -32,7 +32,7 @@ namespace fonenako_service_tests.Services
 
         [TestCase(0, 1, nameof(LeaseOfferDto.LeaseOfferID), TestName = "Page size 0 should make RetrieveLeaseOffersAsync rise ArgumentException")]
         [TestCase(10, 0, nameof(LeaseOfferDto.LeaseOfferID), TestName = "Page index 0 should make RetrieveLeaseOffersAsync rise ArgumentException")]
-        [TestCase(10, 1, nameof(LeaseOfferDto.CarouselUri), TestName = "Field not orderable should make RetrieveLeaseOffersAsync rise ArgumentException")]
+        [TestCase(10, 1, nameof(LeaseOfferDto.CarouselUri), TestName = "Field not sortable should make RetrieveLeaseOffersAsync rise ArgumentException")]
         [TestCase(10, 1, "UnknownField", TestName = "Unknown Field should make RetrieveLeaseOffersAsync rise ArgumentException")]
         public void RetrieveLeaseOffersAsync_should_throw_argumentexcption_when_called_with_wrong_arg(int pageSize, int pageIndex, string orderBy)
         {
@@ -45,7 +45,7 @@ namespace fonenako_service_tests.Services
         public async Task RetrieveLeaseOffersAsync_should_return_a_correct_pageable(int pageIndex, int expectedPageIndexResult, int totalItems, int expectedTotalPage)
         {
             const int pageSize = 5;
-            const string orderBy = nameof(LeaseOffer.LeaseOfferID);
+            const string orderBy = nameof(LeaseOfferDto.LeaseOfferID);
             const Order order = Order.Asc;
 
             var leaseOfferModels = new []{ new LeaseOffer()};
@@ -68,7 +68,7 @@ namespace fonenako_service_tests.Services
         {
             _leaseOfferDaoMock.Setup(dao => dao.CountLeaseOffersAsync(LeaseOfferFilter.Default)).ReturnsAsync(0);
 
-            var pageableResult = await _leaseOfferService.RetrieveLeaseOffersAsync(2, 2, LeaseOfferFilter.Default, nameof(LeaseOffer.LeaseOfferID), Order.Asc);
+            var pageableResult = await _leaseOfferService.RetrieveLeaseOffersAsync(2, 2, LeaseOfferFilter.Default, nameof(LeaseOfferDto.LeaseOfferID), Order.Asc);
 
             Assert.IsNotNull(pageableResult);
             Assert.AreEqual(1, pageableResult.CurrentPage);
@@ -78,7 +78,7 @@ namespace fonenako_service_tests.Services
         }
 
         [Test]
-        public async Task FindLeaseOfferByIdAsync_should_return_null_when_dao_returns_null()
+        public async Task FindLeaseOfferDetailsByIdAsync_should_return_null_when_dao_returns_null()
         {
             var leaseOffer = await _leaseOfferService.FindLeaseOfferByIdAsync(1);
 
@@ -86,7 +86,7 @@ namespace fonenako_service_tests.Services
         }
 
         [Test]
-        public async Task FindLeaseOfferByIdAsync_should_return_the_right_dto_when_dao_and_mapper_return_the_right_object()
+        public async Task FindLeaseOfferDetailsByIdAsync_should_return_the_right_dto_when_dao_and_mapper_return_the_right_object()
         {
             const int leaseOfferId = 1;
             var leaseOffer = new LeaseOffer

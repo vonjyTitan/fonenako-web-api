@@ -78,28 +78,28 @@ namespace finenako_service_tests.Controllers
         {
 #line 5
 #line hidden
-            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
                         "LocalisationId",
                         "Type",
                         "HierarchyId",
                         "Name"});
-            table42.AddRow(new string[] {
+            table44.AddRow(new string[] {
                         "1",
                         "CIT",
                         "",
                         "City1"});
-            table42.AddRow(new string[] {
+            table44.AddRow(new string[] {
                         "2",
                         "ARE",
                         "1",
                         "Area1"});
-            table42.AddRow(new string[] {
+            table44.AddRow(new string[] {
                         "3",
                         "ARE",
                         "1",
                         "Area2"});
 #line 6
- testRunner.Given("The following list of localisations is present in the system", ((string)(null)), table42, "Given ");
+ testRunner.Given("The following list of localisations is present in the system", ((string)(null)), table44, "Given ");
 #line hidden
         }
         
@@ -156,7 +156,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "LocalisationId",
                             "Title",
@@ -166,7 +166,7 @@ this.FeatureBackground();
                             "Creationdate",
                             "ConcatenedPhotos",
                             "Description"});
-                table43.AddRow(new string[] {
+                table45.AddRow(new string[] {
                             "1",
                             "2",
                             "Offer number 1",
@@ -177,7 +177,7 @@ this.FeatureBackground();
                             "image1.jpg;image2.jpg",
                             "desc 1"});
 #line 18
- testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table43, "Given ");
+ testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table45, "Given ");
 #line hidden
 #line 21
  testRunner.When("I make a GET request on lease-offers endpoint with offer id : \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -209,7 +209,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "LocalisationId",
                             "Title",
@@ -220,7 +220,7 @@ this.FeatureBackground();
                             "Creationdate",
                             "ConcatenedPhotos",
                             "Description"});
-                table44.AddRow(new string[] {
+                table46.AddRow(new string[] {
                             "1",
                             "2",
                             "Offer number 1",
@@ -231,7 +231,7 @@ this.FeatureBackground();
                             "2023-09-25",
                             "image1.jpg;image2.jpg",
                             "desc 1"});
-                table44.AddRow(new string[] {
+                table46.AddRow(new string[] {
                             "2",
                             "2",
                             "Offer number 2",
@@ -243,7 +243,7 @@ this.FeatureBackground();
                             "image3.jpg;",
                             "desc 2"});
 #line 25
- testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table44, "Given ");
+ testRunner.Given("The following list of lease offer is present in the system", ((string)(null)), table46, "Given ");
 #line hidden
 #line 29
  testRunner.When("I make a GET request on lease-offers endpoint with offer id : \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -251,7 +251,7 @@ this.FeatureBackground();
 #line 30
  testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
                             "LeaseOfferID",
                             "Loc.Id",
                             "Loc.Type",
@@ -267,7 +267,7 @@ this.FeatureBackground();
                             "Creationdate",
                             "PhotoUris",
                             "Description"});
-                table45.AddRow(new string[] {
+                table47.AddRow(new string[] {
                             "2",
                             "2",
                             "ARE",
@@ -284,7 +284,7 @@ this.FeatureBackground();
                             "http://localhost:7182/Photos/image3.jpg",
                             "desc 2"});
 #line 31
- testRunner.And("The body content should be like :", ((string)(null)), table45, "And ");
+ testRunner.And("The body content should be like :", ((string)(null)), table47, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

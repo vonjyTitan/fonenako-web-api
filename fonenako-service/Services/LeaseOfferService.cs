@@ -14,7 +14,7 @@ namespace fonenako_service.Services
 
         private readonly IMapper _mapper;
 
-        private static readonly Dictionary<string, string> OrdereableFieldsMap = new()
+        private static readonly Dictionary<string, string> SortableFieldsMap = new()
         {
             { nameof(LeaseOfferDto.LeaseOfferID), nameof(LeaseOffer.LeaseOfferID)},
             { nameof(LeaseOfferDto.Surface), nameof(LeaseOffer.Surface)},
@@ -40,7 +40,7 @@ namespace fonenako_service.Services
                 throw new ArgumentException("Value cannot be less than 1", nameof(pageSize));
             }
 
-            if(!OrdereableFieldsMap.TryGetValue(orderBy, out var orderModelFieldName))
+            if(!SortableFieldsMap.TryGetValue(orderBy, out var orderModelFieldName))
             {
                 throw new ArgumentException($"The dto field : {orderBy} is unknown or not sortable", nameof(orderBy));
             }

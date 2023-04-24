@@ -13,7 +13,7 @@ namespace fonenako_service.Daos
     {
         private readonly FonenakoDbContext _fonenakoDbContext;
 
-        private static readonly Dictionary<string, Expression<Func<LeaseOffer, object>>> OrderableFieldsQueryMapper = new()
+        private static readonly Dictionary<string, Expression<Func<LeaseOffer, object>>> SortableFieldsQueryMapper = new()
         {
             { nameof(LeaseOffer.LeaseOfferID), offer => offer.LeaseOfferID},
             { nameof(LeaseOffer.Surface), offer => offer.Surface },
@@ -51,9 +51,9 @@ namespace fonenako_service.Daos
             {
                 throw new ArgumentException("Value cannot be less than 1", nameof(pageIndex));
             }
-            if(!OrderableFieldsQueryMapper.TryGetValue(orderBy, out var orderExpression))
+            if(!SortableFieldsQueryMapper.TryGetValue(orderBy, out var orderExpression))
             {
-                throw new ArgumentException($"Order field '{orderBy}' is unknown or not orderable", nameof(orderBy));
+                throw new ArgumentException($"Order field '{orderBy}' is unknown or not sortable", nameof(orderBy));
             }
 
             var toSkiped = (pageIndex - 1) * pageSize;

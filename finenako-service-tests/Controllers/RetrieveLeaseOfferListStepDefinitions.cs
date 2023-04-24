@@ -82,7 +82,7 @@ namespace fonenako_service_tests.Controllers
         {
             ParseBodyIfNeed();
             var expectedContent = table.CreateSet(LeaseOfferControllerStepDefinitionsCommon.LeaseOfferDtoParser);
-            expectedContent = expectedContent.Select(t => { t.Description = string.IsNullOrEmpty(t.Description) ? null : t.Description; return t; }).ToArray();
+            expectedContent = expectedContent.Select(leaseOffer => { leaseOffer.Description = string.IsNullOrEmpty(leaseOffer.Description) ? null : leaseOffer.Description.Trim(); return leaseOffer; }).ToArray();
 
             Assert.AreEqual(JsonSerializer.Serialize(expectedContent), JsonSerializer.Serialize(_responseBody.Content), "The lease offer list in the response body as Json is not equal to the expectation");
         }
