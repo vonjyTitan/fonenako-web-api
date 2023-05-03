@@ -1,10 +1,11 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using fonenako_service.Controllers.Validator;
 using fonenako_service.Daos;
 using fonenako_service.Dtos;
-using fonenako_service.Properties;
 using fonenako_service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,16 +24,20 @@ namespace fonenako_service.Controllers
 
         private readonly FunctionalSettings _functionalSettings;
 
-        private static readonly Dictionary<string, string> OrdereableFieldsMap = new()
+        private readonly IPageableEndPointInputValidator _pageableEndPointInputValidator;
+
+        private static readonly Dictionary<string, string> SortableFieldsMap = new()
         {
             { LocalisationDtoProperties.Name, nameof(LocalisationDto.Name) },
             { LocalisationDtoProperties.Type, nameof(LocalisationDto.Type) },
         };
 
-        public LocalisationController(ILocalisationService localisationService, IOptions<FunctionalSettings> options)
+        public LocalisationController(ILocalisationService localisationService, IOptions<FunctionalSettings> options, IEndPointInputValidatorFactory endPointInputValidatorFactory)
         {
             _localisationService = localisationService ?? throw new ArgumentNullException(nameof(localisationService));
             _functionalSettings = options?.Value ?? throw new ArgumentException("Argument or its 'Value' is null", nameof(options));
+            if (endPointInputValidatorFactory == null) throw new ArgumentNullException(nameof(endPointInputValidatorFactory));
+            _pageableEndPointInputValidator = endPointInputValidatorFactory.CreatePageableEndPointInputValidator(SortableFieldsMap.Keys.ToHashSet()) ?? throw new InvalidOperationException("No IPageableEndPointInputValidator found");
         }
 
         [HttpGet(Name = "Search localisations")]
@@ -44,33 +49,25 @@ namespace fonenako_service.Controllers
                                                                 [FromQuery(Name = "order")] Order? order,
                                                                 [FromQuery(Name = "name")] string nameFilter)
         {
-            //TODO refactor this part with the one in LeaseOfferController
-            var orderAsEnum = order ?? Order.Asc;
+            var pageableParams = new PageableRequestParam
+            {
+                PageSize = pageSize,
+                Order = order,
+                Page = page,
+                OrderBy = orderBy
+            };
+            if (!_pageableEndPointInputValidator.IsValide(pageableParams, out var firstError))
+            {
+                return Problem(firstError.Message, null, StatusCodes.Status400BadRequest, null, firstError.ErrorCode);
+            }
+
             var orderTdoField = nameof(LocalisationDtoProperties.Name);
-            if (order.HasValue && string.IsNullOrWhiteSpace(orderBy))
+            if (!string.IsNullOrWhiteSpace(orderBy))
             {
-                if (string.IsNullOrWhiteSpace(orderBy))
-                {
-                    return Problem(string.Format(Resources.order_whithout_orderby, order, orderBy), null, StatusCodes.Status400BadRequest);
-                }
+                orderTdoField = SortableFieldsMap[orderBy];
             }
 
-            if (!string.IsNullOrWhiteSpace(orderBy) && !OrdereableFieldsMap.TryGetValue(orderBy, out orderTdoField))
-            {
-                return Problem(string.Format(Resources.unknown_order_field_name, orderBy), null, StatusCodes.Status400BadRequest);
-            }
-
-            if (page.HasValue && page < 1)
-            {
-                return Problem(string.Format(Resources.requested_page_index_not_valid, page), null, StatusCodes.Status400BadRequest);
-            }
-
-            if (pageSize.HasValue && pageSize < 1)
-            {
-                return Problem(string.Format(Resources.requested_page_size_not_valid, pageSize), null, StatusCodes.Status400BadRequest);
-            }
-
-            var pageableLocalisations = await _localisationService.SearchLocalisationsAsync(pageSize ?? _functionalSettings.DefaultMaxPageSize, page ?? 1, nameFilter, orderTdoField, order ?? orderAsEnum);
+            var pageableLocalisations = await _localisationService.SearchLocalisationsAsync(pageSize ?? _functionalSettings.DefaultMaxPageSize, page ?? 1, nameFilter, orderTdoField, order ?? Order.Asc);
             return Ok(pageableLocalisations);
         }
     }

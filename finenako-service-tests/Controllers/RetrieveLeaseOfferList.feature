@@ -1,5 +1,5 @@
 ﻿Feature: Find many lease offers
-	In order to obtain a leas offer list
+	In order to obtain a lease offer list
 
 Background:
 	Given The following list of localisations is present in the system

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace fonenako_service
+namespace fonenako_service.Controllers
 {
     public class JsonQueryBinder : IModelBinder
     {

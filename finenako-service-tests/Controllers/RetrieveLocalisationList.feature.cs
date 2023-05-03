@@ -73,6 +73,40 @@ namespace finenako_service_tests.Controllers
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 3
+#line hidden
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+                        "LocalisationId",
+                        "Type",
+                        "HierarchyId",
+                        "Name"});
+            table42.AddRow(new string[] {
+                        "1",
+                        "CIT",
+                        "",
+                        "Antananarivo"});
+            table42.AddRow(new string[] {
+                        "2",
+                        "CIT",
+                        "",
+                        "Atsimon-drano"});
+            table42.AddRow(new string[] {
+                        "3",
+                        "ARE",
+                        "2",
+                        "Tanjombato"});
+            table42.AddRow(new string[] {
+                        "4",
+                        "ARE",
+                        "1",
+                        "Analakely"});
+#line 4
+ testRunner.Given("The following list of localisations is present in the system", ((string)(null)), table42, "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Search localisations with name that contains a word")]
         public void SearchLocalisationsWithNameThatContainsAWord()
@@ -80,7 +114,7 @@ namespace finenako_service_tests.Controllers
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search localisations with name that contains a word", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 3
+#line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -90,41 +124,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
-                            "LocalisationId",
-                            "Type",
-                            "HierarchyId",
-                            "Name"});
-                table42.AddRow(new string[] {
-                            "1",
-                            "CIT",
-                            "",
-                            "Antananarivo"});
-                table42.AddRow(new string[] {
-                            "2",
-                            "CIT",
-                            "",
-                            "Atsimon-drano"});
-                table42.AddRow(new string[] {
-                            "3",
-                            "ARE",
-                            "2",
-                            "Tanjombato"});
-                table42.AddRow(new string[] {
-                            "4",
-                            "ARE",
-                            "1",
-                            "Analakely"});
-#line 4
- testRunner.Given("The following list of localisations is present in the system", ((string)(null)), table42, "Given ");
-#line hidden
-#line 10
- testRunner.When("I make a GET request on localisations api with parameters : \'name=Tan\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 11
- testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 3
+this.FeatureBackground();
 #line hidden
 #line 12
+ testRunner.When("I make a GET request on localisations api with parameters : \'name=Tan\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 13
+ testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 14
  testRunner.And("The pageable localisation infos should be like : {CurrentPage : \'1\', TotalPage : " +
                         "\'1\', PageSize : \'10000\', totalFound : \'2\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -149,8 +158,80 @@ this.ScenarioInitialize(scenarioInfo);
                             "2",
                             "CIT",
                             "Atsimon-drano"});
-#line 13
+#line 15
  testRunner.And("The response content as localisations list should be like :", ((string)(null)), table43, "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Search localisations without filter value")]
+        public void SearchLocalisationsWithoutFilterValue()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search localisations without filter value", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 20
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 21
+ testRunner.When("I make a GET request on localisations api with parameters : \'name=\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 22
+ testRunner.Then("The response Status code should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 23
+ testRunner.And("The pageable localisation infos should be like : {CurrentPage : \'1\', TotalPage : " +
+                        "\'1\', PageSize : \'10000\', totalFound : \'4\'}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
+                            "LocalisationId",
+                            "Type",
+                            "Name",
+                            "Hier.Id",
+                            "Hier.Type",
+                            "Hier.Name"});
+                table44.AddRow(new string[] {
+                            "4",
+                            "ARE",
+                            "Analakely",
+                            "1",
+                            "CIT",
+                            "Antananarivo"});
+                table44.AddRow(new string[] {
+                            "1",
+                            "CIT",
+                            "Antananarivo",
+                            "",
+                            "",
+                            ""});
+                table44.AddRow(new string[] {
+                            "2",
+                            "CIT",
+                            "Atsimon-drano",
+                            "",
+                            "",
+                            ""});
+                table44.AddRow(new string[] {
+                            "3",
+                            "ARE",
+                            "Tanjombato",
+                            "2",
+                            "CIT",
+                            "Atsimon-drano"});
+#line 24
+ testRunner.And("The response content as localisations list should be like :", ((string)(null)), table44, "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -163,7 +244,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve localisations list with wrong page size", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 18
+#line 31
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -173,13 +254,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 19
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 32
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 33
  testRunner.When("I make a GET request on localisations api with parameters : \'pageSize=-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 34
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -193,7 +277,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve localisations list with wrong order field name", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 23
+#line 36
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -203,13 +287,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 24
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 37
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 25
+#line 38
  testRunner.When("I make a GET request on localisations api with parameters : \'orderBy=unknown\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 26
+#line 39
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -223,7 +310,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve localisations list with wrong order value", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 28
+#line 41
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -233,14 +320,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 29
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 42
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 30
+#line 43
  testRunner.When("I make a GET request on localisations api with parameters : \'orderBy=Name&order=a" +
                         "scendant\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 31
+#line 44
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -254,7 +344,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve localisations list with order but no order field", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 33
+#line 46
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -264,13 +354,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 34
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 47
  testRunner.Given("Whatever data I have in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 35
+#line 48
  testRunner.When("I make a GET request on localisations api with parameters : \'order=Asc\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 36
+#line 49
  testRunner.Then("The response Status code should be \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

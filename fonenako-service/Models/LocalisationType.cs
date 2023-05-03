@@ -3,10 +3,10 @@ namespace fonenako_service.Models
 {
     public enum LocalisationType
     {
-        CIT,
-        ARE,
-        DIS,
-        REG,
-        PRO,
+        CIT = 0,
+        ARE = 1,
+        DIS = 2,
+        REG = 3,
+        PRO = 4,
     }
 }

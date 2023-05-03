@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 
-namespace fonenako_service
+namespace fonenako_service.Controllers
 {
     public class FromQueryAsJsonAttribute : ModelBinderAttribute
     {

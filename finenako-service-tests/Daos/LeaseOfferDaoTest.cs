@@ -118,7 +118,7 @@ namespace fonenako_service_tests.Daos
 
         [TestCase(0, 1, nameof(LeaseOffer.LeaseOfferID), TestName = "Page size 0 should make RetrieveLeaseOffersByPageAsync rise an error")]
         [TestCase(10, 0, nameof(LeaseOffer.LeaseOfferID), TestName = "Page index 0 should make RetrieveLeaseOffersByPageAsync rise an error")]
-        [TestCase(10, 1, nameof(LeaseOffer.Carousel), TestName = "Field not orderable should make RetrieveLeaseOffersByPageAsync rise an error")]
+        [TestCase(10, 1, nameof(LeaseOffer.Carousel), TestName = "Field not sortable should make RetrieveLeaseOffersByPageAsync rise an error")]
         [TestCase(10, 1, "UnknownField", TestName = "Unknown order field should make RetrieveLeaseOffersByPageAsync rise an error")]
         public void RetrieveLeaseOffersByPageAsync_shloud_rise_argumentexception_when_called_with_wrong_arg(int pageSize, int pageIndex, string orderBy)
         {

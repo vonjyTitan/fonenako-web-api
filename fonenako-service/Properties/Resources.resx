@@ -27,7 +27,7 @@
 	<data name="requested_page_size_not_valid" xml:space="preserve">
 	  <value>Page size value : '{0}' is not valid</value>
 	</data>
-	<data name="invalid_lease_offer_id" xml:space="preserve">
-	  <value>LeaseOfferID : '{0}' is not a valid identifier</value>
+	<data name="invalid_resource_id" xml:space="preserve">
+	  <value>Resource Id : '{0}', is not a valid identifier</value>
 	</data>
 </root>

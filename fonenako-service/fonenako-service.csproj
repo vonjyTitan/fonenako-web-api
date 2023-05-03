@@ -22,6 +22,7 @@
     <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Migrations\" />
+    <None Remove="Controllers\Validators\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
@@ -45,6 +46,7 @@
     <Folder Include="Daos\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Controllers\Validators\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">

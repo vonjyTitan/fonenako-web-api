@@ -77,9 +77,9 @@ namespace fonenako_service.Properties {
             }
         }
         
-        internal static string invalid_lease_offer_id {
+        internal static string invalid_resource_id {
             get {
-                return ResourceManager.GetString("invalid_lease_offer_id", resourceCulture);
+                return ResourceManager.GetString("invalid_resource_id", resourceCulture);
             }
         }
     }

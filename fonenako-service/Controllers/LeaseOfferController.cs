@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using fonenako_service;
+using fonenako_service.Controllers;
+using fonenako_service.Controllers.Validator;
+using fonenako_service.Controllers.Validators;
 using fonenako_service.Daos;
 using fonenako_service.Dtos;
 using fonenako_service.Properties;
@@ -26,8 +30,9 @@ namespace fonenako.Controllers
 
         private readonly FunctionalSettings _functionalSettings;
 
+        private readonly IPageableEndPointInputValidator _pageableEndPointInputValidator;
 
-        private static readonly Dictionary<string, string> OrdereableFieldsMap = new()
+        private static readonly Dictionary<string, string> SortableFieldsMap = new()
         {
             { LeaseOfferDtoProperties.LeaseOfferID, nameof(LeaseOfferDto.LeaseOfferID) },
             { LeaseOfferDtoProperties.Surface, nameof(LeaseOfferDto.Surface) },
@@ -35,10 +40,12 @@ namespace fonenako.Controllers
             { LeaseOfferDtoProperties.CreationDate, nameof(LeaseOfferDto.CreationDate) }
         };
 
-        public LeaseOfferController(ILeaseOfferService leaseOfferService, IOptions<FunctionalSettings> options)
+        public LeaseOfferController(ILeaseOfferService leaseOfferService, IOptions<FunctionalSettings> options, IEndPointInputValidatorFactory endPointInputValidatorFactory)
         {
             _leaseOfferService = leaseOfferService ?? throw new ArgumentNullException(nameof(leaseOfferService));
             _functionalSettings = options?.Value ?? throw new ArgumentException("Argument or its 'Value' is null", nameof(options));
+            if (endPointInputValidatorFactory == null) throw new ArgumentNullException(nameof(endPointInputValidatorFactory));
+            _pageableEndPointInputValidator = endPointInputValidatorFactory.CreatePageableEndPointInputValidator(SortableFieldsMap.Keys.ToHashSet()) ?? throw new InvalidOperationException("No IPageableEndPointInputValidator found");
         }
 
         [HttpGet(Name = "Retrieve many lease offers")]
@@ -50,34 +57,24 @@ namespace fonenako.Controllers
                                                                 [FromQuery(Name = "order")] Order? order,
                                                                 [FromQueryAsJson(Name = "filter")] LeaseOfferFilter filter)
         {
-            //TODO refactor this part with the one in LocalisationController
-            var orderAsEnum = order ?? Order.Desc;
+            var pageableParams = new PageableRequestParam
+            {
+                PageSize = pageSize,
+                Order = order,
+                Page = page,
+                OrderBy = orderBy
+            };
+            if(!_pageableEndPointInputValidator.IsValide(pageableParams, out var firstError))
+            {
+                return Problem(firstError.Message, null, StatusCodes.Status400BadRequest, null, firstError.ErrorCode);
+            }
             var orderTdoField = nameof(LeaseOfferDto.LeaseOfferID);
-            if (order.HasValue && string.IsNullOrWhiteSpace(orderBy))
+            if (!string.IsNullOrWhiteSpace(orderBy))
             {
-                if(string.IsNullOrWhiteSpace(orderBy))
-                {
-                    return Problem(string.Format(Resources.order_whithout_orderby, order, orderBy), null, StatusCodes.Status400BadRequest);
-                }
+                orderTdoField = SortableFieldsMap[orderBy];
             }
 
-            if (!string.IsNullOrWhiteSpace(orderBy) && !OrdereableFieldsMap.TryGetValue(orderBy, out orderTdoField))
-            {
-                return Problem(string.Format(Resources.unknown_order_field_name, orderBy), null, StatusCodes.Status400BadRequest);
-            }
-
-            if (page.HasValue && page < 1)
-            {
-                return Problem(string.Format(Resources.requested_page_index_not_valid, page), null, StatusCodes.Status400BadRequest);
-            }
-
-            if (pageSize.HasValue && pageSize < 1)
-            {
-                return Problem(string.Format(Resources.requested_page_size_not_valid, pageSize), null, StatusCodes.Status400BadRequest);
-            }
-
-            var pageable = await _leaseOfferService.RetrieveLeaseOffersAsync(pageSize ?? _functionalSettings.DefaultMaxPageSize, page ?? 1, filter ?? LeaseOfferFilter.Default, orderTdoField, orderAsEnum);
-            
+            var pageable = await _leaseOfferService.RetrieveLeaseOffersAsync(pageSize ?? _functionalSettings.DefaultMaxPageSize, page ?? 1, filter ?? LeaseOfferFilter.Default, orderTdoField, order ?? Order.Desc);
             return Ok(pageable);
         }
 
@@ -88,7 +85,7 @@ namespace fonenako.Controllers
         {
             if (leaseOfferId < 1)
             {
-                return Problem(string.Format(Resources.invalid_lease_offer_id, leaseOfferId), null, StatusCodes.Status400BadRequest);
+                return Problem(string.Format(Resources.invalid_resource_id, leaseOfferId), null, StatusCodes.Status400BadRequest, null, ErrorCode.InvalidResourceId);
             }
 
             var leaseOfferDto = await _leaseOfferService.FindLeaseOfferByIdAsync(leaseOfferId);

@@ -31,7 +31,7 @@ namespace fonenako_service
         public override bool Equals(object obj)
         {
             return obj is LeaseOfferFilter filter &&
-                   Rooms == filter.Rooms &&
+                   Enumerable.SequenceEqual(Rooms, filter.Rooms) &&
                    MonthlyRentMin == filter.MonthlyRentMin &&
                    MonthlyRentMax == filter.MonthlyRentMax &&
                    SurfaceMin == filter.SurfaceMin &&
